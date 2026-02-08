@@ -1,0 +1,36 @@
+name: Ascend
+options:
+  bundleIdPrefix: com.barsboldb.ascend
+
+targets:
+  Ascend:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: [Ascend]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.barsboldb.ascend
+      PRODUCT_NAME: Ascend
+      GENERATE_INFOPLIST_FILE: YES
+      INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+      INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+      INFOPLIST_KEY_UILaunchScreen_Generation: YES
+      INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscaleRight"
+      INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+      SWIFT_VERSION: "5.0"
+
+schemes:
+  Ascend:
+    build:
+      targets:
+        Ascend: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

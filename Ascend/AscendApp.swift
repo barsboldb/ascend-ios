@@ -12,6 +12,10 @@ struct AscendApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            Button("Click Me!") {
+                print("clicked")
+            }
+                .buttonStyle(AscendButtonStyle())
         }
     }
 }
