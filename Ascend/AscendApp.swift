@@ -11,11 +11,12 @@ import SwiftUI
 struct AscendApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Text("Welcome").font(.displayLarge)
             Button("Click Me!") {
                 print("clicked")
             }
-                .buttonStyle(AscendButtonStyle())
+            .buttonStyle(AscendButtonStyle(variant: .primary))
+
         }
     }
 }
