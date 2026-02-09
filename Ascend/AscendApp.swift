@@ -15,7 +15,7 @@ struct AscendApp: App {
             Button("Click Me!") {
                 print("clicked")
             }
-            .buttonStyle(AscendButtonStyle(variant: .primary))
+            .buttonStyle(AscendButtonStyle(variant: .destructive))
 
         }
     }
