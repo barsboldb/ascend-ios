@@ -11,12 +11,7 @@ import SwiftUI
 struct AscendApp: App {
     var body: some Scene {
         WindowGroup {
-            Text("Welcome").font(.displayLarge)
-            Button("Click Me!") {
-                print("clicked")
-            }
-            .buttonStyle(AscendButtonStyle(variant: .destructive))
-
+            HomeView()
         }
     }
 }
