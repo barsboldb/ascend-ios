@@ -1,6 +1,6 @@
 import Foundation;
 
-struct Exercise: Identifiable, Codable {
+struct Exercise: Identifiable, Codable, Hashable {
     let id: UUID;
     let name: String;
     let sets: Int;

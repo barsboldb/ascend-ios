@@ -1,6 +1,6 @@
 import Foundation;
 
-struct WorkoutDay: Identifiable, Codable {
+struct WorkoutDay: Identifiable, Codable, Hashable {
     let id: UUID;
     let name: String;
     let type: WorkoutType;
