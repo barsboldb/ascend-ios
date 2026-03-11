@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var navigation: NavigationState
     @StateObject private var workoutManager = WorkoutManager()
     @State private var selectedWorkout: WorkoutDay?
 
@@ -20,7 +21,7 @@ struct HomeView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigation.path) {
             ZStack {
                 Color.background.ignoresSafeArea()
 
@@ -70,7 +71,7 @@ struct HomeView: View {
                                 week: workoutManager.getCurrentWeek(),
                                 day: (workoutManager.workoutHistory.count % currentProgram.workouts.count) + 1,
                                 onStart: {
-                                    selectedWorkout = todaysWorkout
+                                    navigation.navigate(to: todaysWorkout)
                                 }
                             )
                         }
@@ -81,8 +82,10 @@ struct HomeView: View {
                     }
                     .padding(Spacing.screenPadding)
                 }
-            }.navigationDestination(item: $selectedWorkout) { workout in
+            }.navigationDestination(for: WorkoutDay.self) { workout in
                 TodaysWorkoutView(workout: workout)
+            }.navigationDestination(for: Exercise.self) {exercise in
+                ExerciseLoggingView(workoutName: "Leg A", exercise: exercise)
             }.task {
                 await workoutManager.loadData()
             }

@@ -1,6 +1,7 @@
 import SwiftUI;
 
 struct TodaysWorkoutView: View {
+    @EnvironmentObject() var navigation: NavigationState 
     @Environment(\.dismiss) private var dismiss
     @State private var showFinishLaterModal = false
     @State private var currentExerciseIndex = 0
@@ -61,9 +62,7 @@ struct TodaysWorkoutView: View {
                             state: currentExerciseIndex == index ? .active : .upcoming,
                             previousWeight: nil,
                             onStart: {
-                                if index == currentExerciseIndex {
-                                    currentExerciseIndex += 1
-                                }
+                                navigation.navigate(to: workout.exercises[currentExerciseIndex])
                             }
                         )
                     }
