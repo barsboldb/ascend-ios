@@ -69,7 +69,7 @@ struct ActiveExerciseCard: View {
                             .font(.labelMedium)
                             .foregroundColor(.textSecondary)
 
-                        Text("\(exercise.repRange)")
+                        Text("\(exercise.repRange.min)-\(exercise.repRange.max)")
                             .font(.system(size: 22, weight: .bold))
                             .foregroundColor(.textPrimary)
                     }
@@ -150,7 +150,7 @@ struct UpcomingExerciseCard: View {
                             .font(.labelMedium)
                             .foregroundColor(.textSecondary)
 
-                        Text("\(exercise.repRange)")
+                        Text("\(exercise.repRange.min)-\(exercise.repRange.max)")
                             .font(.headlineSmall)
                             .foregroundColor(.textPrimary)
                     }

@@ -16,13 +16,13 @@ struct SampleData {
                 "Empty bar bench press: 2 x 10"
             ],
             exercises: [
-                Exercise(name: "Flat Barbell Bench Press", sets: 4, repRange: "6-8", targetWeight: 32.5, restSeconds: 150),
-                Exercise(name: "Inclined Dumbbell Press", sets: 3, repRange: "8-10", targetWeight: 11, restSeconds: 120, notes: "each arm"),
-                Exercise(name: "Seated Dumbbell Shoulder Press", sets: 3, repRange: "10-12", targetWeight: 9, restSeconds: 90, notes: "each arm"),
-                Exercise(name: "Overhead Tricep Extension", sets: 3, repRange: "10-12", targetWeight: 17.5, restSeconds: 75),
-                Exercise(name: "Lateral Raises", sets: 3, repRange: "12-15", targetWeight: 5.5, restSeconds: 60),
-                Exercise(name: "Tricep Rope Pushdowns", sets: 3, repRange: "12-15", targetWeight: 17.5, restSeconds: 60),
-                Exercise(name: "Close-Grip Push-Ups", sets: 2, repRange: "AMRAP", targetWeight: 0, restSeconds: 60, notes: "bodyweight")
+                Exercise(name: "Flat Barbell Bench Press", sets: 4, repRange: RepRange(min: 6, max: 8), targetWeight: 32.5, restSeconds: 150, tag: .upperPush),
+                Exercise(name: "Inclined Dumbbell Press", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 11, restSeconds: 120, tag: .upperPush, notes: "each arm"),
+                Exercise(name: "Seated Dumbbell Shoulder Press", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 9, restSeconds: 90, tag: .upperPush, notes: "each arm"),
+                Exercise(name: "Overhead Tricep Extension", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 17.5, restSeconds: 75, tag: .isolation),
+                Exercise(name: "Lateral Raises", sets: 3, repRange: RepRange(min: 12, max: 15), targetWeight: 5.5, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Tricep Rope Pushdowns", sets: 3, repRange: RepRange(min: 12, max: 15), targetWeight: 17.5, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Close-Grip Push-Ups", sets: 2, repRange: RepRange(min: 0, max: 0), targetWeight: 0, restSeconds: 60, tag: .isolation, type: .amrap, notes: "bodyweight")
             ],
             estimatedDuration: 75,
         )
@@ -41,13 +41,13 @@ struct SampleData {
                 "Empty bar bench press: 2 x 10"
             ],
             exercises: [
-                Exercise(name: "Standing Barbell Overhead Press", sets: 4, repRange: "6-8", targetWeight: 27.5, restSeconds: 150),
-                Exercise(name: "Flat Dumbbell Bench Press", sets: 3, repRange: "8-10", targetWeight: 13, restSeconds: 120, notes: "each arm"),
-                Exercise(name: "Cable Flyes", sets: 3, repRange: "10-12", targetWeight: 12.5, restSeconds: 90, notes: "low-to-high"),
-                Exercise(name: "Skull Crushers", sets: 3, repRange: "10-12", targetWeight: 17.5, restSeconds: 75, notes: "EZ bar"),
-                Exercise(name: "Lateral Raises", sets: 3, repRange: "12-15", targetWeight: 5.5, restSeconds: 60),
-                Exercise(name: "Close-Grip Bench Press", sets: 3, repRange: "8-10", targetWeight: 27.5, restSeconds: 90),
-                Exercise(name: "Diamond Push-Ups", sets: 2, repRange: "AMRAP", targetWeight: 0, restSeconds: 60, notes: "bodyweight")
+                Exercise(name: "Standing Barbell Overhead Press", sets: 4, repRange: RepRange(min: 6, max: 8), targetWeight: 27.5, restSeconds: 150, tag: .upperPush),
+                Exercise(name: "Flat Dumbbell Bench Press", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 13, restSeconds: 120, tag: .upperPush, notes: "each arm"),
+                Exercise(name: "Cable Flyes", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 12.5, restSeconds: 90, tag: .isolation, notes: "low-to-high"),
+                Exercise(name: "Skull Crushers", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 17.5, restSeconds: 75, tag: .isolation, notes: "EZ bar"),
+                Exercise(name: "Lateral Raises", sets: 3, repRange: RepRange(min: 12, max: 15), targetWeight: 5.5, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Close-Grip Bench Press", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 27.5, restSeconds: 90, tag: .upperPush),
+                Exercise(name: "Diamond Push-Ups", sets: 2, repRange: RepRange(min: 0, max: 0), targetWeight: 0, restSeconds: 60, tag: .isolation, type: .amrap, notes: "bodyweight")
             ],
             estimatedDuration: 75,
         )
@@ -66,13 +66,13 @@ struct SampleData {
                 "Light lat pulldowns: 2 × 12",
             ],
             exercises: [
-                Exercise(name: "Barbell Bend-Over Row", sets: 4, repRange: "6-8", targetWeight: 37.5, restSeconds: 150),
-                Exercise(name: "Lat Pulldown", sets: 3, repRange: "8-10", targetWeight: 37.5, restSeconds: 120),
-                Exercise(name: "Face Pulls", sets: 3, repRange: "12-15", targetWeight: 12.5, restSeconds: 75),
-                Exercise(name: "Barbell Curls", sets: 3, repRange: "8-10", targetWeight: 17.5, restSeconds: 75),
-                Exercise(name: "Hammer Curls", sets: 3, repRange: "10-12", targetWeight: 9, restSeconds: 60),
-                Exercise(name: "Incline Dumbbell Curls", sets: 2, repRange: "10-12", targetWeight: 7, restSeconds: 60),
-                Exercise(name: "Rear Delt Flyes", sets: 2, repRange: "12-15", targetWeight: 7, restSeconds: 60)
+                Exercise(name: "Barbell Bend-Over Row", sets: 4, repRange: RepRange(min: 6, max: 8), targetWeight: 37.5, restSeconds: 150, tag: .upperPull),
+                Exercise(name: "Lat Pulldown", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 37.5, restSeconds: 120, tag: .upperPull),
+                Exercise(name: "Face Pulls", sets: 3, repRange: RepRange(min: 12, max: 15), targetWeight: 12.5, restSeconds: 75, tag: .isolation),
+                Exercise(name: "Barbell Curls", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 17.5, restSeconds: 75, tag: .isolation),
+                Exercise(name: "Hammer Curls", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 9, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Incline Dumbbell Curls", sets: 2, repRange: RepRange(min: 10, max: 12), targetWeight: 7, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Rear Delt Flyes", sets: 2, repRange: RepRange(min: 12, max: 15), targetWeight: 7, restSeconds: 60, tag: .isolation)
             ],
             estimatedDuration: 75,
         )
@@ -91,13 +91,13 @@ struct SampleData {
                 "Light lat pulldowns: 2 × 12",
             ],
             exercises: [
-                Exercise(name: "Pull-Ups", sets: 4, repRange: "AMRAP", targetWeight: -10, restSeconds: 150),
-                Exercise(name: "Seated Cable Row", sets: 3, repRange: "8-10", targetWeight: 45, restSeconds: 120),
-                Exercise(name: "Single-Arm Dumbbell Row", sets: 3, repRange: "10-12", targetWeight: 16, restSeconds: 90, notes: "each arm"),
-                Exercise(name: "Preacher Curls", sets: 3, repRange: "8-10", targetWeight: 17.5, restSeconds: 75, notes: "EZ bar"),
-                Exercise(name: "Concentration Curls", sets: 3, repRange: "10-12", targetWeight: 9, restSeconds: 60),
-                Exercise(name: "Cable Curls", sets: 2, repRange: "12-15", targetWeight: 17.5, restSeconds: 60),
-                Exercise(name: "Face Pulls", sets: 2, repRange: "15", targetWeight: 13.5, restSeconds: 60)
+                Exercise(name: "Pull-Ups", sets: 4, repRange: RepRange(min: 0, max: 0), targetWeight: -10, restSeconds: 150, tag: .upperPull, type: .amrap),
+                Exercise(name: "Seated Cable Row", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 45, restSeconds: 120, tag: .upperPull),
+                Exercise(name: "Single-Arm Dumbbell Row", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 16, restSeconds: 90, tag: .upperPull, notes: "each arm"),
+                Exercise(name: "Preacher Curls", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 17.5, restSeconds: 75, tag: .isolation, notes: "EZ bar"),
+                Exercise(name: "Concentration Curls", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 9, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Cable Curls", sets: 2, repRange: RepRange(min: 12, max: 15), targetWeight: 17.5, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Face Pulls", sets: 2, repRange: RepRange(min: 15, max: 15), targetWeight: 13.5, restSeconds: 60, tag: .isolation)
             ],
             estimatedDuration: 75,
         )
@@ -118,13 +118,13 @@ struct SampleData {
                 "Empty bar squats: 2 × 10",
             ],
             exercises: [
-                Exercise(name: "Barbell Back Squat", sets: 4, repRange: "6-8", targetWeight: 45, restSeconds: 150),
-                Exercise(name: "Romanian Deadlift", sets: 3, repRange: "8-10", targetWeight: 42.5, restSeconds: 120),
-                Exercise(name: "Leg Press", sets: 3, repRange: "10-12", targetWeight: 90, restSeconds: 120),
-                Exercise(name: "Leg Curls", sets: 3, repRange: "10-12", targetWeight: 30, restSeconds: 75),
-                Exercise(name: "Standing Calf Raises", sets: 4, repRange: "12-15", targetWeight: 50, restSeconds: 60),
-                Exercise(name: "Hanging Leg Raises", sets: 3, repRange: "10-15", targetWeight: 0, restSeconds: 60, notes: "core"),
-                Exercise(name: "Dead Bug", sets: 2, repRange: "10", targetWeight: 0, restSeconds: 60, notes: "core, each side")
+                Exercise(name: "Barbell Back Squat", sets: 4, repRange: RepRange(min: 6, max: 8), targetWeight: 45, restSeconds: 150, tag: .squat),
+                Exercise(name: "Romanian Deadlift", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 42.5, restSeconds: 120, tag: .hinge),
+                Exercise(name: "Leg Press", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 90, restSeconds: 120, tag: .squat),
+                Exercise(name: "Leg Curls", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 30, restSeconds: 75, tag: .isolation),
+                Exercise(name: "Standing Calf Raises", sets: 4, repRange: RepRange(min: 12, max: 15), targetWeight: 50, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Hanging Leg Raises", sets: 3, repRange: RepRange(min: 10, max: 15), targetWeight: 0, restSeconds: 60, tag: .isolation, notes: "core"),
+                Exercise(name: "Dead Bug", sets: 2, repRange: RepRange(min: 10, max: 10), targetWeight: 0, restSeconds: 60, tag: .isolation, notes: "core, each side")
             ],
             estimatedDuration: 75,
         )
@@ -145,13 +145,13 @@ struct SampleData {
                 "Empty bar squats: 2 × 10",
             ],
             exercises: [
-                Exercise(name: "Conventional Deadlift", sets: 4, repRange: "5-6", targetWeight: 55, restSeconds: 180),
-                Exercise(name: "Front Squat", sets: 3, repRange: "8-10", targetWeight: 35, restSeconds: 120),
-                Exercise(name: "Walking Lunges", sets: 3, repRange: "10", targetWeight: 11, restSeconds: 90, notes: "each side"),
-                Exercise(name: "Leg Curls", sets: 3, repRange: "10-12", targetWeight: 30, restSeconds: 75),
-                Exercise(name: "Seated Calf Raises", sets: 4, repRange: "15-20", targetWeight: 35, restSeconds: 60),
-                Exercise(name: "Plank", sets: 3, repRange: "45-60 sec", targetWeight: 0, restSeconds: 60, notes: "core"),
-                Exercise(name: "Pallof Press", sets: 2, repRange: "10", targetWeight: 12.5, restSeconds: 60, notes: "core, each side")
+                Exercise(name: "Conventional Deadlift", sets: 4, repRange: RepRange(min: 5, max: 6), targetWeight: 55, restSeconds: 180, tag: .hinge),
+                Exercise(name: "Front Squat", sets: 3, repRange: RepRange(min: 8, max: 10), targetWeight: 35, restSeconds: 120, tag: .squat),
+                Exercise(name: "Walking Lunges", sets: 3, repRange: RepRange(min: 10, max: 10), targetWeight: 11, restSeconds: 90, tag: .squat, notes: "each side"),
+                Exercise(name: "Leg Curls", sets: 3, repRange: RepRange(min: 10, max: 12), targetWeight: 30, restSeconds: 75, tag: .isolation),
+                Exercise(name: "Seated Calf Raises", sets: 4, repRange: RepRange(min: 15, max: 20), targetWeight: 35, restSeconds: 60, tag: .isolation),
+                Exercise(name: "Plank", sets: 3, repRange: RepRange(min: 45, max: 60), targetWeight: 0, restSeconds: 60, tag: .isolation, type: .hold, notes: "core"),
+                Exercise(name: "Pallof Press", sets: 2, repRange: RepRange(min: 10, max: 10), targetWeight: 12.5, restSeconds: 60, tag: .isolation, notes: "core, each side")
             ],
             estimatedDuration: 75,
         )
