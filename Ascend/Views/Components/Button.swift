@@ -109,7 +109,7 @@ struct AscendButtonStyle: ButtonStyle {
         case .primary:
             return Color.primary.opacity(opacity)
         case .secondary:
-            return Color.secondary.opacity(opacity)
+            return Color.surface.opacity(opacity)
         case .destructive:
             return Color.error.opacity(opacity)
         case .ghost:

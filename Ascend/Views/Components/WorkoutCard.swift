@@ -86,7 +86,7 @@ struct ExercisePreviewRow: View {
 
             Spacer()
 
-            Text("\(exercise.sets) × \(exercise.repRange)")
+            Text("\(exercise.sets) × \(exercise.repRange.min) - \(exercise.repRange.max)")
                 .font(.bodyMedium)
                 .foregroundColor(.textSecondary)
                 .padding(.top, 2)
