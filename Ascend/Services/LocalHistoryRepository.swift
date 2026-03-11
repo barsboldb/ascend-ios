@@ -36,4 +36,15 @@ class LocalHistoryRepository: WorkoutHistoryRepository {
     func deleteSession(id: UUID) async throws {
         sessions.removeAll { $0.id == id }
     }
+
+    func getLastPerformedExercise(named exerciseName: String) async throws -> CompletedExercise? {
+        let sorted = sessions.sorted { $0.date > $1.date }
+
+        for session in sorted {
+            if let match = session.completedExercises.first(where: { $0.exerciseName == exerciseName }) {
+                return match
+            }
+        }
+        return nil
+    }
 }

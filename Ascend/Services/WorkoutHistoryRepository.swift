@@ -6,4 +6,6 @@ protocol WorkoutHistoryRepository {
     func getRecentSessions(limit: Int) async throws -> [WorkoutSession]
     func saveSession(_ session: WorkoutSession) async throws
     func deleteSession(id: UUID) async throws
+
+    func getLastPerformedExercise(named exerciseName: String) async throws -> CompletedExercise? 
 }
