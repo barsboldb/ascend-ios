@@ -14,15 +14,7 @@ struct SessionProgress: View {
             }
             Spacer()
 
-            Circle()
-                .stroke(Color.background, lineWidth: 8)
-                .frame(width: Spacing.xxl, height: Spacing.xxl)
-                .overlay(
-                    Circle()
-                        .trim(from: 0, to: 0.15)
-                        .stroke(Color.primary, style: StrokeStyle(lineWidth: 8, lineCap: .round))
-                        .rotationEffect(.degrees(-90))
-                )
+            ProgressRing(progress: 0.15, lineWidth: 8, size: 48, trackColor: .background)
         }
         .padding(Spacing.cardPadding)
         .background(Color.surface)
