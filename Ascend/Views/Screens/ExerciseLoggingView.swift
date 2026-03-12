@@ -7,6 +7,8 @@ struct ExerciseLoggingView: View {
     @State private var weight: Double = 50.0
     @State private var reps: Int = 6
     @State private var rpe: Int = 0
+    @State private var activeSetIndex: Int = 0
+    @State private var sets: [SetLog] = []
 
     let workoutName: String
     let exercise: Exercise
@@ -26,7 +28,7 @@ struct ExerciseLoggingView: View {
                                 .multilineTextAlignment(.center)
                                 .lineLimit(2)
 
-                            SetPill(sets: [])
+                            SetPill(sets: $sets)
 
                             HStack(alignment: .center, spacing: Spacing.md) {
                                 PreviousCard(previousExercise: previousExercise)
@@ -41,12 +43,7 @@ struct ExerciseLoggingView: View {
                                 weight: $weight, 
                                 reps: $reps,
                                 rpe: $rpe,
-                                onLog: {}
                             )
-
-                            Button("Dismiss") {
-                                navigation.goBack()
-                            }
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -58,18 +55,75 @@ struct ExerciseLoggingView: View {
                     fullWidth: true,
                     icon: "clock",
                 ) {
-                    showRestTimer = true
+                    completeSet()
                 }
             }
             .padding(.horizontal, Spacing.screenPadding)
         }
-        .sheet(isPresented: $showRestTimer) {
-            RestTimerSheet(duration: 240)
+        .sheet(isPresented: $showRestTimer, onDismiss: advanceSet) {
+            RestTimerSheet(duration: 120)
         }
         .navigationBarBackButtonHidden(true)
         .task {
             previousExercise = try? await LocalHistoryRepository.shared.getLastPerformedExercise(named: exercise.name)
+            if let lastSet = previousExercise?.sets.first {
+                weight = lastSet.weight
+                reps = lastSet.reps
+                rpe = lastSet.rpe ?? 7
+            } else {
+                weight = exercise.targetWeight
+                reps = exercise.repRange.min
+                rpe = 7
+            }
+
+            sets = (0..<exercise.sets).map { i in 
+                SetLog(
+                    id: UUID(),
+                    targetWeight: weight,
+                    targetRepRange: "\(exercise.repRange.min)-\(exercise.repRange.max)",
+                    status: i == 0 ? .active : .pending
+                )
+            }
         }
+    }
+
+    private func completeSet() {
+        guard activeSetIndex < sets.count else { return }
+        sets[activeSetIndex].loggedWeight = weight
+        sets[activeSetIndex].loggedReps = reps
+        sets[activeSetIndex].rpe = rpe
+        sets[activeSetIndex].status = .completed
+        showRestTimer = true
+    }
+
+    private func advanceSet() {
+        guard activeSetIndex + 1 < sets.count else {
+            saveSession()
+            navigation.goBack()
+            return
+        }
+
+        activeSetIndex += 1
+        sets[activeSetIndex].status = .active
+        rpe = 0
+    }
+
+    private func saveSession() {
+        let completedSets = sets.compactMap { set -> CompletedSet? in 
+            guard let weight = set.loggedWeight, let reps = set.loggedReps else { return nil }
+            return CompletedSet(
+                reps: reps, 
+                weight: weight, 
+                rpe: set.rpe, 
+                completed: true, 
+                notes: "",
+            )
+        }
+
+        let completedExercise = CompletedExercise(
+            exerciseName: exercise.name,
+            sets: completedSets,
+        )
     }
 }
 

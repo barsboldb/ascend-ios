@@ -1,32 +1,11 @@
 import SwiftUI
 
 struct SetPill: View {
-    let sets: [SetLog]
-
-    @State private var _sets = [
-        SetLog(
-            id: UUID(),
-            targetWeight: 60.0,
-            targetRepRange: "6-8",
-            status: .completed,
-        ),
-        SetLog(
-            id: UUID(),
-            targetWeight: 60.0,
-            targetRepRange: "6-8",
-            status: .active,
-        ),
-        SetLog(
-            id: UUID(),
-            targetWeight: 60.0,
-            targetRepRange: "6-8",
-            status: .pending,
-        )
-    ]
+    @Binding var sets: [SetLog]
 
     var body: some View {
         HStack {
-            ForEach(Array(self._sets.enumerated()), id: \.element.id) { index, set in
+            ForEach(Array(self.sets.enumerated()), id: \.element.id) { index, set in
                 switch(set.status) {
                     case .pending:
                     SetIndicatorPending(index: index, set: set)
@@ -36,10 +15,10 @@ struct SetPill: View {
                     SetIndicatorCompleted(index: index, set: set)
                 }
             }
-            if _sets.count < 8 {
+            if sets.count < 8 {
                 Button {
-                    guard _sets.count <= 8 else { return }
-                    self._sets.append(
+                    guard sets.count <= 8 else { return }
+                    self.sets.append(
                         SetLog(
                             id: UUID(),
                             targetWeight: 60.0,

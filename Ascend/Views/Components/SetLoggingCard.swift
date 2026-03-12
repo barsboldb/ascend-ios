@@ -9,8 +9,6 @@ struct SetLoggingCard: View {
     @Binding var reps: Int
     @Binding var rpe: Int
 
-    let onLog: () -> Void
-
     var body: some View {
         VStack(spacing: Spacing.md) {
             StepperField(
