@@ -8,13 +8,13 @@ struct SessionProgress: View {
                 Text("SESSION PROGRESS")
                     .font(.labelLarge)
                     .foregroundColor(.primary)
-                Text("\(Int(progress))% Complete")
+                Text("\(Int(progress * 100))% Complete")
                     .font(.headlineMedium)
                     .foregroundColor(.textPrimary)
             }
             Spacer()
 
-            ProgressRing(progress: 0.15, lineWidth: 8, size: 48, trackColor: .background)
+            ProgressRing(progress: progress, lineWidth: 8, size: 48, trackColor: .background)
         }
         .padding(Spacing.cardPadding)
         .background(Color.surface)
