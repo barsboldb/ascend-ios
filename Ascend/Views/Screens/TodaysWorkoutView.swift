@@ -2,10 +2,10 @@ import SwiftUI;
 
 struct TodaysWorkoutView: View {
     @EnvironmentObject() var navigation: NavigationState 
+    @EnvironmentObject() var session: ActiveWorkoutSession
     @Environment(\.dismiss) private var dismiss
     @State private var showFinishLaterModal = false
-    @State private var currentExerciseIndex = 0
-    let workout: WorkoutDay
+
     var body: some View {
         ZStack{
             Color.background.ignoresSafeArea()
@@ -28,7 +28,7 @@ struct TodaysWorkoutView: View {
                         }
                     }
 
-                    Text("\(workout.name) Day")
+                    Text("\(session.workout.name) Day")
                         .foregroundColor(.textPrimary)
                         .font(.headlineLarge)
 
@@ -36,7 +36,7 @@ struct TodaysWorkoutView: View {
                         Image(systemName: "dumbbell.fill")
                             .font(.labelSmall)
                             .foregroundColor(.textSecondary)
-                        Text("\(workout.exercises.count) Exercises")
+                        Text("\(session.workout.exercises.count) Exercises")
                             .font(.labelSmall)
                             .foregroundColor(.textSecondary)
 
@@ -48,21 +48,23 @@ struct TodaysWorkoutView: View {
                         Image(systemName: "clock")
                             .font(.labelSmall)
                             .foregroundColor(.textSecondary)
-                        Text("~\(workout.estimatedDuration) mins")
+                        Text("~\(session.workout.estimatedDuration) mins")
                             .font(.labelSmall)
                             .foregroundColor(.textSecondary)
                     }
                     
-                    SessionProgress(progress: 15)
+                    SessionProgress(
+                        progress: (Double(session.currentExerciseIndex) / Double(session.workout.exercises.count)),
+                    )
 
-                    ForEach(Array(workout.exercises.enumerated()), id: \.element.id) {index, exercise in
+                    ForEach(Array(session.workout.exercises.enumerated()), id: \.element.id) {index, exercise in
                         ExerciseCard(
                             exercise: exercise,
                             index: index + 1,
-                            state: currentExerciseIndex == index ? .active : .upcoming,
+                            state: session.currentExerciseIndex == index ? .active : .upcoming,
                             previousWeight: nil,
                             onStart: {
-                                navigation.navigate(to: workout.exercises[currentExerciseIndex])
+                                navigation.navigate(to: session.workout.exercises[session.currentExerciseIndex])
                             }
                         )
                     }
@@ -90,6 +92,10 @@ struct TodaysWorkoutView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(for: Exercise.self) {exercise in
+            ExerciseLoggingView(exercise: exercise)
+                .environmentObject(session)
+        }
     }
 }
 

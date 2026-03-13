@@ -83,9 +83,7 @@ struct HomeView: View {
                     .padding(Spacing.screenPadding)
                 }
             }.navigationDestination(for: WorkoutDay.self) { workout in
-                TodaysWorkoutView(workout: workout)
-            }.navigationDestination(for: Exercise.self) {exercise in
-                ExerciseLoggingView(workoutName: "Leg A", exercise: exercise)
+                WorkoutSessionContainer(workout: workout)
             }.task {
                 await workoutManager.loadData()
             }

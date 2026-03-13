@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ExerciseLoggingView: View {
     @EnvironmentObject() private var navigation: NavigationState
+    @EnvironmentObject() private var session: ActiveWorkoutSession
+    @State private var isExerciseComplete = false
     @State private var showRestTimer = false
     @State private var previousExercise: CompletedExercise? = nil
     @State private var weight: Double = 50.0
@@ -10,9 +12,7 @@ struct ExerciseLoggingView: View {
     @State private var activeSetIndex: Int = 0
     @State private var sets: [SetLog] = []
 
-    let workoutName: String
     let exercise: Exercise
-
 
     var body: some View {
         ZStack {
@@ -37,8 +37,8 @@ struct ExerciseLoggingView: View {
                             .frame(maxWidth: .infinity)
 
                             SetLoggingCard(
-                                setNumber: 1, 
-                                totalSets: 4, 
+                                setNumber: activeSetIndex + 1, 
+                                totalSets: sets.count, 
                                 weightIncrement: 2.5, 
                                 weight: $weight, 
                                 reps: $reps,
@@ -97,7 +97,9 @@ struct ExerciseLoggingView: View {
     }
 
     private func advanceSet() {
+        guard !isExerciseComplete else { return }
         guard activeSetIndex + 1 < sets.count else {
+            isExerciseComplete = true
             saveSession()
             navigation.goBack()
             return
@@ -124,6 +126,8 @@ struct ExerciseLoggingView: View {
             exerciseName: exercise.name,
             sets: completedSets,
         )
+
+        session.completeExercise(completedExercise)
     }
 }
 
