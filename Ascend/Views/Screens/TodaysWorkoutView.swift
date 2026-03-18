@@ -5,6 +5,7 @@ struct TodaysWorkoutView: View {
     @EnvironmentObject() var session: ActiveWorkoutSession
     @Environment(\.dismiss) private var dismiss
     @State private var showFinishLaterModal = false
+    @State private var showCompletion = false
 
     var body: some View {
         ZStack{
@@ -90,6 +91,16 @@ struct TodaysWorkoutView: View {
                 .transition(.opacity)
                 .animation(.easeInOut(duration: 0.2), value: showFinishLaterModal)
             }
+        }
+        .onChange(of: session.currentExerciseIndex) { _, newIndex in 
+            if newIndex >= session.workout.exercises.count {
+                showCompletion = true
+            }
+        }
+        .fullScreenCover(isPresented: $showCompletion) {
+            WorkoutCompleteView()
+                .environmentObject(session)
+                .environmentObject(navigation)
         }
         .navigationBarBackButtonHidden(true)
         .navigationDestination(for: Exercise.self) {exercise in
