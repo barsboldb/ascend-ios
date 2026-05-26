@@ -3,8 +3,8 @@
 .PHONY: help gen build run clean devices
 
 # Default device - Use ID for reliability
-DEVICE_ID ?= 7DC73CE7-936E-4319-B0AB-70E870D0B687
-DEVICE_NAME ?= iPhone 15 Pro
+DEVICE_ID ?= CF410C2F-CC12-4D3E-940A-D4B7758FA395
+DEVICE_NAME ?= iPhone 17 Pro
 
 help: ## Show this help message
 	@echo "Ascend Development Commands:"
@@ -22,8 +22,7 @@ build: ## Build the app
 		-project Ascend.xcodeproj \
 		-scheme Ascend \
 		-configuration Debug \
-		-sdk iphonesimulator \
-		-destination 'platform=iOS Simulator,id=$(DEVICE_ID)' \
+		-destination 'platform=iOS Simulator,OS=26.2,name=iPhone 17 Pro' \
 		-derivedDataPath build \
 		build | xcbeautify || cat
 

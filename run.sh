@@ -1,38 +1,21 @@
 #!/bin/bash
 
-# Ascend - Build & Run Script
+# Ascend - Install & Run Script
 # Usage: ./run.sh [device-name]
+# Note: expects the app to already be built by `make build`
 
 set -e
 
-PROJECT="Ascend.xcodeproj"
-SCHEME="Ascend"
-CONFIGURATION="Debug"
-
-# Default to iPhone 15 Pro if no device specified
-DEVICE_NAME="${1:-iPhone 15 Pro}"
+# Default to iPhone 17 Pro if no device specified
+DEVICE_NAME="${1:-iPhone 17 Pro}"
 # Use device ID for reliable targeting
-DEVICE_ID="7DC73CE7-936E-4319-B0AB-70E870D0B687"
-
-echo "🔨 Building Ascend..."
-
-# Build the app
-xcodebuild \
-  -project "$PROJECT" \
-  -scheme "$SCHEME" \
-  -configuration "$CONFIGURATION" \
-  -sdk iphonesimulator \
-  -destination "platform=iOS Simulator,id=$DEVICE_ID" \
-  -derivedDataPath build \
-  build
-
-echo "✅ Build complete!"
+DEVICE_ID="CF410C2F-CC12-4D3E-940A-D4B7758FA395"
 
 # Get the app bundle path
 APP_PATH=$(find build/Build/Products/Debug-iphonesimulator -name "*.app" -maxdepth 1 | head -1)
 
 if [ -z "$APP_PATH" ]; then
-  echo "❌ Could not find .app bundle"
+  echo "❌ Could not find .app bundle — run \`make build\` first"
   exit 1
 fi
 
