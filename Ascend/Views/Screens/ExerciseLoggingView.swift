@@ -6,6 +6,7 @@ struct ExerciseLoggingView: View {
     @State private var isExerciseComplete = false
     @State private var showRestTimer = false
     @State private var previousExercise: CompletedExercise? = nil
+    @State private var target: ExerciseTarget? = nil
     @State private var weight: Double = 50.0
     @State private var reps: Int = 6
     @State private var rpe: Int = 0
@@ -32,7 +33,7 @@ struct ExerciseLoggingView: View {
 
                             HStack(alignment: .center, spacing: Spacing.md) {
                                 PreviousCard(previousExercise: previousExercise)
-                                TargetCard()
+                                TargetCard(target: target, exercise: exercise)
                             }
                             .frame(maxWidth: .infinity)
 
@@ -61,11 +62,13 @@ struct ExerciseLoggingView: View {
             .padding(.horizontal, Spacing.screenPadding)
         }
         .sheet(isPresented: $showRestTimer, onDismiss: advanceSet) {
-            RestTimerSheet(duration: 120)
+            RestTimerSheet(duration: session.workout.exercises[session.currentExerciseIndex].restSeconds)
         }
         .navigationBarBackButtonHidden(true)
         .task {
             previousExercise = try? await LocalHistoryRepository.shared.getLastPerformedExercise(named: exercise.name)
+            let history = [previousExercise].compactMap { $0 }
+            target = ProgressionService().calculateTarget(for: exercise, history: history)
             if let lastSet = previousExercise?.sets.first {
                 weight = lastSet.weight
                 reps = lastSet.reps
@@ -169,30 +172,51 @@ struct PreviousCard: View {
 }
 
 struct TargetCard: View {
+    let target: ExerciseTarget?
+    let exercise: Exercise
+
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {
             HStack(alignment: .center, spacing: Spacing.xs) {
-                Image(systemName: "chevron.compact.up")
-                    .font(.labelMedium)
-                    .foregroundColor(.success)
-                Text("TARGET")
-                    .font(.labelMedium)
-                    .foregroundColor(.success)
-            }
-
-            VStack(alignment: .leading, spacing: Spacing.xs) {
-                HStack(spacing: Spacing.sm) {
-                    Text("75.5kg")
-                        .font(.labelLarge)
-                        .foregroundColor(.textPrimary)
-                    Text("+2.5kg")
+                if target?.hasProgression == true {
+                    Image(systemName: "chevron.compact.up")
                         .font(.labelMedium)
                         .foregroundColor(.success)
                 }
+                Text("TARGET")
+                    .font(.labelMedium)
+                    .foregroundColor(target?.hasProgression == true ? .success : .textSecondary)
+            }
 
-                Text("or +1 rep")
-                    .font(.labelSmall)
-                    .foregroundColor(.textSecondary)
+            if let target {
+                VStack(alignment: .leading, spacing: Spacing.xs) {
+                    HStack(spacing: Spacing.sm) {
+                        Text(exercise.type == .amrap ? "AMRAP" : "\(target.weight.formatted())kg")
+                            .font(.labelLarge)
+                            .foregroundColor(.textPrimary)
+                        if target.weightDelta > 0 {
+                            Text("+\(target.weightDelta.formatted())kg")
+                                .font(.labelMedium)
+                                .foregroundColor(.success)
+                        }
+                    }
+
+                    if exercise.type == .reps {
+                        if target.hasProgression {
+                            Text("or +1 rep at \((target.weight - target.weightDelta).formatted())kg")
+                                .font(.labelSmall)
+                                .foregroundColor(.textSecondary)
+                        } else {
+                            Text("\(target.repRange.min)–\(target.repRange.max) reps")
+                                .font(.labelSmall)
+                                .foregroundColor(.textSecondary)
+                        }
+                    } else if exercise.type == .hold {
+                        Text("\(target.repRange.min)–\(target.repRange.max)s")
+                            .font(.labelSmall)
+                            .foregroundColor(.textSecondary)
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -201,7 +225,7 @@ struct TargetCard: View {
         .cornerRadius(Spacing.radiusMedium)
         .overlay(
             RoundedRectangle(cornerRadius: Spacing.radiusMedium)
-                .stroke(Color.success, style: StrokeStyle(lineWidth: 1))
+                .stroke(target?.hasProgression == true ? Color.success : Color.clear, style: StrokeStyle(lineWidth: 1))
         )
     }
 }
