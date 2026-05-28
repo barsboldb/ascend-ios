@@ -45,10 +45,36 @@ internal enum Session_SessionService: Sendable {
                 method: "CreateSession"
             )
         }
+        /// Namespace for "ListRecentSessions" metadata.
+        internal enum ListRecentSessions: Sendable {
+            /// Request type for "ListRecentSessions".
+            internal typealias Input = Session_ListRecentSessionsRequest
+            /// Response type for "ListRecentSessions".
+            internal typealias Output = Session_ListRecentSessionsResponse
+            /// Descriptor for "ListRecentSessions".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "session.SessionService"),
+                method: "ListRecentSessions"
+            )
+        }
+        /// Namespace for "GetLastSetsForExercise" metadata.
+        internal enum GetLastSetsForExercise: Sendable {
+            /// Request type for "GetLastSetsForExercise".
+            internal typealias Input = Session_GetLastSetsForExerciseRequest
+            /// Response type for "GetLastSetsForExercise".
+            internal typealias Output = Session_GetLastSetsForExerciseResponse
+            /// Descriptor for "GetLastSetsForExercise".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "session.SessionService"),
+                method: "GetLastSetsForExercise"
+            )
+        }
         /// Descriptors for all methods in the "session.SessionService" service.
         internal static let descriptors: [GRPCCore.MethodDescriptor] = [
             GetSession.descriptor,
-            CreateSession.descriptor
+            CreateSession.descriptor,
+            ListRecentSessions.descriptor,
+            GetLastSetsForExercise.descriptor
         ]
     }
 }
@@ -101,6 +127,34 @@ extension Session_SessionService {
             request: GRPCCore.StreamingServerRequest<Session_CreateSessionRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.StreamingServerResponse<Session_SessionWithExercises>
+
+        /// Handle the "ListRecentSessions" method.
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `Session_ListRecentSessionsRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `Session_ListRecentSessionsResponse` messages.
+        func listRecentSessions(
+            request: GRPCCore.StreamingServerRequest<Session_ListRecentSessionsRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<Session_ListRecentSessionsResponse>
+
+        /// Handle the "GetLastSetsForExercise" method.
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `Session_GetLastSetsForExerciseRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `Session_GetLastSetsForExerciseResponse` messages.
+        func getLastSetsForExercise(
+            request: GRPCCore.StreamingServerRequest<Session_GetLastSetsForExerciseRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<Session_GetLastSetsForExerciseResponse>
     }
 
     /// Service protocol for the "session.SessionService" service.
@@ -138,6 +192,34 @@ extension Session_SessionService {
             request: GRPCCore.ServerRequest<Session_CreateSessionRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.ServerResponse<Session_SessionWithExercises>
+
+        /// Handle the "ListRecentSessions" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_ListRecentSessionsRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `Session_ListRecentSessionsResponse` message.
+        func listRecentSessions(
+            request: GRPCCore.ServerRequest<Session_ListRecentSessionsRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<Session_ListRecentSessionsResponse>
+
+        /// Handle the "GetLastSetsForExercise" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_GetLastSetsForExerciseRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `Session_GetLastSetsForExerciseResponse` message.
+        func getLastSetsForExercise(
+            request: GRPCCore.ServerRequest<Session_GetLastSetsForExerciseRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<Session_GetLastSetsForExerciseResponse>
     }
 
     /// Simple service protocol for the "session.SessionService" service.
@@ -173,6 +255,34 @@ extension Session_SessionService {
             request: Session_CreateSessionRequest,
             context: GRPCCore.ServerContext
         ) async throws -> Session_SessionWithExercises
+
+        /// Handle the "ListRecentSessions" method.
+        ///
+        /// - Parameters:
+        ///   - request: A `Session_ListRecentSessionsRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `Session_ListRecentSessionsResponse` to respond with.
+        func listRecentSessions(
+            request: Session_ListRecentSessionsRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> Session_ListRecentSessionsResponse
+
+        /// Handle the "GetLastSetsForExercise" method.
+        ///
+        /// - Parameters:
+        ///   - request: A `Session_GetLastSetsForExerciseRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `Session_GetLastSetsForExerciseResponse` to respond with.
+        func getLastSetsForExercise(
+            request: Session_GetLastSetsForExerciseRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> Session_GetLastSetsForExerciseResponse
     }
 }
 
@@ -197,6 +307,28 @@ extension Session_SessionService.StreamingServiceProtocol {
             serializer: GRPCProtobuf.ProtobufSerializer<Session_SessionWithExercises>(),
             handler: { request, context in
                 try await self.createSession(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: Session_SessionService.Method.ListRecentSessions.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_ListRecentSessionsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_ListRecentSessionsResponse>(),
+            handler: { request, context in
+                try await self.listRecentSessions(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: Session_SessionService.Method.GetLastSetsForExercise.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_GetLastSetsForExerciseRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_GetLastSetsForExerciseResponse>(),
+            handler: { request, context in
+                try await self.getLastSetsForExercise(
                     request: request,
                     context: context
                 )
@@ -229,6 +361,28 @@ extension Session_SessionService.ServiceProtocol {
         )
         return GRPCCore.StreamingServerResponse(single: response)
     }
+
+    internal func listRecentSessions(
+        request: GRPCCore.StreamingServerRequest<Session_ListRecentSessionsRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<Session_ListRecentSessionsResponse> {
+        let response = try await self.listRecentSessions(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    internal func getLastSetsForExercise(
+        request: GRPCCore.StreamingServerRequest<Session_GetLastSetsForExerciseRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<Session_GetLastSetsForExerciseResponse> {
+        let response = try await self.getLastSetsForExercise(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
 }
 
 // Default implementation of methods from 'ServiceProtocol'.
@@ -253,6 +407,32 @@ extension Session_SessionService.SimpleServiceProtocol {
     ) async throws -> GRPCCore.ServerResponse<Session_SessionWithExercises> {
         return GRPCCore.ServerResponse<Session_SessionWithExercises>(
             message: try await self.createSession(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    internal func listRecentSessions(
+        request: GRPCCore.ServerRequest<Session_ListRecentSessionsRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<Session_ListRecentSessionsResponse> {
+        return GRPCCore.ServerResponse<Session_ListRecentSessionsResponse>(
+            message: try await self.listRecentSessions(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    internal func getLastSetsForExercise(
+        request: GRPCCore.ServerRequest<Session_GetLastSetsForExerciseRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<Session_GetLastSetsForExerciseResponse> {
+        return GRPCCore.ServerResponse<Session_GetLastSetsForExerciseResponse>(
+            message: try await self.getLastSetsForExercise(
                 request: request.message,
                 context: context
             ),
@@ -306,6 +486,44 @@ extension Session_SessionService {
             deserializer: some GRPCCore.MessageDeserializer<Session_SessionWithExercises>,
             options: GRPCCore.CallOptions,
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "ListRecentSessions" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_ListRecentSessionsRequest` message.
+        ///   - serializer: A serializer for `Session_ListRecentSessionsRequest` messages.
+        ///   - deserializer: A deserializer for `Session_ListRecentSessionsResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func listRecentSessions<Result>(
+            request: GRPCCore.ClientRequest<Session_ListRecentSessionsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_ListRecentSessionsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_ListRecentSessionsResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ListRecentSessionsResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "GetLastSetsForExercise" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_GetLastSetsForExerciseRequest` message.
+        ///   - serializer: A serializer for `Session_GetLastSetsForExerciseRequest` messages.
+        ///   - deserializer: A deserializer for `Session_GetLastSetsForExerciseResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func getLastSetsForExercise<Result>(
+            request: GRPCCore.ClientRequest<Session_GetLastSetsForExerciseRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_GetLastSetsForExerciseRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_GetLastSetsForExerciseResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetLastSetsForExerciseResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -384,6 +602,66 @@ extension Session_SessionService {
                 onResponse: handleResponse
             )
         }
+
+        /// Call the "ListRecentSessions" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_ListRecentSessionsRequest` message.
+        ///   - serializer: A serializer for `Session_ListRecentSessionsRequest` messages.
+        ///   - deserializer: A deserializer for `Session_ListRecentSessionsResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func listRecentSessions<Result>(
+            request: GRPCCore.ClientRequest<Session_ListRecentSessionsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_ListRecentSessionsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_ListRecentSessionsResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ListRecentSessionsResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Session_SessionService.Method.ListRecentSessions.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "GetLastSetsForExercise" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_GetLastSetsForExerciseRequest` message.
+        ///   - serializer: A serializer for `Session_GetLastSetsForExerciseRequest` messages.
+        ///   - deserializer: A deserializer for `Session_GetLastSetsForExerciseResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func getLastSetsForExercise<Result>(
+            request: GRPCCore.ClientRequest<Session_GetLastSetsForExerciseRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_GetLastSetsForExerciseRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_GetLastSetsForExerciseResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetLastSetsForExerciseResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Session_SessionService.Method.GetLastSetsForExercise.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
     }
 }
 
@@ -435,6 +713,56 @@ extension Session_SessionService.ClientProtocol {
             request: request,
             serializer: GRPCProtobuf.ProtobufSerializer<Session_CreateSessionRequest>(),
             deserializer: GRPCProtobuf.ProtobufDeserializer<Session_SessionWithExercises>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "ListRecentSessions" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Session_ListRecentSessionsRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func listRecentSessions<Result>(
+        request: GRPCCore.ClientRequest<Session_ListRecentSessionsRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ListRecentSessionsResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.listRecentSessions(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_ListRecentSessionsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_ListRecentSessionsResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "GetLastSetsForExercise" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Session_GetLastSetsForExerciseRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func getLastSetsForExercise<Result>(
+        request: GRPCCore.ClientRequest<Session_GetLastSetsForExerciseRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetLastSetsForExerciseResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.getLastSetsForExercise(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_GetLastSetsForExerciseRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_GetLastSetsForExerciseResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -496,6 +824,64 @@ extension Session_SessionService.ClientProtocol {
             metadata: metadata
         )
         return try await self.createSession(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "ListRecentSessions" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func listRecentSessions<Result>(
+        _ message: Session_ListRecentSessionsRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ListRecentSessionsResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Session_ListRecentSessionsRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.listRecentSessions(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "GetLastSetsForExercise" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func getLastSetsForExercise<Result>(
+        _ message: Session_GetLastSetsForExerciseRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetLastSetsForExerciseResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Session_GetLastSetsForExerciseRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.getLastSetsForExercise(
             request: request,
             options: options,
             onResponse: handleResponse

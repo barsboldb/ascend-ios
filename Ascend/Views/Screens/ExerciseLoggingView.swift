@@ -66,7 +66,11 @@ struct ExerciseLoggingView: View {
         }
         .navigationBarBackButtonHidden(true)
         .task {
-            previousExercise = try? await LocalHistoryRepository.shared.getLastPerformedExercise(named: exercise.name)
+            if #available(iOS 18.0, *) {
+                previousExercise = try? await GRPCHistoryRepository.shared.getLastPerformedExercise(exerciseId: exercise.id)
+            } else {
+                previousExercise = try? await LocalHistoryRepository.shared.getLastPerformedExercise(named: exercise.name)
+            }
             let history = [previousExercise].compactMap { $0 }
             target = ProgressionService().calculateTarget(for: exercise, history: history)
             if let lastSet = previousExercise?.sets.first {

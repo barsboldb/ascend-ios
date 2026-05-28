@@ -8,50 +8,70 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
     static let shared = GRPCHistoryRepository()
 
     private let clientManager = GRPCClientManager.shared
-    private var sessionCache: [WorkoutSession] = []
 
     func getAllSessions() async throws -> [WorkoutSession] {
-        return sessionCache.sorted { $0.date > $1.date }
+        return try await fetchRecent(limit: 100)
     }
 
     func getSessions(for workoutDayId: UUID) async throws -> [WorkoutSession] {
-        return sessionCache
-            .filter { $0.workoutDayId == workoutDayId }
-            .sorted { $0.date > $1.date }
+        let all = try await fetchRecent(limit: 100)
+        return all.filter { $0.workoutDayId == workoutDayId }
     }
 
     func getRecentSessions(limit: Int) async throws -> [WorkoutSession] {
-        return Array(sessionCache.sorted { $0.date > $1.date }.prefix(limit))
+        return try await fetchRecent(limit: limit)
+    }
+
+    private func fetchRecent(limit: Int) async throws -> [WorkoutSession] {
+        return try await clientManager.withClient { grpcClient in
+            let sessionClient = Session_SessionService.Client(wrapping: grpcClient)
+            let response = try await sessionClient.listRecentSessions(
+                .with { $0.limit = Int32(limit) }
+            )
+            return response.sessions.map { Self.mapFromProto($0) }
+        }
     }
 
     func saveSession(_ session: WorkoutSession) async throws {
         let request = Self.mapToCreateRequest(session)
-
-        let saved = try await clientManager.withClient { grpcClient in
+        _ = try await clientManager.withClient { grpcClient in
             let sessionClient = Session_SessionService.Client(wrapping: grpcClient)
             return try await sessionClient.createSession(request)
-        }
-
-        let cached = Self.mapFromProto(saved, fallback: session)
-        if let index = sessionCache.firstIndex(where: { $0.id == cached.id }) {
-            sessionCache[index] = cached
-        } else {
-            sessionCache.append(cached)
         }
     }
 
     func deleteSession(id: UUID) async throws {
         // Backend has no delete endpoint yet
-        sessionCache.removeAll { $0.id == id }
     }
 
     func getLastPerformedExercise(named exerciseName: String) async throws -> CompletedExercise? {
-        for session in sessionCache.sorted(by: { $0.date > $1.date }) {
+        // Name-based lookup not directly supported; fallback to recent sessions
+        let recent = try await fetchRecent(limit: 20)
+        for session in recent {
             if let match = session.completedExercises.first(where: { $0.exerciseName == exerciseName }) {
                 return match
             }
         }
         return nil
+    }
+
+    func getLastPerformedExercise(exerciseId: UUID) async throws -> CompletedExercise? {
+        return try await clientManager.withClient { grpcClient in
+            let sessionClient = Session_SessionService.Client(wrapping: grpcClient)
+            let response = try await sessionClient.getLastSetsForExercise(
+                .with { $0.exerciseID = exerciseId.uuidString }
+            )
+            guard response.found else { return nil }
+
+            let sets = response.sets.map { protoSet in
+                CompletedSet(reps: Int(protoSet.reps), weight: Double(protoSet.weightKg), completed: true)
+            }
+            return CompletedExercise(
+                exerciseId: UUID(uuidString: response.exerciseID),
+                exerciseName: response.exerciseName,
+                sets: sets
+            )
+        }
     }
 
     // MARK: - Mapping
@@ -81,9 +101,9 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
         return request
     }
 
-    private static func mapFromProto(_ proto: Session_SessionWithExercises, fallback: WorkoutSession) -> WorkoutSession {
-        let workoutDayId = UUID(uuidString: proto.programDayID) ?? fallback.workoutDayId
-        let date = proto.hasStartedAt ? proto.startedAt.date : fallback.date
+    private static func mapFromProto(_ proto: Session_SessionWithExercises) -> WorkoutSession {
+        let workoutDayId = UUID(uuidString: proto.programDayID) ?? UUID()
+        let date = proto.hasStartedAt ? proto.startedAt.date : Date()
 
         let completedExercises = proto.exercises.map { protoExercise -> CompletedExercise in
             let exerciseId = UUID(uuidString: protoExercise.exerciseID)
@@ -94,7 +114,7 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
         }
 
         let duration: Int? = {
-            guard proto.hasStartedAt && proto.hasEndedAt else { return fallback.duration }
+            guard proto.hasStartedAt && proto.hasEndedAt else { return nil }
             return Int(proto.endedAt.date.timeIntervalSince(proto.startedAt.date) / 60)
         }()
 

@@ -150,6 +150,71 @@ nonisolated struct Session_CreateSessionRequest: Sendable {
   fileprivate var _endedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
+nonisolated struct Session_ListRecentSessionsRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var limit: Int32 = 0
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct Session_ListRecentSessionsResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var sessions: [Session_SessionWithExercises] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct Session_GetLastSetsForExerciseRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var exerciseID: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct Session_GetLastSetsForExerciseResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var exerciseID: String = String()
+
+  var exerciseName: String = String()
+
+  var sets: [Session_ExerciseSet] = []
+
+  var performedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {_performedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_performedAt = newValue}
+  }
+  /// Returns true if `performedAt` has been explicitly set.
+  var hasPerformedAt: Bool {self._performedAt != nil}
+  /// Clears the value of `performedAt`. Subsequent reads from it will return its default value.
+  mutating func clearPerformedAt() {self._performedAt = nil}
+
+  var found: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _performedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "session"
@@ -397,6 +462,150 @@ nonisolated extension Session_CreateSessionRequest: SwiftProtobuf.Message, Swift
     if lhs._endedAt != rhs._endedAt {return false}
     if lhs.notes != rhs.notes {return false}
     if lhs.exercises != rhs.exercises {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_ListRecentSessionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ListRecentSessionsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}limit\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularInt32Field(value: &self.limit) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.limit != 0 {
+      try visitor.visitSingularInt32Field(value: self.limit, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_ListRecentSessionsRequest, rhs: Session_ListRecentSessionsRequest) -> Bool {
+    if lhs.limit != rhs.limit {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_ListRecentSessionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".ListRecentSessionsResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}sessions\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.sessions) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.sessions.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.sessions, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_ListRecentSessionsResponse, rhs: Session_ListRecentSessionsResponse) -> Bool {
+    if lhs.sessions != rhs.sessions {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_GetLastSetsForExerciseRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".GetLastSetsForExerciseRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}exercise_id\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.exerciseID) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.exerciseID.isEmpty {
+      try visitor.visitSingularStringField(value: self.exerciseID, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_GetLastSetsForExerciseRequest, rhs: Session_GetLastSetsForExerciseRequest) -> Bool {
+    if lhs.exerciseID != rhs.exerciseID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_GetLastSetsForExerciseResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".GetLastSetsForExerciseResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}exercise_id\0\u{3}exercise_name\0\u{1}sets\0\u{3}performed_at\0\u{1}found\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.exerciseID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.exerciseName) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.sets) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._performedAt) }()
+      case 5: try { try decoder.decodeSingularBoolField(value: &self.found) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.exerciseID.isEmpty {
+      try visitor.visitSingularStringField(value: self.exerciseID, fieldNumber: 1)
+    }
+    if !self.exerciseName.isEmpty {
+      try visitor.visitSingularStringField(value: self.exerciseName, fieldNumber: 2)
+    }
+    if !self.sets.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.sets, fieldNumber: 3)
+    }
+    try { if let v = self._performedAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    if self.found != false {
+      try visitor.visitSingularBoolField(value: self.found, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_GetLastSetsForExerciseResponse, rhs: Session_GetLastSetsForExerciseResponse) -> Bool {
+    if lhs.exerciseID != rhs.exerciseID {return false}
+    if lhs.exerciseName != rhs.exerciseName {return false}
+    if lhs.sets != rhs.sets {return false}
+    if lhs._performedAt != rhs._performedAt {return false}
+    if lhs.found != rhs.found {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
