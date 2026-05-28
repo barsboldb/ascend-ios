@@ -22,11 +22,11 @@ build: ## Build the app
 		-project Ascend.xcodeproj \
 		-scheme Ascend \
 		-configuration Debug \
-		-destination 'platform=iOS Simulator,OS=26.2,name=iPhone 17 Pro' \
+		-destination 'generic/platform=iOS Simulator' \
 		-derivedDataPath build \
 		build | xcbeautify || cat
 
-run: build ## Build and run on simulator (use DEVICE=name to specify)
+run: ## Build and run on simulator
 	@./run.sh "$(DEVICE)"
 
 devices: ## List available simulators

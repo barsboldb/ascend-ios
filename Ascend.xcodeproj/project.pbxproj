@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0250143F646E31C01FE52515 /* program.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E571C6867CFCA6A22469489 /* program.pb.swift */; };
+		1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1347781525DE9F91EEEEE /* program.grpc.swift */; };
 		2151D514D522EFE4DF4F851C /* WorkoutCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */; };
 		288275241952E52314D8A9BC /* SetPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6657564E7FBA18794395664 /* SetPill.swift */; };
 		28EFFCF5321D38A91321F638 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39148D42FDF13D8FCD64C373 /* Button.swift */; };
 		39CAD0CCF729B1196EE818D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58068DF2A518989E96BED5FB /* HomeView.swift */; };
+		42B20E83FE9F4B2BB61F2BC8 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 7A65D34222E213B95842BE3B /* SwiftProtobuf */; };
 		42D08F43FB0C6F38BA59E850 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CE95948C1D7C91396A03D6 /* NavigationState.swift */; };
 		450A5EADF4E798DDDD77D640 /* SetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70828E0EBCA2ECAEE91AA5B /* SetLog.swift */; };
 		4A3442095BFBE0880A1D0560 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC1609E9DE39024BC43E72F /* InfoCard.swift */; };
@@ -18,13 +21,19 @@
 		552948B182A0C704E837EE0A /* LastSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740A442FF265022EF17A719B /* LastSessionCard.swift */; };
 		582C37D2879CAAE5C9869019 /* AscendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D82E146BA08A123CB9CFDB /* AscendApp.swift */; };
 		5BB476289587F21006E672D6 /* RPESlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E0A42CC26AD4E86CC4AB1 /* RPESlider.swift */; };
+		626E98A6CE970274D429DE16 /* session.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */; };
 		6286340CA8F9C44A5589D304 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA61001900AB7E1A4D2D2A4 /* SampleData.swift */; };
+		63483C458BD1BD67B45391ED /* GRPCProgramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */; };
 		72AE2AB99949A0951EDF17CB /* WorkoutSessionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */; };
 		72E6593D67CF453B844011E7 /* ProgressionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59614DE509C86599D3DCDC /* ProgressionService.swift */; };
 		781DC4CD15BAEE1F5D58AEBF /* ActiveWorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A380139EDF7F139A7E3A79E /* ActiveWorkoutSession.swift */; };
 		787936AE007066EEFF7EE549 /* DoubleFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */; };
 		7CE8F573DD51748A94FBEA7C /* ExercisePreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F440256EA21FC7C3A6E44C /* ExercisePreviewSection.swift */; };
+		7D697D406DB595052BA6516B /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = 71319854EF43CF76547F0346 /* GRPCCore */; };
 		8131D5C76BA607FC81248312 /* ExerciseLoggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381074D0891A91AA887E9E95 /* ExerciseLoggingView.swift */; };
+		820E0CD73BE7F00218A3C7CE /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = A5AE7E14A7704B56A9A548ED /* GRPCNIOTransportHTTP2 */; };
+		82E2A6AEC5BD43BD49C00D3D /* GRPCProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 31ADDA90522C00C28CDB5ABB /* GRPCProtobuf */; };
+		938AD2FA0AFCC99EB1461C14 /* GRPCClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */; };
 		94934ED92379D2E9D789144D /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E49E08A0E5690FBBD4C6DD /* Spacing.swift */; };
 		A0CDEF9C954955AB5E416F88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69508BC47C1B774C74544D0F /* Assets.xcassets */; };
 		A14CC4776BCD022279DE996E /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688103D201F98DD48DB4FE9D /* ExerciseCard.swift */; };
@@ -39,6 +48,7 @@
 		C9446254707EC013E29D3216 /* LocalHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA259C48E070C6449256B5 /* LocalHistoryRepository.swift */; };
 		D086820C3F5CCE702CE8F0AD /* ConfirmationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */; };
 		D34D19D209D86BD6A89CC16A /* WorkoutProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A46FAF8173053F9309F5 /* WorkoutProgram.swift */; };
+		D6435E799AB7CD865986C654 /* session.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E62156331826964804CE47 /* session.pb.swift */; };
 		DC49EBA61C512F95051B6723 /* WorkoutHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED981D08DBCC1AD5BA165D61 /* WorkoutHistoryRepository.swift */; };
 		DF58A336CE34F556DCE97FC2 /* WorkoutHeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB51E5C4FDF441C89D84E83 /* WorkoutHeaderSection.swift */; };
 		E36160C34142986B205681CA /* TodaysWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9039020443C0A5F359011ED /* TodaysWorkoutView.swift */; };
@@ -57,7 +67,9 @@
 		0DD245B6283CD278B2CB55D0 /* SetLoggingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLoggingCard.swift; sourceTree = "<group>"; };
 		10F440256EA21FC7C3A6E44C /* ExercisePreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePreviewSection.swift; sourceTree = "<group>"; };
 		12E2B1434F8E962A5421BF79 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		19E62156331826964804CE47 /* session.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = session.pb.swift; sourceTree = "<group>"; };
 		1DC1609E9DE39024BC43E72F /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
+		25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCProgramRepository.swift; sourceTree = "<group>"; };
 		263DD99216EC4C2D619CDA97 /* SessionProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProgress.swift; sourceTree = "<group>"; };
 		351F5F798BB8435D1366FEDD /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationModal.swift; sourceTree = "<group>"; };
@@ -69,12 +81,14 @@
 		41D6E68BEEF7BF93ABE6A543 /* GoalBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadge.swift; sourceTree = "<group>"; };
 		4A13D67A0AC46C916A9334F8 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		4DA61001900AB7E1A4D2D2A4 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		4E571C6867CFCA6A22469489 /* program.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = program.pb.swift; sourceTree = "<group>"; };
 		58068DF2A518989E96BED5FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5CC2DA3A4F45CE24C65E6420 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		5CE27800A41483D1A88D819D /* StepperField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperField.swift; sourceTree = "<group>"; };
 		5CFA259C48E070C6449256B5 /* LocalHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHistoryRepository.swift; sourceTree = "<group>"; };
 		6208350E3E20C9223D63530E /* AscendTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendTheme.swift; sourceTree = "<group>"; };
 		645A75530F6CFBAA237874A1 /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
+		65B1347781525DE9F91EEEEE /* program.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = program.grpc.swift; sourceTree = "<group>"; };
 		688103D201F98DD48DB4FE9D /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		69508BC47C1B774C74544D0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A380139EDF7F139A7E3A79E /* ActiveWorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutSession.swift; sourceTree = "<group>"; };
@@ -84,10 +98,12 @@
 		848E0A42CC26AD4E86CC4AB1 /* RPESlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPESlider.swift; sourceTree = "<group>"; };
 		99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteView.swift; sourceTree = "<group>"; };
 		9A5D82A9D86FE1E22577FC5D /* RestTimerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerSheet.swift; sourceTree = "<group>"; };
+		9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCClientManager.swift; sourceTree = "<group>"; };
 		A70828E0EBCA2ECAEE91AA5B /* SetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLog.swift; sourceTree = "<group>"; };
 		A7EAB7C846BD00B09E2A78C3 /* Ascend.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ascend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D0A46FAF8173053F9309F5 /* WorkoutProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutProgram.swift; sourceTree = "<group>"; };
 		B8E49E08A0E5690FBBD4C6DD /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = session.grpc.swift; sourceTree = "<group>"; };
 		C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFormatting.swift; sourceTree = "<group>"; };
 		C93646C59FE572A72C670DC3 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		C9E32CD20B41F107A66220EA /* ConsistencySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsistencySection.swift; sourceTree = "<group>"; };
@@ -98,6 +114,20 @@
 		E9CE95948C1D7C91396A03D6 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		ED981D08DBCC1AD5BA165D61 /* WorkoutHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F5D7DB5523A0DCF9EF215ED2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42B20E83FE9F4B2BB61F2BC8 /* SwiftProtobuf in Frameworks */,
+				7D697D406DB595052BA6516B /* GRPCCore in Frameworks */,
+				820E0CD73BE7F00218A3C7CE /* GRPCNIOTransportHTTP2 in Frameworks */,
+				82E2A6AEC5BD43BD49C00D3D /* GRPCProtobuf in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0877CAE0573937DEEC2A8A33 /* Components */ = {
@@ -149,6 +179,8 @@
 				ED981D08DBCC1AD5BA165D61 /* WorkoutHistoryRepository.swift */,
 				C93646C59FE572A72C670DC3 /* WorkoutManager.swift */,
 				79F542A370949198CB1A2720 /* WorkoutProgramRepository.swift */,
+				9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */,
+				25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -182,8 +214,19 @@
 				66BF1B0FEBA0F266538826B4 /* Models */,
 				262C78DE1A53968FA4D63348 /* Services */,
 				914BACC55BE21F0BAF1F7CAA /* Views */,
+				BC2CF248FF11370A6DC0D4B7 /* Generated */,
 			);
 			path = Ascend;
+			sourceTree = "<group>";
+		};
+		5EB5377A4610B881C0A774E8 /* program */ = {
+			isa = PBXGroup;
+			children = (
+				4E571C6867CFCA6A22469489 /* program.pb.swift */,
+				65B1347781525DE9F91EEEEE /* program.grpc.swift */,
+			);
+			name = program;
+			path = program;
 			sourceTree = "<group>";
 		};
 		66B2524C87E50AF41A9BD951 = {
@@ -206,6 +249,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		6AD97DB477872F68B6EE6F59 /* session */ = {
+			isa = PBXGroup;
+			children = (
+				19E62156331826964804CE47 /* session.pb.swift */,
+				BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */,
+			);
+			name = session;
+			path = session;
+			sourceTree = "<group>";
+		};
 		914BACC55BE21F0BAF1F7CAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +266,16 @@
 				FBB1E34CB62CAC0E55768630 /* Screens */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BC2CF248FF11370A6DC0D4B7 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				5EB5377A4610B881C0A774E8 /* program */,
+				6AD97DB477872F68B6EE6F59 /* session */,
+			);
+			name = Generated;
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		E2343874678287BE12AA72B5 /* Products */ = {
@@ -255,6 +318,7 @@
 			buildPhases = (
 				64BAAC16EF9E2C5C513B3857 /* Sources */,
 				D20405F47BED1E64236BD440 /* Resources */,
+				F5D7DB5523A0DCF9EF215ED2 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,6 +326,10 @@
 			);
 			name = Ascend;
 			packageProductDependencies = (
+				7A65D34222E213B95842BE3B /* SwiftProtobuf */,
+				71319854EF43CF76547F0346 /* GRPCCore */,
+				A5AE7E14A7704B56A9A548ED /* GRPCNIOTransportHTTP2 */,
+				31ADDA90522C00C28CDB5ABB /* GRPCProtobuf */,
 			);
 			productName = Ascend;
 			productReference = A7EAB7C846BD00B09E2A78C3 /* Ascend.app */;
@@ -286,7 +354,14 @@
 			);
 			mainGroup = 66B2524C87E50AF41A9BD951;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4349EC1E30D7909005E4FEBA /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				B5C2F84B55B895675CFF2075 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				E52E489FD8B9EA396C77EA4B /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */,
+				66A803106E149461932DF208 /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */,
+			);
 			preferredProjectObjectVersion = 77;
+			productRefGroup = E2343874678287BE12AA72B5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -353,6 +428,12 @@
 				C59A2DFD97416A06E9716BFF /* WorkoutProgramRepository.swift in Sources */,
 				B68F9374CD870260E4CA85F0 /* WorkoutSession.swift in Sources */,
 				72AE2AB99949A0951EDF17CB /* WorkoutSessionContainer.swift in Sources */,
+				938AD2FA0AFCC99EB1461C14 /* GRPCClientManager.swift in Sources */,
+				63483C458BD1BD67B45391ED /* GRPCProgramRepository.swift in Sources */,
+				0250143F646E31C01FE52515 /* program.pb.swift in Sources */,
+				1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */,
+				D6435E799AB7CD865986C654 /* session.pb.swift in Sources */,
+				626E98A6CE970274D429DE16 /* session.grpc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +627,64 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4349EC1E30D7909005E4FEBA /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.28.0;
+			};
+		};
+		66A803106E149461932DF208 /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B5C2F84B55B895675CFF2075 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		E52E489FD8B9EA396C77EA4B /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift-nio-transport.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31ADDA90522C00C28CDB5ABB /* GRPCProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66A803106E149461932DF208 /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */;
+			productName = GRPCProtobuf;
+		};
+		71319854EF43CF76547F0346 /* GRPCCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5C2F84B55B895675CFF2075 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPCCore;
+		};
+		7A65D34222E213B95842BE3B /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4349EC1E30D7909005E4FEBA /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		A5AE7E14A7704B56A9A548ED /* GRPCNIOTransportHTTP2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E52E489FD8B9EA396C77EA4B /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */;
+			productName = GRPCNIOTransportHTTP2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9BC2E0E6397AA312597C79FF /* Project object */;
 }

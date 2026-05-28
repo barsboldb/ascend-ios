@@ -8,10 +8,16 @@ class WorkoutManager: ObservableObject {
     private let historyRepository: WorkoutHistoryRepository
     
     init(
-        programRepository: WorkoutProgramRepository = LocalWorkoutRepository.shared,
+        programRepository: WorkoutProgramRepository? = nil,
         historyRepository: WorkoutHistoryRepository = LocalHistoryRepository.shared,
     ) {
-        self.programRepository = programRepository
+        if let programRepository {
+            self.programRepository = programRepository
+        } else if #available(iOS 18.0, *) {
+            self.programRepository = GRPCProgramRepository.shared
+        } else {
+            self.programRepository = LocalWorkoutRepository.shared
+        }
         self.historyRepository = historyRepository
     }
 

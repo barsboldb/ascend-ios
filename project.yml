@@ -2,12 +2,35 @@ name: Ascend
 options:
   bundleIdPrefix: com.barsboldb.ascend
 
+packages:
+  swift-protobuf:
+    url: https://github.com/apple/swift-protobuf.git
+    from: "1.28.0"
+  grpc-swift:
+    url: https://github.com/grpc/grpc-swift.git
+    from: "2.0.0"
+  grpc-swift-nio-transport:
+    url: https://github.com/grpc/grpc-swift-nio-transport.git
+    from: "1.0.0"
+  grpc-swift-protobuf:
+    url: https://github.com/grpc/grpc-swift-protobuf.git
+    from: "1.0.0"
+
 targets:
   Ascend:
     type: application
     platform: iOS
-    deploymentTarget: "17.0"
+    deploymentTarget: "26.0"
     sources: [Ascend]
+    dependencies:
+      - package: swift-protobuf
+        product: SwiftProtobuf
+      - package: grpc-swift
+        product: GRPCCore
+      - package: grpc-swift-nio-transport
+        product: GRPCNIOTransportHTTP2
+      - package: grpc-swift-protobuf
+        product: GRPCProtobuf
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.barsboldb.ascend
       PRODUCT_NAME: Ascend
