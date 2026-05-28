@@ -110,7 +110,6 @@ struct ExerciseLoggingView: View {
 
         activeSetIndex += 1
         sets[activeSetIndex].status = .active
-        rpe = 0
     }
 
     private func saveSession() {
