@@ -61,15 +61,14 @@ struct HomeView: View {
                             }
                         }
 
-                        if let currentProgram = workoutManager.currentProgram,
-                           let todaysWorkout = workoutManager.getTodaysWorkout() {
+                        if let todaysWorkout = workoutManager.getTodaysWorkout() {
 
                             GoalBadge(goalText: "Goal: +2.5kg on Bench Press")
 
                             WorkoutCard(
                                 workout: todaysWorkout,
                                 week: workoutManager.getCurrentWeek(),
-                                day: (workoutManager.workoutHistory.count % currentProgram.workouts.count) + 1,
+                                day: workoutManager.getCurrentDayNumber(),
                                 onStart: {
                                     navigation.navigate(to: todaysWorkout)
                                 }
