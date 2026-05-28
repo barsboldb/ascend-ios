@@ -6,105 +6,191 @@ struct WorkoutCompleteView: View {
     @State private var saveStatus: SaveStatus = .saving
 
     enum SaveStatus {
-        case saving
-        case saved
-        case failed(String)
+        case saving, saved, failed(String)
+    }
+
+    // TODO: real streak needs backend list endpoint for sessions; stubbed at 1.
+    private let dayStreak: Int = 1
+
+    private var allSets: [CompletedSet] {
+        session.completedExercises.flatMap { $0.sets }
+    }
+
+    private var totalSets: Int { allSets.count }
+
+    private var totalReps: Int {
+        allSets.reduce(0) { $0 + $1.reps }
     }
 
     private var totalVolume: Double {
-        session.completedExercises
-            .flatMap { $0.sets }
-            .reduce(0) { $0 + $1.weight * Double($1.reps) }
+        allSets.reduce(0) { $0 + $1.weight * Double($1.reps) }
     }
 
-    private var duration: String {
-        let elapsed = Int(Date().timeIntervalSince(session.startDate)) / 60
-        let hours = elapsed / 60
-        let minutes = elapsed % 60
-        return String(format: "%dh %02dm", hours, minutes)
+    private var avgRPE: Double? {
+        let rpes = allSets.compactMap { $0.rpe }
+        guard !rpes.isEmpty else { return nil }
+        return Double(rpes.reduce(0, +)) / Double(rpes.count)
+    }
+
+    private var nextUpLabel: String {
+        switch session.workout.type {
+        case .push: return "pull day · tomorrow"
+        case .pull: return "leg day · tomorrow"
+        case .legs: return "push day · tomorrow"
+        }
     }
 
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea()
-            VStack(spacing: Spacing.md) {
-                Text("Workout Complete!")
-                    .foregroundColor(.textPrimary)
-                    .font(.headlineLarge)
 
-                HStack {
-                    Group {
-                        Text("\(Date().formatted(.dateTime.weekday(.wide).month(.abbreviated).day()))")
-                        Text("•")
-                        Text("\(session.workout.name)")
-                    }
-                    .foregroundColor(.textSecondary)
-                    .font(.labelMedium)
-                }
+            VStack(spacing: Spacing.xl) {
+                streakHero
+                statsGrid
+                nextUpAndStatus
 
-                HStack {
-                    VolumeCard(volume: totalVolume)
-                    DurationCard(duration: duration)
-                }
+                Spacer()
 
-                saveStatusView
-
-                AscendButton("Done") {
-                    navigation.goHome()
-                }
+                actionBar
             }
-            .padding(Spacing.screenPadding)
+            .padding(.horizontal, Spacing.screenPadding)
+            .padding(.top, Spacing.xxl)
+            .padding(.bottom, Spacing.lg)
         }
         .task {
             await session.save()
-            if let error = session.saveError {
-                saveStatus = .failed(error)
-            } else {
-                saveStatus = .saved
+            saveStatus = session.saveError.map(SaveStatus.failed) ?? .saved
+        }
+    }
+
+    private var streakHero: some View {
+        VStack(spacing: Spacing.xs) {
+            Text("\(dayStreak)")
+                .font(.system(size: 96, weight: .bold))
+                .foregroundColor(.primary)
+
+            HStack(spacing: Spacing.xs) {
+                Text("day streak")
+                    .font(.headlineSmall)
+                    .foregroundColor(.textPrimary)
+                Text("🔥")
+                    .font(.headlineSmall)
             }
+
+            Text(streakSubtitle)
+                .font(.bodyMedium)
+                .foregroundColor(.textSecondary)
+        }
+    }
+
+    private var streakSubtitle: String {
+        dayStreak == 1 ? "first one — keep going" : "longest yet — keep going"
+    }
+
+    private var statsGrid: some View {
+        VStack(spacing: Spacing.md) {
+            HStack(spacing: Spacing.md) {
+                StatCard(value: "\(totalSets)", caption: "sets")
+                StatCard(value: "\(totalReps)", caption: "total reps")
+            }
+            HStack(spacing: Spacing.md) {
+                StatCard(value: formattedVolume, caption: "volume kg")
+                StatCard(value: formattedRPE, caption: "avg RPE")
+            }
+        }
+    }
+
+    private var formattedVolume: String {
+        totalVolume.formatted(.number.precision(.fractionLength(0)))
+    }
+
+    private var formattedRPE: String {
+        guard let avg = avgRPE else { return "—" }
+        return String(format: "%.1f", avg)
+    }
+
+    private var nextUpAndStatus: some View {
+        VStack(spacing: Spacing.sm) {
+            HStack(spacing: Spacing.xs) {
+                Text("next up:")
+                    .foregroundColor(.textSecondary)
+                Text(nextUpLabel)
+                    .foregroundColor(.textPrimary)
+            }
+            .font(.bodyMedium)
+
+            saveStatusRow
         }
     }
 
     @ViewBuilder
-    private var saveStatusView: some View {
+    private var saveStatusRow: some View {
         switch saveStatus {
         case .saving:
             HStack(spacing: Spacing.xs) {
-                ProgressView()
-                Text("Saving session...")
+                ProgressView().scaleEffect(0.7)
+                Text("saving…")
+                    .font(.labelSmall)
                     .foregroundColor(.textSecondary)
-                    .font(.labelMedium)
             }
         case .saved:
-            Text("Saved to backend")
-                .foregroundColor(.success)
-                .font(.labelMedium)
-        case .failed(let message):
-            VStack(spacing: Spacing.xs) {
-                Text("Save failed")
-                    .foregroundColor(.error)
-                    .font(.labelMedium)
-                Text(message)
-                    .foregroundColor(.textSecondary)
+            HStack(spacing: Spacing.xs) {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.success)
+                Text("saved")
                     .font(.labelSmall)
+                    .foregroundColor(.textSecondary)
+            }
+        case .failed(let message):
+            VStack(spacing: 2) {
+                Text("save failed")
+                    .font(.labelSmall)
+                    .foregroundColor(.error)
+                Text(message)
+                    .font(.labelSmall)
+                    .foregroundColor(.textSecondary)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, Spacing.md)
+                    .lineLimit(2)
+            }
+        }
+    }
+
+    private var actionBar: some View {
+        HStack(spacing: Spacing.sm) {
+            AscendButton("Finish ✓", size: .large, fullWidth: true) {
+                navigation.goHome()
+            }
+
+            Button {
+                // TODO: share session summary
+            } label: {
+                Image(systemName: "arrow.up.right")
+                    .font(.titleMedium)
+                    .foregroundColor(.textPrimary)
+                    .frame(width: 52, height: 52)
+                    .background(Color.surface)
+                    .cornerRadius(Spacing.radiusLarge)
             }
         }
     }
 }
 
-struct VolumeCard: View {
-    let volume: Double
-    var body: some View {
-        InfoCard(title: "TOTAL VOLUME", info: "\(volume.formatted())")
-    }
-}
-
-struct DurationCard: View {
-    let duration: String
+private struct StatCard: View {
+    let value: String
+    let caption: String
 
     var body: some View {
-        InfoCard(title: "DURATION", info: duration)
+        VStack(alignment: .leading, spacing: Spacing.xs) {
+            Text(value)
+                .font(.system(size: 32, weight: .bold))
+                .foregroundColor(.textPrimary)
+            Text(caption)
+                .font(.labelMedium)
+                .foregroundColor(.textSecondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(Spacing.cardPadding)
+        .background(Color.surface)
+        .cornerRadius(Spacing.radiusLarge)
     }
 }
