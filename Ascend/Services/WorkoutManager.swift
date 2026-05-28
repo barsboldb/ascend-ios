@@ -82,6 +82,27 @@ class WorkoutManager: ObservableObject {
         currentProgram?.workouts.first { $0.id == dayId }?.name
     }
 
+    func goalText(for workout: WorkoutDay) async -> String? {
+        guard let mainExercise = workout.exercises.first(where: { $0.type == .reps }) ?? workout.exercises.first else {
+            return nil
+        }
+
+        if #available(iOS 18.0, *) {
+            let previous = try? await GRPCHistoryRepository.shared.getLastPerformedExercise(exerciseId: mainExercise.id)
+            let history = [previous].compactMap { $0 }
+            let target = ProgressionService().calculateTarget(for: mainExercise, history: history)
+
+            if target.hasProgression {
+                return "+\(target.weightDelta.formatted())kg on \(mainExercise.name)"
+            }
+            if previous != nil {
+                return "Hit \(mainExercise.repRange.max) reps on \(mainExercise.name)"
+            }
+            return "Start \(mainExercise.name)"
+        }
+        return "Start \(mainExercise.name)"
+    }
+
     static func calculateStreak(from sessions: [WorkoutSession]) -> Int {
         let calendar = Calendar.current
         let workoutDays = Array(Set(sessions.map { calendar.startOfDay(for: $0.date) }))

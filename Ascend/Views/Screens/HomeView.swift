@@ -8,6 +8,7 @@ struct HomeView: View {
     @EnvironmentObject var navigation: NavigationState
     @StateObject private var workoutManager = WorkoutManager()
     @State private var selectedWorkout: WorkoutDay?
+    @State private var goalText: String? = nil
 
     private var greeting: String {
         let hour = Calendar.current.component(.hour, from: Date())
@@ -67,7 +68,9 @@ struct HomeView: View {
 
                         if let todaysWorkout = workoutManager.getTodaysWorkout() {
 
-                            GoalBadge(goalText: "Goal: +2.5kg on Bench Press")
+                            if let goal = goalText {
+                                GoalBadge(goalText: "Goal: \(goal)")
+                            }
 
                             WorkoutCard(
                                 workout: todaysWorkout,
@@ -119,6 +122,9 @@ struct HomeView: View {
             }
             .task {
                 await workoutManager.loadData()
+                if let workout = workoutManager.getTodaysWorkout() {
+                    goalText = await workoutManager.goalText(for: workout)
+                }
             }
         }
     }
