@@ -82,25 +82,9 @@ struct HomeView: View {
                             )
                         }
 
-                        Button {
+                        ActivityCalendar(sessions: workoutManager.workoutHistory) {
                             navigation.navigate(to: HomeRoute.history)
-                        } label: {
-                            HStack {
-                                Image(systemName: "calendar")
-                                Text("History")
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.labelMedium)
-                                    .foregroundColor(.textSecondary)
-                            }
-                            .font(.titleMedium)
-                            .foregroundColor(.textPrimary)
-                            .padding(Spacing.cardPadding)
-                            .frame(maxWidth: .infinity)
-                            .background(Color.surface)
-                            .cornerRadius(Spacing.radiusLarge)
                         }
-                        .buttonStyle(.plain)
                     }
                     .padding(Spacing.screenPadding)
                 }
