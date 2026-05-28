@@ -3,6 +3,13 @@ import SwiftUI
 struct WorkoutCompleteView: View {
     @EnvironmentObject var navigation: NavigationState
     @EnvironmentObject var session: ActiveWorkoutSession
+    @State private var saveStatus: SaveStatus = .saving
+
+    enum SaveStatus {
+        case saving
+        case saved
+        case failed(String)
+    }
 
     private var totalVolume: Double {
         session.completedExercises
@@ -20,11 +27,11 @@ struct WorkoutCompleteView: View {
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea()
-            VStack {
+            VStack(spacing: Spacing.md) {
                 Text("Workout Complete!")
                     .foregroundColor(.textPrimary)
                     .font(.headlineLarge)
-                
+
                 HStack {
                     Group {
                         Text("\(Date().formatted(.dateTime.weekday(.wide).month(.abbreviated).day()))")
@@ -40,9 +47,49 @@ struct WorkoutCompleteView: View {
                     DurationCard(duration: duration)
                 }
 
-                AscendButton("Hello") {}
+                saveStatusView
+
+                AscendButton("Done") {
+                    navigation.goHome()
+                }
             }
             .padding(Spacing.screenPadding)
+        }
+        .task {
+            await session.save()
+            if let error = session.saveError {
+                saveStatus = .failed(error)
+            } else {
+                saveStatus = .saved
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var saveStatusView: some View {
+        switch saveStatus {
+        case .saving:
+            HStack(spacing: Spacing.xs) {
+                ProgressView()
+                Text("Saving session...")
+                    .foregroundColor(.textSecondary)
+                    .font(.labelMedium)
+            }
+        case .saved:
+            Text("Saved to backend")
+                .foregroundColor(.success)
+                .font(.labelMedium)
+        case .failed(let message):
+            VStack(spacing: Spacing.xs) {
+                Text("Save failed")
+                    .foregroundColor(.error)
+                    .font(.labelMedium)
+                Text(message)
+                    .foregroundColor(.textSecondary)
+                    .font(.labelSmall)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, Spacing.md)
+            }
         }
     }
 }

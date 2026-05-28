@@ -38,12 +38,17 @@ class ActiveWorkoutSession: ObservableObject {
 
     func save() async {
         let session = finish()
+        print("[Ascend] save() called: dayId=\(session.workoutDayId.uuidString), exercises=\(session.completedExercises.count)")
+        for ex in session.completedExercises {
+            print("[Ascend]   exercise: name=\(ex.exerciseName), id=\(ex.exerciseId?.uuidString ?? "nil"), sets=\(ex.sets.count)")
+        }
         do {
             try await historyRepository.saveSession(session)
+            print("[Ascend] save() succeeded")
             await MainActor.run { self.saveError = nil }
         } catch {
+            print("[Ascend] save() FAILED: \(error)")
             await MainActor.run { self.saveError = String(describing: error) }
-            print("Failed to save session: \(error)")
         }
     }
 }

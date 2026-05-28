@@ -95,7 +95,6 @@ struct TodaysWorkoutView: View {
         .onChange(of: session.currentExerciseIndex) { _, newIndex in
             if newIndex >= session.workout.exercises.count {
                 showCompletion = true
-                Task { await session.save() }
             }
         }
         .fullScreenCover(isPresented: $showCompletion) {
