@@ -32,7 +32,7 @@ nonisolated struct Session_GetSessionRequest: Sendable {
   init() {}
 }
 
-nonisolated struct Session_GetSessionResponse: Sendable {
+nonisolated struct Session_SessionWithExercises: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -111,6 +111,45 @@ nonisolated struct Session_ExerciseSet: Sendable {
   init() {}
 }
 
+nonisolated struct Session_CreateSessionRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var programDayID: String = String()
+
+  var weekNumber: Int32 = 0
+
+  var startedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {_startedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_startedAt = newValue}
+  }
+  /// Returns true if `startedAt` has been explicitly set.
+  var hasStartedAt: Bool {self._startedAt != nil}
+  /// Clears the value of `startedAt`. Subsequent reads from it will return its default value.
+  mutating func clearStartedAt() {self._startedAt = nil}
+
+  var endedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {_endedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_endedAt = newValue}
+  }
+  /// Returns true if `endedAt` has been explicitly set.
+  var hasEndedAt: Bool {self._endedAt != nil}
+  /// Clears the value of `endedAt`. Subsequent reads from it will return its default value.
+  mutating func clearEndedAt() {self._endedAt = nil}
+
+  var notes: String = String()
+
+  var exercises: [Session_ExerciseSet] = []
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _startedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+  fileprivate var _endedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate nonisolated let _protobuf_package = "session"
@@ -145,8 +184,8 @@ nonisolated extension Session_GetSessionRequest: SwiftProtobuf.Message, SwiftPro
   }
 }
 
-nonisolated extension Session_GetSessionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GetSessionResponse"
+nonisolated extension Session_SessionWithExercises: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".SessionWithExercises"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}program_day_id\0\u{3}week_number\0\u{3}started_at\0\u{3}ended_at\0\u{1}notes\0\u{1}exercises\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -196,7 +235,7 @@ nonisolated extension Session_GetSessionResponse: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Session_GetSessionResponse, rhs: Session_GetSessionResponse) -> Bool {
+  static func ==(lhs: Session_SessionWithExercises, rhs: Session_SessionWithExercises) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.programDayID != rhs.programDayID {return false}
     if lhs.weekNumber != rhs.weekNumber {return false}
@@ -299,6 +338,65 @@ nonisolated extension Session_ExerciseSet: SwiftProtobuf.Message, SwiftProtobuf.
     if lhs.weightKg != rhs.weightKg {return false}
     if lhs.reps != rhs.reps {return false}
     if lhs.failure != rhs.failure {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_CreateSessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".CreateSessionRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}program_day_id\0\u{3}week_number\0\u{3}started_at\0\u{3}ended_at\0\u{1}notes\0\u{1}exercises\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.programDayID) }()
+      case 2: try { try decoder.decodeSingularInt32Field(value: &self.weekNumber) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._startedAt) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._endedAt) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.notes) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.exercises) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.programDayID.isEmpty {
+      try visitor.visitSingularStringField(value: self.programDayID, fieldNumber: 1)
+    }
+    if self.weekNumber != 0 {
+      try visitor.visitSingularInt32Field(value: self.weekNumber, fieldNumber: 2)
+    }
+    try { if let v = self._startedAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._endedAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    if !self.notes.isEmpty {
+      try visitor.visitSingularStringField(value: self.notes, fieldNumber: 5)
+    }
+    if !self.exercises.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.exercises, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_CreateSessionRequest, rhs: Session_CreateSessionRequest) -> Bool {
+    if lhs.programDayID != rhs.programDayID {return false}
+    if lhs.weekNumber != rhs.weekNumber {return false}
+    if lhs._startedAt != rhs._startedAt {return false}
+    if lhs._endedAt != rhs._endedAt {return false}
+    if lhs.notes != rhs.notes {return false}
+    if lhs.exercises != rhs.exercises {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

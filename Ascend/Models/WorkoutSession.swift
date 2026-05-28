@@ -29,12 +29,14 @@ struct WorkoutSession: Identifiable, Codable {
 
 struct CompletedExercise: Identifiable, Codable {
     let id: UUID;
+    let exerciseId: UUID?;
     let exerciseName: String;
     let sets: [CompletedSet];
     let notes: String?
 
-    init(exerciseName: String, sets: [CompletedSet] = [], notes: String? = nil) {
+    init(exerciseId: UUID? = nil, exerciseName: String, sets: [CompletedSet] = [], notes: String? = nil) {
         self.id = UUID();
+        self.exerciseId = exerciseId;
         self.exerciseName = exerciseName;
         self.sets = sets;
         self.notes = notes;

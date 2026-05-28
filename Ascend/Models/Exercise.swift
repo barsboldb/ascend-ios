@@ -39,8 +39,8 @@ struct Exercise: Identifiable, Codable, Hashable {
     let type: ExerciseType;
     let notes: String?;
 
-    init(name: String, sets: Int, repRange: RepRange, targetWeight: Double, restSeconds: Int, tag: ExerciseTag, type: ExerciseType = .reps, notes: String? = nil) {
-        self.id = UUID();
+    init(id: UUID = UUID(), name: String, sets: Int, repRange: RepRange, targetWeight: Double, restSeconds: Int, tag: ExerciseTag, type: ExerciseType = .reps, notes: String? = nil) {
+        self.id = id;
         self.name = name;
         self.sets = sets;
         self.repRange = repRange;

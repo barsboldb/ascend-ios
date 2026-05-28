@@ -26,16 +26,29 @@ internal enum Session_SessionService: Sendable {
             /// Request type for "GetSession".
             internal typealias Input = Session_GetSessionRequest
             /// Response type for "GetSession".
-            internal typealias Output = Session_GetSessionResponse
+            internal typealias Output = Session_SessionWithExercises
             /// Descriptor for "GetSession".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "session.SessionService"),
                 method: "GetSession"
             )
         }
+        /// Namespace for "CreateSession" metadata.
+        internal enum CreateSession: Sendable {
+            /// Request type for "CreateSession".
+            internal typealias Input = Session_CreateSessionRequest
+            /// Response type for "CreateSession".
+            internal typealias Output = Session_SessionWithExercises
+            /// Descriptor for "CreateSession".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "session.SessionService"),
+                method: "CreateSession"
+            )
+        }
         /// Descriptors for all methods in the "session.SessionService" service.
         internal static let descriptors: [GRPCCore.MethodDescriptor] = [
-            GetSession.descriptor
+            GetSession.descriptor,
+            CreateSession.descriptor
         ]
     }
 }
@@ -69,11 +82,25 @@ extension Session_SessionService {
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A streaming response of `Session_GetSessionResponse` messages.
+        /// - Returns: A streaming response of `Session_SessionWithExercises` messages.
         func getSession(
             request: GRPCCore.StreamingServerRequest<Session_GetSessionRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.StreamingServerResponse<Session_GetSessionResponse>
+        ) async throws -> GRPCCore.StreamingServerResponse<Session_SessionWithExercises>
+
+        /// Handle the "CreateSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `Session_CreateSessionRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `Session_SessionWithExercises` messages.
+        func createSession(
+            request: GRPCCore.StreamingServerRequest<Session_CreateSessionRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<Session_SessionWithExercises>
     }
 
     /// Service protocol for the "session.SessionService" service.
@@ -92,11 +119,25 @@ extension Session_SessionService {
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A response containing a single `Session_GetSessionResponse` message.
+        /// - Returns: A response containing a single `Session_SessionWithExercises` message.
         func getSession(
             request: GRPCCore.ServerRequest<Session_GetSessionRequest>,
             context: GRPCCore.ServerContext
-        ) async throws -> GRPCCore.ServerResponse<Session_GetSessionResponse>
+        ) async throws -> GRPCCore.ServerResponse<Session_SessionWithExercises>
+
+        /// Handle the "CreateSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_CreateSessionRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `Session_SessionWithExercises` message.
+        func createSession(
+            request: GRPCCore.ServerRequest<Session_CreateSessionRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<Session_SessionWithExercises>
     }
 
     /// Simple service protocol for the "session.SessionService" service.
@@ -113,11 +154,25 @@ extension Session_SessionService {
         /// - Throws: Any error which occurred during the processing of the request. Thrown errors
         ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
         ///     to an internal error.
-        /// - Returns: A `Session_GetSessionResponse` to respond with.
+        /// - Returns: A `Session_SessionWithExercises` to respond with.
         func getSession(
             request: Session_GetSessionRequest,
             context: GRPCCore.ServerContext
-        ) async throws -> Session_GetSessionResponse
+        ) async throws -> Session_SessionWithExercises
+
+        /// Handle the "CreateSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A `Session_CreateSessionRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `Session_SessionWithExercises` to respond with.
+        func createSession(
+            request: Session_CreateSessionRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> Session_SessionWithExercises
     }
 }
 
@@ -128,9 +183,20 @@ extension Session_SessionService.StreamingServiceProtocol {
         router.registerHandler(
             forMethod: Session_SessionService.Method.GetSession.descriptor,
             deserializer: GRPCProtobuf.ProtobufDeserializer<Session_GetSessionRequest>(),
-            serializer: GRPCProtobuf.ProtobufSerializer<Session_GetSessionResponse>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_SessionWithExercises>(),
             handler: { request, context in
                 try await self.getSession(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: Session_SessionService.Method.CreateSession.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_CreateSessionRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_SessionWithExercises>(),
+            handler: { request, context in
+                try await self.createSession(
                     request: request,
                     context: context
                 )
@@ -145,8 +211,19 @@ extension Session_SessionService.ServiceProtocol {
     internal func getSession(
         request: GRPCCore.StreamingServerRequest<Session_GetSessionRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.StreamingServerResponse<Session_GetSessionResponse> {
+    ) async throws -> GRPCCore.StreamingServerResponse<Session_SessionWithExercises> {
         let response = try await self.getSession(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    internal func createSession(
+        request: GRPCCore.StreamingServerRequest<Session_CreateSessionRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<Session_SessionWithExercises> {
+        let response = try await self.createSession(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
         )
@@ -160,9 +237,22 @@ extension Session_SessionService.SimpleServiceProtocol {
     internal func getSession(
         request: GRPCCore.ServerRequest<Session_GetSessionRequest>,
         context: GRPCCore.ServerContext
-    ) async throws -> GRPCCore.ServerResponse<Session_GetSessionResponse> {
-        return GRPCCore.ServerResponse<Session_GetSessionResponse>(
+    ) async throws -> GRPCCore.ServerResponse<Session_SessionWithExercises> {
+        return GRPCCore.ServerResponse<Session_SessionWithExercises>(
             message: try await self.getSession(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    internal func createSession(
+        request: GRPCCore.ServerRequest<Session_CreateSessionRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<Session_SessionWithExercises> {
+        return GRPCCore.ServerResponse<Session_SessionWithExercises>(
+            message: try await self.createSession(
                 request: request.message,
                 context: context
             ),
@@ -185,7 +275,7 @@ extension Session_SessionService {
         /// - Parameters:
         ///   - request: A request containing a single `Session_GetSessionRequest` message.
         ///   - serializer: A serializer for `Session_GetSessionRequest` messages.
-        ///   - deserializer: A deserializer for `Session_GetSessionResponse` messages.
+        ///   - deserializer: A deserializer for `Session_SessionWithExercises` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
@@ -194,9 +284,28 @@ extension Session_SessionService {
         func getSession<Result>(
             request: GRPCCore.ClientRequest<Session_GetSessionRequest>,
             serializer: some GRPCCore.MessageSerializer<Session_GetSessionRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Session_GetSessionResponse>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_SessionWithExercises>,
             options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetSessionResponse>) async throws -> Result
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "CreateSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_CreateSessionRequest` message.
+        ///   - serializer: A serializer for `Session_CreateSessionRequest` messages.
+        ///   - deserializer: A deserializer for `Session_SessionWithExercises` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func createSession<Result>(
+            request: GRPCCore.ClientRequest<Session_CreateSessionRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_CreateSessionRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_SessionWithExercises>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -221,7 +330,7 @@ extension Session_SessionService {
         /// - Parameters:
         ///   - request: A request containing a single `Session_GetSessionRequest` message.
         ///   - serializer: A serializer for `Session_GetSessionRequest` messages.
-        ///   - deserializer: A deserializer for `Session_GetSessionResponse` messages.
+        ///   - deserializer: A deserializer for `Session_SessionWithExercises` messages.
         ///   - options: Options to apply to this RPC.
         ///   - handleResponse: A closure which handles the response, the result of which is
         ///       returned to the caller. Returning from the closure will cancel the RPC if it
@@ -230,15 +339,45 @@ extension Session_SessionService {
         internal func getSession<Result>(
             request: GRPCCore.ClientRequest<Session_GetSessionRequest>,
             serializer: some GRPCCore.MessageSerializer<Session_GetSessionRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Session_GetSessionResponse>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_SessionWithExercises>,
             options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetSessionResponse>) async throws -> Result = { response in
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result = { response in
                 try response.message
             }
         ) async throws -> Result where Result: Sendable {
             try await self.client.unary(
                 request: request,
                 descriptor: Session_SessionService.Method.GetSession.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "CreateSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_CreateSessionRequest` message.
+        ///   - serializer: A serializer for `Session_CreateSessionRequest` messages.
+        ///   - deserializer: A deserializer for `Session_SessionWithExercises` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func createSession<Result>(
+            request: GRPCCore.ClientRequest<Session_CreateSessionRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_CreateSessionRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_SessionWithExercises>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Session_SessionService.Method.CreateSession.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -263,14 +402,39 @@ extension Session_SessionService.ClientProtocol {
     internal func getSession<Result>(
         request: GRPCCore.ClientRequest<Session_GetSessionRequest>,
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetSessionResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
         try await self.getSession(
             request: request,
             serializer: GRPCProtobuf.ProtobufSerializer<Session_GetSessionRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_GetSessionResponse>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_SessionWithExercises>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "CreateSession" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Session_CreateSessionRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func createSession<Result>(
+        request: GRPCCore.ClientRequest<Session_CreateSessionRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.createSession(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_CreateSessionRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_SessionWithExercises>(),
             options: options,
             onResponse: handleResponse
         )
@@ -294,7 +458,7 @@ extension Session_SessionService.ClientProtocol {
         _ message: Session_GetSessionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetSessionResponse>) async throws -> Result = { response in
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result = { response in
             try response.message
         }
     ) async throws -> Result where Result: Sendable {
@@ -303,6 +467,35 @@ extension Session_SessionService.ClientProtocol {
             metadata: metadata
         )
         return try await self.getSession(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "CreateSession" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func createSession<Result>(
+        _ message: Session_CreateSessionRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_SessionWithExercises>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Session_CreateSessionRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.createSession(
             request: request,
             options: options,
             onResponse: handleResponse

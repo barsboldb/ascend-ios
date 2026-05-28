@@ -92,9 +92,10 @@ struct TodaysWorkoutView: View {
                 .animation(.easeInOut(duration: 0.2), value: showFinishLaterModal)
             }
         }
-        .onChange(of: session.currentExerciseIndex) { _, newIndex in 
+        .onChange(of: session.currentExerciseIndex) { _, newIndex in
             if newIndex >= session.workout.exercises.count {
                 showCompletion = true
+                Task { await session.save() }
             }
         }
         .fullScreenCover(isPresented: $showCompletion) {

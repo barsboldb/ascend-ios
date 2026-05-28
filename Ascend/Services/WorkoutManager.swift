@@ -9,7 +9,7 @@ class WorkoutManager: ObservableObject {
     
     init(
         programRepository: WorkoutProgramRepository? = nil,
-        historyRepository: WorkoutHistoryRepository = LocalHistoryRepository.shared,
+        historyRepository: WorkoutHistoryRepository? = nil,
     ) {
         if let programRepository {
             self.programRepository = programRepository
@@ -18,7 +18,22 @@ class WorkoutManager: ObservableObject {
         } else {
             self.programRepository = LocalWorkoutRepository.shared
         }
-        self.historyRepository = historyRepository
+        if let historyRepository {
+            self.historyRepository = historyRepository
+        } else if #available(iOS 18.0, *) {
+            self.historyRepository = GRPCHistoryRepository.shared
+        } else {
+            self.historyRepository = LocalHistoryRepository.shared
+        }
+    }
+
+    func saveSession(_ session: WorkoutSession) async {
+        do {
+            try await historyRepository.saveSession(session)
+            workoutHistory = try await historyRepository.getAllSessions()
+        } catch {
+            print("Failed to save session: \(error)")
+        }
     }
 
     func loadData() async {

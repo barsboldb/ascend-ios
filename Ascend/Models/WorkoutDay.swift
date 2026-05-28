@@ -9,8 +9,8 @@ struct WorkoutDay: Identifiable, Codable, Hashable {
     let exercises: [Exercise]
     let estimatedDuration: Int // in minutes
 
-    init(name: String, type: WorkoutType, variant: String, warmup: [String], exercises: [Exercise], estimatedDuration: Int) {
-        self.id = UUID();
+    init(id: UUID = UUID(), name: String, type: WorkoutType, variant: String, warmup: [String], exercises: [Exercise], estimatedDuration: Int) {
+        self.id = id;
         self.name = name;
         self.type = type;
         self.variant = variant;

@@ -126,6 +126,7 @@ struct ExerciseLoggingView: View {
         }
 
         let completedExercise = CompletedExercise(
+            exerciseId: exercise.id,
             exerciseName: exercise.name,
             sets: completedSets,
         )

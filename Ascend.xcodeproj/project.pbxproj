@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0250143F646E31C01FE52515 /* program.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E571C6867CFCA6A22469489 /* program.pb.swift */; };
+		1AD426675B7961DCE705C3FE /* GRPCHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */; };
 		1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1347781525DE9F91EEEEE /* program.grpc.swift */; };
 		2151D514D522EFE4DF4F851C /* WorkoutCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */; };
 		288275241952E52314D8A9BC /* SetPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6657564E7FBA18794395664 /* SetPill.swift */; };
@@ -71,6 +72,7 @@
 		1DC1609E9DE39024BC43E72F /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
 		25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCProgramRepository.swift; sourceTree = "<group>"; };
 		263DD99216EC4C2D619CDA97 /* SessionProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProgress.swift; sourceTree = "<group>"; };
+		2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCHistoryRepository.swift; sourceTree = "<group>"; };
 		351F5F798BB8435D1366FEDD /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationModal.swift; sourceTree = "<group>"; };
 		381074D0891A91AA887E9E95 /* ExerciseLoggingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLoggingView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				79F542A370949198CB1A2720 /* WorkoutProgramRepository.swift */,
 				9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */,
 				25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */,
+				2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */,
 				D6435E799AB7CD865986C654 /* session.pb.swift in Sources */,
 				626E98A6CE970274D429DE16 /* session.grpc.swift in Sources */,
+				1AD426675B7961DCE705C3FE /* GRPCHistoryRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

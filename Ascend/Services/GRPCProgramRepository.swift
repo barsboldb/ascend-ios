@@ -54,8 +54,10 @@ class GRPCProgramRepository: WorkoutProgramRepository {
         let variant = deriveVariant(from: label)
 
         let exercises = proto.exercises.map { mapExercise(from: $0) }
+        let dayId = UUID(uuidString: proto.id) ?? UUID()
 
         return WorkoutDay(
+            id: dayId,
             name: label,
             type: workoutType,
             variant: variant,
@@ -68,8 +70,10 @@ class GRPCProgramRepository: WorkoutProgramRepository {
     private static func mapExercise(from proto: Program_ProgramExercise) -> Exercise {
         let tag = deriveTag(from: proto.muscleGroup)
         let type: ExerciseType = proto.isAmrap ? .amrap : (proto.isTimed ? .hold : .reps)
+        let exerciseId = UUID(uuidString: proto.id) ?? UUID()
 
         return Exercise(
+            id: exerciseId,
             name: proto.name,
             sets: Int(proto.sets),
             repRange: RepRange(min: Int(proto.repMin), max: Int(proto.repMax)),
