@@ -1,6 +1,6 @@
 import Foundation;
 
-struct WorkoutSession: Identifiable, Codable {
+struct WorkoutSession: Identifiable, Codable, Hashable {
     let id: UUID;
     let workoutDayId: UUID; // Reference to which WorkoutDay template
     let date: Date;
@@ -27,7 +27,7 @@ struct WorkoutSession: Identifiable, Codable {
     }
 }
 
-struct CompletedExercise: Identifiable, Codable {
+struct CompletedExercise: Identifiable, Codable, Hashable {
     let id: UUID;
     let exerciseId: UUID?;
     let exerciseName: String;
@@ -43,7 +43,7 @@ struct CompletedExercise: Identifiable, Codable {
     }
 }
 
-struct CompletedSet: Identifiable, Codable {
+struct CompletedSet: Identifiable, Codable, Hashable {
     let id: UUID;
     let reps: Int;
     let weight: Double;

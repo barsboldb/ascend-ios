@@ -78,6 +78,10 @@ class WorkoutManager: ObservableObject {
         return recent.count / perWeek + 1
     }
 
+    func workoutName(for dayId: UUID) -> String? {
+        currentProgram?.workouts.first { $0.id == dayId }?.name
+    }
+
     private var nonRestWorkouts: [WorkoutDay] {
         currentProgram?.workouts.filter { !$0.exercises.isEmpty } ?? []
     }

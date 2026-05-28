@@ -1,5 +1,9 @@
 import SwiftUI
 
+enum HomeRoute: Hashable {
+    case history
+}
+
 struct HomeView: View {
     @EnvironmentObject var navigation: NavigationState
     @StateObject private var workoutManager = WorkoutManager()
@@ -75,15 +79,45 @@ struct HomeView: View {
                             )
                         }
 
-                        // ConsistencySection(workoutHistory: workoutManager.workoutHistory)
-
-                        // Spacer(minLength: Spacing.xl)
+                        Button {
+                            navigation.navigate(to: HomeRoute.history)
+                        } label: {
+                            HStack {
+                                Image(systemName: "calendar")
+                                Text("History")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.labelMedium)
+                                    .foregroundColor(.textSecondary)
+                            }
+                            .font(.titleMedium)
+                            .foregroundColor(.textPrimary)
+                            .padding(Spacing.cardPadding)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.surface)
+                            .cornerRadius(Spacing.radiusLarge)
+                        }
+                        .buttonStyle(.plain)
                     }
                     .padding(Spacing.screenPadding)
                 }
-            }.navigationDestination(for: WorkoutDay.self) { workout in
+            }
+            .navigationDestination(for: WorkoutDay.self) { workout in
                 WorkoutSessionContainer(workout: workout)
-            }.task {
+            }
+            .navigationDestination(for: HomeRoute.self) { route in
+                switch route {
+                case .history:
+                    HistoryView(workoutManager: workoutManager)
+                }
+            }
+            .navigationDestination(for: WorkoutSession.self) { session in
+                SessionDetailView(
+                    session: session,
+                    workoutName: workoutManager.workoutName(for: session.workoutDayId)
+                )
+            }
+            .task {
                 await workoutManager.loadData()
             }
         }
