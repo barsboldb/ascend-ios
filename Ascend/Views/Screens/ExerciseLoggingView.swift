@@ -31,11 +31,12 @@ struct ExerciseLoggingView: View {
 
                             SetPill(sets: $sets)
 
-                            HStack(alignment: .center, spacing: Spacing.md) {
+                            HStack(alignment: .top, spacing: Spacing.md) {
                                 PreviousCard(previousExercise: previousExercise)
                                 TargetCard(target: target, exercise: exercise)
                             }
                             .frame(maxWidth: .infinity)
+                            .fixedSize(horizontal: false, vertical: true)
 
                             SetLoggingCard(
                                 setNumber: activeSetIndex + 1, 
@@ -168,7 +169,7 @@ struct PreviousCard: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(Spacing.md)
         .background(Color.surface)
         .cornerRadius(Spacing.radiusMedium)
@@ -223,7 +224,7 @@ struct TargetCard: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(Spacing.md)
         .background(Color.surface)
         .cornerRadius(Spacing.radiusMedium)
