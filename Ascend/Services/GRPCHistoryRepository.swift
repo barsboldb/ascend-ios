@@ -64,7 +64,12 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
             guard response.found else { return nil }
 
             let sets = response.sets.map { protoSet in
-                CompletedSet(reps: Int(protoSet.reps), weight: Double(protoSet.weightKg), completed: true)
+                CompletedSet(
+                    reps: Int(protoSet.reps),
+                    weight: Double(protoSet.weightKg),
+                    rpe: protoSet.hasRpe ? Int(protoSet.rpe) : nil,
+                    completed: true
+                )
             }
             return CompletedExercise(
                 exerciseId: UUID(uuidString: response.exerciseID),
@@ -95,6 +100,9 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
                 pbSet.weightKg = Float(set.weight)
                 pbSet.reps = Int32(set.reps)
                 pbSet.failure = false
+                if let rpe = set.rpe {
+                    pbSet.rpe = Int32(rpe)
+                }
                 return pbSet
             }
         }
@@ -108,7 +116,12 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
         let completedExercises = proto.exercises.map { protoExercise -> CompletedExercise in
             let exerciseId = UUID(uuidString: protoExercise.exerciseID)
             let sets = protoExercise.sets.map { protoSet in
-                CompletedSet(reps: Int(protoSet.reps), weight: Double(protoSet.weightKg), completed: true)
+                CompletedSet(
+                    reps: Int(protoSet.reps),
+                    weight: Double(protoSet.weightKg),
+                    rpe: protoSet.hasRpe ? Int(protoSet.rpe) : nil,
+                    completed: true
+                )
             }
             return CompletedExercise(exerciseId: exerciseId, exerciseName: protoExercise.exerciseName, sets: sets)
         }
