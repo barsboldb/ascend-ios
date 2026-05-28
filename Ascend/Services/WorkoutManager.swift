@@ -82,6 +82,31 @@ class WorkoutManager: ObservableObject {
         currentProgram?.workouts.first { $0.id == dayId }?.name
     }
 
+    static func calculateStreak(from sessions: [WorkoutSession]) -> Int {
+        let calendar = Calendar.current
+        let workoutDays = Array(Set(sessions.map { calendar.startOfDay(for: $0.date) }))
+            .sorted(by: >)
+
+        guard let mostRecent = workoutDays.first else { return 0 }
+
+        let today = calendar.startOfDay(for: Date())
+        let daysSinceLast = calendar.dateComponents([.day], from: mostRecent, to: today).day ?? 0
+        if daysSinceLast > 2 { return 0 }
+
+        var streak = 1
+        var previous = mostRecent
+        for day in workoutDays.dropFirst() {
+            let gap = calendar.dateComponents([.day], from: day, to: previous).day ?? 0
+            if gap <= 2 {
+                streak += 1
+                previous = day
+            } else {
+                break
+            }
+        }
+        return streak
+    }
+
     private var nonRestWorkouts: [WorkoutDay] {
         currentProgram?.workouts.filter { !$0.exercises.isEmpty } ?? []
     }

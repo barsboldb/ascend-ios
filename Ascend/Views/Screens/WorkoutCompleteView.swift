@@ -9,8 +9,7 @@ struct WorkoutCompleteView: View {
         case saving, saved, failed(String)
     }
 
-    // TODO: real streak needs backend list endpoint for sessions; stubbed at 1.
-    private let dayStreak: Int = 1
+    @State private var dayStreak: Int = 0
 
     private var allSets: [CompletedSet] {
         session.completedExercises.flatMap { $0.sets }
@@ -60,6 +59,11 @@ struct WorkoutCompleteView: View {
         .task {
             await session.save()
             saveStatus = session.saveError.map(SaveStatus.failed) ?? .saved
+
+            if #available(iOS 18.0, *),
+               let recent = try? await GRPCHistoryRepository.shared.getRecentSessions(limit: 60) {
+                dayStreak = WorkoutManager.calculateStreak(from: recent)
+            }
         }
     }
 
@@ -84,7 +88,11 @@ struct WorkoutCompleteView: View {
     }
 
     private var streakSubtitle: String {
-        dayStreak == 1 ? "first one — keep going" : "longest yet — keep going"
+        switch dayStreak {
+        case 0: return "ready when you are"
+        case 1: return "first one — keep going"
+        default: return "keep it up"
+        }
     }
 
     private var statsGrid: some View {
