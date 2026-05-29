@@ -11,10 +11,23 @@ help: ## Show this help message
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-gen: ## Generate Xcode project from project.yml
-	@echo "🔧 Generating Xcode project..."
-	@xcodegen generate
-	@echo "✅ Project generated!"
+gen: ## Regenerate Swift gRPC code from the proto/ submodule
+	@echo "🔧 Syncing proto submodule..."
+	@git submodule update --remote --recursive proto
+	@echo "🔧 Generating Swift code..."
+	@protoc \
+		--proto_path=proto \
+		--proto_path=vendor/protos \
+		--swift_out=Ascend/Generated \
+		--plugin=protoc-gen-grpc-swift=$$(brew --prefix)/bin/protoc-gen-grpc-swift-2 \
+		--grpc-swift_out=Ascend/Generated \
+		proto/program/program.proto proto/session/session.proto
+	@echo "🔧 Patching generated code for grpc-swift 2.2.3..."
+	@sed -i '' -E '/^[[:space:]]+type: \.(unary|clientStreaming|serverStreaming|bidirectionalStreaming)$$/d' \
+		Ascend/Generated/program/program.grpc.swift Ascend/Generated/session/session.grpc.swift
+	@sed -i '' -E 's/method: "([^"]+)",$$/method: "\1"/' \
+		Ascend/Generated/program/program.grpc.swift Ascend/Generated/session/session.grpc.swift
+	@echo "✅ Swift code generated!"
 
 build: ## Build the app
 	@echo "🔨 Building Ascend for $(DEVICE_NAME)..."
