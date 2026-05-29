@@ -21,12 +21,10 @@ gen: ## Regenerate Swift gRPC code from the proto/ submodule
 		--swift_out=Ascend/Generated \
 		--plugin=protoc-gen-grpc-swift=$$(brew --prefix)/bin/protoc-gen-grpc-swift-2 \
 		--grpc-swift_out=Ascend/Generated \
-		proto/program/program.proto proto/session/session.proto
+		$$(find proto -name "*.proto")
 	@echo "🔧 Patching generated code for grpc-swift 2.2.3..."
-	@sed -i '' -E '/^[[:space:]]+type: \.(unary|clientStreaming|serverStreaming|bidirectionalStreaming)$$/d' \
-		Ascend/Generated/program/program.grpc.swift Ascend/Generated/session/session.grpc.swift
-	@sed -i '' -E 's/method: "([^"]+)",$$/method: "\1"/' \
-		Ascend/Generated/program/program.grpc.swift Ascend/Generated/session/session.grpc.swift
+	@find Ascend/Generated -name "*.grpc.swift" -exec sed -i '' -E '/^[[:space:]]+type: \.(unary|clientStreaming|serverStreaming|bidirectionalStreaming)$$/d' {} \;
+	@find Ascend/Generated -name "*.grpc.swift" -exec sed -i '' -E 's/method: "([^"]+)",$$/method: "\1"/' {} \;
 	@echo "✅ Swift code generated!"
 
 build: ## Build the app

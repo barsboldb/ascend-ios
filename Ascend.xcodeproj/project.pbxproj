@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0250143F646E31C01FE52515 /* program.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E571C6867CFCA6A22469489 /* program.pb.swift */; };
+		05F054B525A809B197B981FA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07A414B150D89A9AFF3AD62 /* ProfileView.swift */; };
 		1AD426675B7961DCE705C3FE /* GRPCHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */; };
+		1C678C23B1146AE038D65A27 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9DD8CEB196A9CB284EEC5 /* AuthRepository.swift */; };
 		1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1347781525DE9F91EEEEE /* program.grpc.swift */; };
 		2151D514D522EFE4DF4F851C /* WorkoutCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */; };
+		2602F465A2681821B4185E6E /* auth.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = B540571340B9CD7F7184EDD6 /* auth.pb.swift */; };
 		288275241952E52314D8A9BC /* SetPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6657564E7FBA18794395664 /* SetPill.swift */; };
 		28EFFCF5321D38A91321F638 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39148D42FDF13D8FCD64C373 /* Button.swift */; };
 		2959B46989EC29F3ED7F8EE2 /* RestTimerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12A059B8983E266AB4AEF52 /* RestTimerLiveActivity.swift */; };
+		2A6B4F42C180D1BCC4728E89 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89295E406DF242B1410EC53B /* Keychain.swift */; };
 		2F29B90BC080572A99644781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27641150AA5F70F22C7413D5 /* Foundation.framework */; };
 		3384B8BC93EC38661EF55313 /* RestTimerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80256AB43995573AAD2EE6C /* RestTimerWidgetBundle.swift */; };
+		386F1C12B6E7B650413A22DC /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16283E02DEE3640D8D1F7838 /* AuthState.swift */; };
 		39CAD0CCF729B1196EE818D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58068DF2A518989E96BED5FB /* HomeView.swift */; };
 		42B20E83FE9F4B2BB61F2BC8 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 7A65D34222E213B95842BE3B /* SwiftProtobuf */; };
 		42D08F43FB0C6F38BA59E850 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CE95948C1D7C91396A03D6 /* NavigationState.swift */; };
@@ -31,6 +36,7 @@
 		63483C458BD1BD67B45391ED /* GRPCProgramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */; };
 		72AE2AB99949A0951EDF17CB /* WorkoutSessionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */; };
 		72E6593D67CF453B844011E7 /* ProgressionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59614DE509C86599D3DCDC /* ProgressionService.swift */; };
+		74FA636993E9C0515AEBAB30 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11F5F5E5CF194C49055F96 /* LoginView.swift */; };
 		781DC4CD15BAEE1F5D58AEBF /* ActiveWorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A380139EDF7F139A7E3A79E /* ActiveWorkoutSession.swift */; };
 		787936AE007066EEFF7EE549 /* DoubleFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */; };
 		7CE8F573DD51748A94FBEA7C /* ExercisePreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F440256EA21FC7C3A6E44C /* ExercisePreviewSection.swift */; };
@@ -58,6 +64,7 @@
 		C9446254707EC013E29D3216 /* LocalHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA259C48E070C6449256B5 /* LocalHistoryRepository.swift */; };
 		D086820C3F5CCE702CE8F0AD /* ConfirmationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */; };
 		D34D19D209D86BD6A89CC16A /* WorkoutProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A46FAF8173053F9309F5 /* WorkoutProgram.swift */; };
+		D43A2CD158EF80AB43D1715D /* auth.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C55260B85277BB8B08FFB5 /* auth.grpc.swift */; };
 		D508D51B2091609385EEF147 /* RestTimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA2640A9DE125FC14A11FB /* RestTimerActivityAttributes.swift */; };
 		D6435E799AB7CD865986C654 /* session.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E62156331826964804CE47 /* session.pb.swift */; };
 		DC49EBA61C512F95051B6723 /* WorkoutHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED981D08DBCC1AD5BA165D61 /* WorkoutHistoryRepository.swift */; };
@@ -104,6 +111,7 @@
 		0F36A4D3B5425A448B31716E /* RestTimerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RestTimerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		10F440256EA21FC7C3A6E44C /* ExercisePreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePreviewSection.swift; sourceTree = "<group>"; };
 		12E2B1434F8E962A5421BF79 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		16283E02DEE3640D8D1F7838 /* AuthState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		19E62156331826964804CE47 /* session.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = session.pb.swift; sourceTree = "<group>"; };
 		1DC1609E9DE39024BC43E72F /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
 		25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCProgramRepository.swift; sourceTree = "<group>"; };
@@ -118,7 +126,9 @@
 		3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionContainer.swift; sourceTree = "<group>"; };
 		3D45913198DE620317BB9435 /* NotificationScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		3D59614DE509C86599D3DCDC /* ProgressionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionService.swift; sourceTree = "<group>"; };
+		3E11F5F5E5CF194C49055F96 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		41D6E68BEEF7BF93ABE6A543 /* GoalBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadge.swift; sourceTree = "<group>"; };
+		46C55260B85277BB8B08FFB5 /* auth.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = auth.grpc.swift; sourceTree = "<group>"; };
 		4A13D67A0AC46C916A9334F8 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		4DA61001900AB7E1A4D2D2A4 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		4E571C6867CFCA6A22469489 /* program.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = program.pb.swift; sourceTree = "<group>"; };
@@ -137,16 +147,19 @@
 		7C622690C831B43813AD7328 /* WorkoutDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDay.swift; sourceTree = "<group>"; };
 		80B701CBE2D79FF49EE7EA39 /* ActivityCalendar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActivityCalendar.swift; sourceTree = "<group>"; };
 		848E0A42CC26AD4E86CC4AB1 /* RPESlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPESlider.swift; sourceTree = "<group>"; };
+		89295E406DF242B1410EC53B /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteView.swift; sourceTree = "<group>"; };
 		9A5D82A9D86FE1E22577FC5D /* RestTimerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerSheet.swift; sourceTree = "<group>"; };
 		9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCClientManager.swift; sourceTree = "<group>"; };
 		A70828E0EBCA2ECAEE91AA5B /* SetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLog.swift; sourceTree = "<group>"; };
 		A7EAB7C846BD00B09E2A78C3 /* Ascend.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ascend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80256AB43995573AAD2EE6C /* RestTimerWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestTimerWidgetBundle.swift; sourceTree = "<group>"; };
+		B540571340B9CD7F7184EDD6 /* auth.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = auth.pb.swift; sourceTree = "<group>"; };
 		B5D0A46FAF8173053F9309F5 /* WorkoutProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutProgram.swift; sourceTree = "<group>"; };
 		B6E7F007C3B1ACB5BF1C1198 /* SessionDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		B8E49E08A0E5690FBBD4C6DD /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = session.grpc.swift; sourceTree = "<group>"; };
+		BFE9DD8CEB196A9CB284EEC5 /* AuthRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		C495F0FDC4ED0BBF9521F2CB /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFormatting.swift; sourceTree = "<group>"; };
 		C93646C59FE572A72C670DC3 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
@@ -155,6 +168,7 @@
 		D4D82E146BA08A123CB9CFDB /* AscendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendApp.swift; sourceTree = "<group>"; };
 		D73EBC3C6B498EC95C230AB3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9039020443C0A5F359011ED /* TodaysWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysWorkoutView.swift; sourceTree = "<group>"; };
+		E07A414B150D89A9AFF3AD62 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		E6657564E7FBA18794395664 /* SetPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPill.swift; sourceTree = "<group>"; };
 		E71B1C67D9CB899699D0F309 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E9CE95948C1D7C91396A03D6 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
@@ -239,8 +253,21 @@
 				2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */,
 				3D45913198DE620317BB9435 /* NotificationScheduler.swift */,
 				0ABA2640A9DE125FC14A11FB /* RestTimerActivityAttributes.swift */,
+				89295E406DF242B1410EC53B /* Keychain.swift */,
+				16283E02DEE3640D8D1F7838 /* AuthState.swift */,
+				BFE9DD8CEB196A9CB284EEC5 /* AuthRepository.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2953E63B667B991BED3AF9BA /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				B540571340B9CD7F7184EDD6 /* auth.pb.swift */,
+				46C55260B85277BB8B08FFB5 /* auth.grpc.swift */,
+			);
+			name = auth;
+			path = auth;
 			sourceTree = "<group>";
 		};
 		29A79A837CF0AA76976E57E3 /* Theme */ = {
@@ -344,6 +371,7 @@
 			children = (
 				5EB5377A4610B881C0A774E8 /* program */,
 				6AD97DB477872F68B6EE6F59 /* session */,
+				2953E63B667B991BED3AF9BA /* auth */,
 			);
 			name = Generated;
 			path = Generated;
@@ -395,6 +423,8 @@
 				3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */,
 				C495F0FDC4ED0BBF9521F2CB /* HistoryView.swift */,
 				B6E7F007C3B1ACB5BF1C1198 /* SessionDetailView.swift */,
+				3E11F5F5E5CF194C49055F96 /* LoginView.swift */,
+				E07A414B150D89A9AFF3AD62 /* ProfileView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -557,6 +587,13 @@
 				5304DED5FCA934F22A92CDC2 /* ActivityCalendar.swift in Sources */,
 				8E11EEBC35199722ABCE298D /* NotificationScheduler.swift in Sources */,
 				A95E39DA9D2A121BA7D0BAC7 /* RestTimerActivityAttributes.swift in Sources */,
+				2A6B4F42C180D1BCC4728E89 /* Keychain.swift in Sources */,
+				386F1C12B6E7B650413A22DC /* AuthState.swift in Sources */,
+				1C678C23B1146AE038D65A27 /* AuthRepository.swift in Sources */,
+				74FA636993E9C0515AEBAB30 /* LoginView.swift in Sources */,
+				05F054B525A809B197B981FA /* ProfileView.swift in Sources */,
+				2602F465A2681821B4185E6E /* auth.pb.swift in Sources */,
+				D43A2CD158EF80AB43D1715D /* auth.grpc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
