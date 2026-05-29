@@ -168,7 +168,7 @@ struct WorkoutCompleteView: View {
 
     private var actionBar: some View {
         HStack(spacing: Spacing.sm) {
-            AscendButton("Finish ✓", size: .large, fullWidth: true) {
+            AscendButton("Finish", size: .large, fullWidth: true) {
                 navigation.goHome()
             }
 

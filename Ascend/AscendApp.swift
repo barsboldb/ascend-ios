@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct AscendApp: App {
     @StateObject private var navigation = NavigationState()
+
+    init() {
+        UNUserNotificationCenter.current().delegate = ForegroundNotificationDelegate.shared
+    }
+
     var body: some Scene {
         WindowGroup {
             HomeView()

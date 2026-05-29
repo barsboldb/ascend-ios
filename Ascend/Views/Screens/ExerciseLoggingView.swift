@@ -63,7 +63,10 @@ struct ExerciseLoggingView: View {
             .padding(.horizontal, Spacing.screenPadding)
         }
         .sheet(isPresented: $showRestTimer, onDismiss: advanceSet) {
-            RestTimerSheet(duration: session.workout.exercises[session.currentExerciseIndex].restSeconds)
+            RestTimerSheet(
+                duration: session.workout.exercises[session.currentExerciseIndex].restSeconds,
+                exerciseName: exercise.name
+            )
         }
         .navigationBarBackButtonHidden(true)
         .task {
