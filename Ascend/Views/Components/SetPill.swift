@@ -6,14 +6,18 @@ struct SetPill: View {
     var body: some View {
         HStack {
             ForEach(Array(self.sets.enumerated()), id: \.element.id) { index, set in
-                switch(set.status) {
-                    case .pending:
-                    SetIndicatorPending(index: index, set: set)
-                    case .active:
-                    SetIndicatorActive(index: index, set: set)
-                    case .completed:
-                    SetIndicatorCompleted(index: index, set: set)
+                Group {
+                    switch(set.status) {
+                        case .pending:
+                        SetIndicatorPending(index: index, set: set)
+                        case .active:
+                        SetIndicatorActive(index: index, set: set)
+                        case .completed:
+                        SetIndicatorCompleted(index: index, set: set)
+                    }
                 }
+                .id(set.status)
+                .transition(.scale.combined(with: .opacity))
             }
             if sets.count < 8 {
                 Button {

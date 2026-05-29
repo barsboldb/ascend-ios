@@ -100,7 +100,9 @@ struct ExerciseLoggingView: View {
         sets[activeSetIndex].loggedWeight = weight
         sets[activeSetIndex].loggedReps = reps
         sets[activeSetIndex].rpe = rpe
-        sets[activeSetIndex].status = .completed
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+            sets[activeSetIndex].status = .completed
+        }
         showRestTimer = true
     }
 
@@ -113,8 +115,10 @@ struct ExerciseLoggingView: View {
             return
         }
 
-        activeSetIndex += 1
-        sets[activeSetIndex].status = .active
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+            activeSetIndex += 1
+            sets[activeSetIndex].status = .active
+        }
     }
 
     private func saveSession() {

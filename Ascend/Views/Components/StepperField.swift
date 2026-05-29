@@ -36,6 +36,8 @@ struct StepperField: View {
                     .foregroundColor(.textPrimary)
                     .monospacedDigit()
                     .frame(minWidth: 130)
+                    .contentTransition(.numericText(value: value))
+                    .animation(.spring(response: 0.3, dampingFraction: 0.7), value: value)
 
                 Spacer()
 

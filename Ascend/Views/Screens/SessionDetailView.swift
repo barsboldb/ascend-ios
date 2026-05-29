@@ -288,10 +288,15 @@ private struct SetEditSheet: View {
                 Text(value)
                     .font(.headlineSmall)
                     .foregroundColor(.textPrimary)
+                    .monospacedDigit()
+                    .contentTransition(.numericText())
+                    .animation(.spring(response: 0.3, dampingFraction: 0.7), value: value)
             }
             Spacer()
             HStack(spacing: Spacing.sm) {
-                Button(action: onMinus) {
+                Button {
+                    withAnimation { onMinus() }
+                } label: {
                     Image(systemName: "minus")
                         .font(.titleMedium)
                         .foregroundColor(.textPrimary)
@@ -299,7 +304,9 @@ private struct SetEditSheet: View {
                         .background(Color.surface)
                         .cornerRadius(Spacing.radiusMedium)
                 }
-                Button(action: onPlus) {
+                Button {
+                    withAnimation { onPlus() }
+                } label: {
                     Image(systemName: "plus")
                         .font(.titleMedium)
                         .foregroundColor(.textPrimary)

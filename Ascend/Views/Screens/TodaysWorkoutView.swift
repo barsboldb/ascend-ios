@@ -73,24 +73,12 @@ struct TodaysWorkoutView: View {
                 .frame(maxWidth: .infinity)
                 .padding(Spacing.screenPadding)
             }
-            if showFinishLaterModal {
-                ConfirmationModal(
-                    title: "Finish Later?",
-                    message: "You progress will be saved and you can continue this workout anytime.",
-                    confirmText: "Finish Later",
-                    cancelText: "Continue Workout",
-                    confirmDestructive: true,
-                    onConfirm: {
-                        showFinishLaterModal = false
-                        dismiss()
-                    },
-                    onCancel: {
-                        showFinishLaterModal = false
-                    }
-                )
-                .transition(.opacity)
-                .animation(.easeInOut(duration: 0.2), value: showFinishLaterModal)
-            }
+        }
+        .alert("Finish Later?", isPresented: $showFinishLaterModal) {
+            Button("Finish Later", role: .destructive) { dismiss() }
+            Button("Continue Workout", role: .cancel) {}
+        } message: {
+            Text("Your progress will be saved and you can continue this workout anytime.")
         }
         .onChange(of: session.currentExerciseIndex) { _, newIndex in
             if newIndex >= session.workout.exercises.count {

@@ -72,6 +72,8 @@ struct WorkoutCompleteView: View {
             Text("\(dayStreak)")
                 .font(.system(size: 96, weight: .bold))
                 .foregroundColor(.primary)
+                .contentTransition(.numericText(value: Double(dayStreak)))
+                .animation(.spring(response: 0.6, dampingFraction: 0.7), value: dayStreak)
 
             HStack(spacing: Spacing.xs) {
                 Text("day streak")
@@ -84,6 +86,7 @@ struct WorkoutCompleteView: View {
             Text(streakSubtitle)
                 .font(.bodyMedium)
                 .foregroundColor(.textSecondary)
+                .transition(.opacity)
         }
     }
 

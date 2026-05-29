@@ -15,6 +15,9 @@ struct RPESlider: View {
                 Text(rpe.formatted())
                     .font(.titleMedium)
                     .foregroundColor(.primary)
+                    .monospacedDigit()
+                    .contentTransition(.numericText(value: Double(rpe)))
+                    .animation(.spring(response: 0.3, dampingFraction: 0.7), value: rpe)
             }
 
             Slider(value: Binding(
