@@ -115,6 +115,8 @@ nonisolated struct Session_ExerciseSet: Sendable {
   /// Clears the value of `rpe`. Subsequent reads from it will return its default value.
   mutating func clearRpe() {self._rpe = nil}
 
+  var id: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -224,6 +226,57 @@ nonisolated struct Session_GetLastSetsForExerciseResponse: Sendable {
   init() {}
 
   fileprivate var _performedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
+nonisolated struct Session_DeleteSessionRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var id: String = String()
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct Session_DeleteSessionResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+}
+
+nonisolated struct Session_UpdateExerciseSetRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var id: String = String()
+
+  var weightKg: Float = 0
+
+  var reps: Int32 = 0
+
+  var rpe: Int32 {
+    get {_rpe ?? 0}
+    set {_rpe = newValue}
+  }
+  /// Returns true if `rpe` has been explicitly set.
+  var hasRpe: Bool {self._rpe != nil}
+  /// Clears the value of `rpe`. Subsequent reads from it will return its default value.
+  mutating func clearRpe() {self._rpe = nil}
+
+  var failure: Bool = false
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _rpe: Int32? = nil
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -366,7 +419,7 @@ nonisolated extension Session_SessionExercise: SwiftProtobuf.Message, SwiftProto
 
 nonisolated extension Session_ExerciseSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".ExerciseSet"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}exercise_id\0\u{3}exercise_name\0\u{3}set_number\0\u{3}weight_kg\0\u{1}reps\0\u{1}failure\0\u{1}rpe\0")
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}exercise_id\0\u{3}exercise_name\0\u{3}set_number\0\u{3}weight_kg\0\u{1}reps\0\u{1}failure\0\u{1}rpe\0\u{1}id\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -381,6 +434,7 @@ nonisolated extension Session_ExerciseSet: SwiftProtobuf.Message, SwiftProtobuf.
       case 5: try { try decoder.decodeSingularInt32Field(value: &self.reps) }()
       case 6: try { try decoder.decodeSingularBoolField(value: &self.failure) }()
       case 7: try { try decoder.decodeSingularInt32Field(value: &self._rpe) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.id) }()
       default: break
       }
     }
@@ -412,6 +466,9 @@ nonisolated extension Session_ExerciseSet: SwiftProtobuf.Message, SwiftProtobuf.
     try { if let v = self._rpe {
       try visitor.visitSingularInt32Field(value: v, fieldNumber: 7)
     } }()
+    if !self.id.isEmpty {
+      try visitor.visitSingularStringField(value: self.id, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -423,6 +480,7 @@ nonisolated extension Session_ExerciseSet: SwiftProtobuf.Message, SwiftProtobuf.
     if lhs.reps != rhs.reps {return false}
     if lhs.failure != rhs.failure {return false}
     if lhs._rpe != rhs._rpe {return false}
+    if lhs.id != rhs.id {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -626,6 +684,109 @@ nonisolated extension Session_GetLastSetsForExerciseResponse: SwiftProtobuf.Mess
     if lhs.sets != rhs.sets {return false}
     if lhs._performedAt != rhs._performedAt {return false}
     if lhs.found != rhs.found {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_DeleteSessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".DeleteSessionRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.id) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.id.isEmpty {
+      try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_DeleteSessionRequest, rhs: Session_DeleteSessionRequest) -> Bool {
+    if lhs.id != rhs.id {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_DeleteSessionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".DeleteSessionResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_DeleteSessionResponse, rhs: Session_DeleteSessionResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+nonisolated extension Session_UpdateExerciseSetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".UpdateExerciseSetRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{3}weight_kg\0\u{1}reps\0\u{1}rpe\0\u{1}failure\0")
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.id) }()
+      case 2: try { try decoder.decodeSingularFloatField(value: &self.weightKg) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.reps) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self._rpe) }()
+      case 5: try { try decoder.decodeSingularBoolField(value: &self.failure) }()
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.id.isEmpty {
+      try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
+    }
+    if self.weightKg.bitPattern != 0 {
+      try visitor.visitSingularFloatField(value: self.weightKg, fieldNumber: 2)
+    }
+    if self.reps != 0 {
+      try visitor.visitSingularInt32Field(value: self.reps, fieldNumber: 3)
+    }
+    try { if let v = self._rpe {
+      try visitor.visitSingularInt32Field(value: v, fieldNumber: 4)
+    } }()
+    if self.failure != false {
+      try visitor.visitSingularBoolField(value: self.failure, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: Session_UpdateExerciseSetRequest, rhs: Session_UpdateExerciseSetRequest) -> Bool {
+    if lhs.id != rhs.id {return false}
+    if lhs.weightKg != rhs.weightKg {return false}
+    if lhs.reps != rhs.reps {return false}
+    if lhs._rpe != rhs._rpe {return false}
+    if lhs.failure != rhs.failure {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

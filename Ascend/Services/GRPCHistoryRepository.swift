@@ -41,7 +41,23 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
     }
 
     func deleteSession(id: UUID) async throws {
-        // Backend has no delete endpoint yet
+        _ = try await clientManager.withClient { grpcClient in
+            let sessionClient = Session_SessionService.Client(wrapping: grpcClient)
+            return try await sessionClient.deleteSession(.with { $0.id = id.uuidString })
+        }
+    }
+
+    func updateSet(id: UUID, weight: Double, reps: Int, rpe: Int?) async throws {
+        _ = try await clientManager.withClient { grpcClient in
+            let sessionClient = Session_SessionService.Client(wrapping: grpcClient)
+            return try await sessionClient.updateExerciseSet(.with {
+                $0.id = id.uuidString
+                $0.weightKg = Float(weight)
+                $0.reps = Int32(reps)
+                if let rpe { $0.rpe = Int32(rpe) }
+                $0.failure = false
+            })
+        }
     }
 
     func getLastPerformedExercise(named exerciseName: String) async throws -> CompletedExercise? {
@@ -117,6 +133,7 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
             let exerciseId = UUID(uuidString: protoExercise.exerciseID)
             let sets = protoExercise.sets.map { protoSet in
                 CompletedSet(
+                    id: UUID(uuidString: protoSet.id) ?? UUID(),
                     reps: Int(protoSet.reps),
                     weight: Double(protoSet.weightKg),
                     rpe: protoSet.hasRpe ? Int(protoSet.rpe) : nil,
@@ -132,6 +149,7 @@ actor GRPCHistoryRepository: WorkoutHistoryRepository {
         }()
 
         return WorkoutSession(
+            id: UUID(uuidString: proto.id) ?? UUID(),
             workoutDayId: workoutDayId,
             date: date,
             completedExercises: completedExercises,

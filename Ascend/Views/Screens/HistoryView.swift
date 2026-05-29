@@ -47,22 +47,20 @@ struct HistoryView: View {
         ZStack {
             Color.background.ignoresSafeArea()
 
-            if sessions.isEmpty {
-                emptyState
-            } else {
-                ScrollView {
+            ScrollView {
+                if sessions.isEmpty {
+                    emptyState
+                } else {
                     VStack(alignment: .leading, spacing: Spacing.md) {
                         Text("History")
                             .font(.headlineLarge)
                             .foregroundColor(.textPrimary)
 
-                        if !sessions.isEmpty {
-                            ProgressionChart(
-                                metricOptions: metricOptions,
-                                selectedMetric: $selectedMetric,
-                                points: progressionSeries
-                            )
-                        }
+                        ProgressionChart(
+                            metricOptions: metricOptions,
+                            selectedMetric: $selectedMetric,
+                            points: progressionSeries
+                        )
 
                         ForEach(sessions) { session in
                             Button {
@@ -78,6 +76,9 @@ struct HistoryView: View {
                     }
                     .padding(Spacing.screenPadding)
                 }
+            }
+            .refreshable {
+                await workoutManager.refreshHistory()
             }
         }
         .navigationTitle("")

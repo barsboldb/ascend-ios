@@ -10,14 +10,15 @@ struct WorkoutSession: Identifiable, Codable, Hashable {
     let notes: String?;
 
     init(
+        id: UUID = UUID(),
         workoutDayId: UUID,
-        date: Date = Date(), 
-        completedExercises: [CompletedExercise] = [], 
-        duration: Int? = nil, 
-        bodyWeight: Double? = nil, 
+        date: Date = Date(),
+        completedExercises: [CompletedExercise] = [],
+        duration: Int? = nil,
+        bodyWeight: Double? = nil,
         notes: String? = nil,
     ) {
-        self.id = UUID();
+        self.id = id;
         self.workoutDayId = workoutDayId;
         self.date = date;
         self.completedExercises = completedExercises;
@@ -52,13 +53,14 @@ struct CompletedSet: Identifiable, Codable, Hashable {
     let notes: String?;
 
     init(
-        reps: Int, 
-        weight: Double, 
+        id: UUID = UUID(),
+        reps: Int,
+        weight: Double,
         rpe: Int? = nil,
         completed: Bool = false,
         notes: String? = nil,
     ) {
-        self.id = UUID();
+        self.id = id;
         self.reps = reps;
         self.weight = weight;
         self.rpe = rpe;

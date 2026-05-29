@@ -69,12 +69,38 @@ internal enum Session_SessionService: Sendable {
                 method: "GetLastSetsForExercise"
             )
         }
+        /// Namespace for "DeleteSession" metadata.
+        internal enum DeleteSession: Sendable {
+            /// Request type for "DeleteSession".
+            internal typealias Input = Session_DeleteSessionRequest
+            /// Response type for "DeleteSession".
+            internal typealias Output = Session_DeleteSessionResponse
+            /// Descriptor for "DeleteSession".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "session.SessionService"),
+                method: "DeleteSession"
+            )
+        }
+        /// Namespace for "UpdateExerciseSet" metadata.
+        internal enum UpdateExerciseSet: Sendable {
+            /// Request type for "UpdateExerciseSet".
+            internal typealias Input = Session_UpdateExerciseSetRequest
+            /// Response type for "UpdateExerciseSet".
+            internal typealias Output = Session_ExerciseSet
+            /// Descriptor for "UpdateExerciseSet".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "session.SessionService"),
+                method: "UpdateExerciseSet"
+            )
+        }
         /// Descriptors for all methods in the "session.SessionService" service.
         internal static let descriptors: [GRPCCore.MethodDescriptor] = [
             GetSession.descriptor,
             CreateSession.descriptor,
             ListRecentSessions.descriptor,
-            GetLastSetsForExercise.descriptor
+            GetLastSetsForExercise.descriptor,
+            DeleteSession.descriptor,
+            UpdateExerciseSet.descriptor
         ]
     }
 }
@@ -155,6 +181,34 @@ extension Session_SessionService {
             request: GRPCCore.StreamingServerRequest<Session_GetLastSetsForExerciseRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.StreamingServerResponse<Session_GetLastSetsForExerciseResponse>
+
+        /// Handle the "DeleteSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `Session_DeleteSessionRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `Session_DeleteSessionResponse` messages.
+        func deleteSession(
+            request: GRPCCore.StreamingServerRequest<Session_DeleteSessionRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<Session_DeleteSessionResponse>
+
+        /// Handle the "UpdateExerciseSet" method.
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `Session_UpdateExerciseSetRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `Session_ExerciseSet` messages.
+        func updateExerciseSet(
+            request: GRPCCore.StreamingServerRequest<Session_UpdateExerciseSetRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<Session_ExerciseSet>
     }
 
     /// Service protocol for the "session.SessionService" service.
@@ -220,6 +274,34 @@ extension Session_SessionService {
             request: GRPCCore.ServerRequest<Session_GetLastSetsForExerciseRequest>,
             context: GRPCCore.ServerContext
         ) async throws -> GRPCCore.ServerResponse<Session_GetLastSetsForExerciseResponse>
+
+        /// Handle the "DeleteSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_DeleteSessionRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `Session_DeleteSessionResponse` message.
+        func deleteSession(
+            request: GRPCCore.ServerRequest<Session_DeleteSessionRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<Session_DeleteSessionResponse>
+
+        /// Handle the "UpdateExerciseSet" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_UpdateExerciseSetRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `Session_ExerciseSet` message.
+        func updateExerciseSet(
+            request: GRPCCore.ServerRequest<Session_UpdateExerciseSetRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<Session_ExerciseSet>
     }
 
     /// Simple service protocol for the "session.SessionService" service.
@@ -283,6 +365,34 @@ extension Session_SessionService {
             request: Session_GetLastSetsForExerciseRequest,
             context: GRPCCore.ServerContext
         ) async throws -> Session_GetLastSetsForExerciseResponse
+
+        /// Handle the "DeleteSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A `Session_DeleteSessionRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `Session_DeleteSessionResponse` to respond with.
+        func deleteSession(
+            request: Session_DeleteSessionRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> Session_DeleteSessionResponse
+
+        /// Handle the "UpdateExerciseSet" method.
+        ///
+        /// - Parameters:
+        ///   - request: A `Session_UpdateExerciseSetRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `Session_ExerciseSet` to respond with.
+        func updateExerciseSet(
+            request: Session_UpdateExerciseSetRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> Session_ExerciseSet
     }
 }
 
@@ -334,6 +444,28 @@ extension Session_SessionService.StreamingServiceProtocol {
                 )
             }
         )
+        router.registerHandler(
+            forMethod: Session_SessionService.Method.DeleteSession.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_DeleteSessionRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_DeleteSessionResponse>(),
+            handler: { request, context in
+                try await self.deleteSession(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
+            forMethod: Session_SessionService.Method.UpdateExerciseSet.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_UpdateExerciseSetRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_ExerciseSet>(),
+            handler: { request, context in
+                try await self.updateExerciseSet(
+                    request: request,
+                    context: context
+                )
+            }
+        )
     }
 }
 
@@ -378,6 +510,28 @@ extension Session_SessionService.ServiceProtocol {
         context: GRPCCore.ServerContext
     ) async throws -> GRPCCore.StreamingServerResponse<Session_GetLastSetsForExerciseResponse> {
         let response = try await self.getLastSetsForExercise(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    internal func deleteSession(
+        request: GRPCCore.StreamingServerRequest<Session_DeleteSessionRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<Session_DeleteSessionResponse> {
+        let response = try await self.deleteSession(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
+    internal func updateExerciseSet(
+        request: GRPCCore.StreamingServerRequest<Session_UpdateExerciseSetRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<Session_ExerciseSet> {
+        let response = try await self.updateExerciseSet(
             request: GRPCCore.ServerRequest(stream: request),
             context: context
         )
@@ -433,6 +587,32 @@ extension Session_SessionService.SimpleServiceProtocol {
     ) async throws -> GRPCCore.ServerResponse<Session_GetLastSetsForExerciseResponse> {
         return GRPCCore.ServerResponse<Session_GetLastSetsForExerciseResponse>(
             message: try await self.getLastSetsForExercise(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    internal func deleteSession(
+        request: GRPCCore.ServerRequest<Session_DeleteSessionRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<Session_DeleteSessionResponse> {
+        return GRPCCore.ServerResponse<Session_DeleteSessionResponse>(
+            message: try await self.deleteSession(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
+    internal func updateExerciseSet(
+        request: GRPCCore.ServerRequest<Session_UpdateExerciseSetRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<Session_ExerciseSet> {
+        return GRPCCore.ServerResponse<Session_ExerciseSet>(
+            message: try await self.updateExerciseSet(
                 request: request.message,
                 context: context
             ),
@@ -524,6 +704,44 @@ extension Session_SessionService {
             deserializer: some GRPCCore.MessageDeserializer<Session_GetLastSetsForExerciseResponse>,
             options: GRPCCore.CallOptions,
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_GetLastSetsForExerciseResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "DeleteSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_DeleteSessionRequest` message.
+        ///   - serializer: A serializer for `Session_DeleteSessionRequest` messages.
+        ///   - deserializer: A deserializer for `Session_DeleteSessionResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func deleteSession<Result>(
+            request: GRPCCore.ClientRequest<Session_DeleteSessionRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_DeleteSessionRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_DeleteSessionResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_DeleteSessionResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "UpdateExerciseSet" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_UpdateExerciseSetRequest` message.
+        ///   - serializer: A serializer for `Session_UpdateExerciseSetRequest` messages.
+        ///   - deserializer: A deserializer for `Session_ExerciseSet` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func updateExerciseSet<Result>(
+            request: GRPCCore.ClientRequest<Session_UpdateExerciseSetRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_UpdateExerciseSetRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_ExerciseSet>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ExerciseSet>) async throws -> Result
         ) async throws -> Result where Result: Sendable
     }
 
@@ -662,6 +880,66 @@ extension Session_SessionService {
                 onResponse: handleResponse
             )
         }
+
+        /// Call the "DeleteSession" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_DeleteSessionRequest` message.
+        ///   - serializer: A serializer for `Session_DeleteSessionRequest` messages.
+        ///   - deserializer: A deserializer for `Session_DeleteSessionResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func deleteSession<Result>(
+            request: GRPCCore.ClientRequest<Session_DeleteSessionRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_DeleteSessionRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_DeleteSessionResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_DeleteSessionResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Session_SessionService.Method.DeleteSession.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "UpdateExerciseSet" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Session_UpdateExerciseSetRequest` message.
+        ///   - serializer: A serializer for `Session_UpdateExerciseSetRequest` messages.
+        ///   - deserializer: A deserializer for `Session_ExerciseSet` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func updateExerciseSet<Result>(
+            request: GRPCCore.ClientRequest<Session_UpdateExerciseSetRequest>,
+            serializer: some GRPCCore.MessageSerializer<Session_UpdateExerciseSetRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Session_ExerciseSet>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ExerciseSet>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Session_SessionService.Method.UpdateExerciseSet.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
     }
 }
 
@@ -763,6 +1041,56 @@ extension Session_SessionService.ClientProtocol {
             request: request,
             serializer: GRPCProtobuf.ProtobufSerializer<Session_GetLastSetsForExerciseRequest>(),
             deserializer: GRPCProtobuf.ProtobufDeserializer<Session_GetLastSetsForExerciseResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "DeleteSession" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Session_DeleteSessionRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func deleteSession<Result>(
+        request: GRPCCore.ClientRequest<Session_DeleteSessionRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_DeleteSessionResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.deleteSession(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_DeleteSessionRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_DeleteSessionResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "UpdateExerciseSet" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Session_UpdateExerciseSetRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func updateExerciseSet<Result>(
+        request: GRPCCore.ClientRequest<Session_UpdateExerciseSetRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ExerciseSet>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.updateExerciseSet(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Session_UpdateExerciseSetRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Session_ExerciseSet>(),
             options: options,
             onResponse: handleResponse
         )
@@ -882,6 +1210,64 @@ extension Session_SessionService.ClientProtocol {
             metadata: metadata
         )
         return try await self.getLastSetsForExercise(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "DeleteSession" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func deleteSession<Result>(
+        _ message: Session_DeleteSessionRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_DeleteSessionResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Session_DeleteSessionRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.deleteSession(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "UpdateExerciseSet" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func updateExerciseSet<Result>(
+        _ message: Session_UpdateExerciseSetRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Session_ExerciseSet>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Session_UpdateExerciseSetRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.updateExerciseSet(
             request: request,
             options: options,
             onResponse: handleResponse

@@ -101,7 +101,8 @@ struct HomeView: View {
             .navigationDestination(for: WorkoutSession.self) { session in
                 SessionDetailView(
                     session: session,
-                    workoutName: workoutManager.workoutName(for: session.workoutDayId)
+                    workoutName: workoutManager.workoutName(for: session.workoutDayId),
+                    onSessionChanged: { await workoutManager.refreshHistory() }
                 )
             }
             .task {

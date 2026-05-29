@@ -47,6 +47,14 @@ class WorkoutManager: ObservableObject {
         }
     }
 
+    func refreshHistory() async {
+        do {
+            workoutHistory = try await historyRepository.getAllSessions()
+        } catch {
+            print("Refresh failed: \(error)")
+        }
+    }
+
     func getTodaysWorkout() -> WorkoutDay? {
         let workouts = nonRestWorkouts
         guard !workouts.isEmpty else { return nil }
