@@ -40,10 +40,13 @@ class WorkoutManager: ObservableObject {
         do {
             let programs = try await programRepository.getAllPrograms()
             currentProgram = programs.first
-
+        } catch {
+            print("Failed to load program: \(error)")
+        }
+        do {
             workoutHistory = try await historyRepository.getAllSessions()
         } catch {
-            print("Error: \(error)")
+            print("Failed to load sessions: \(error)")
         }
     }
 

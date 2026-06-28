@@ -20,8 +20,8 @@ struct AuthInterceptor: ClientInterceptor {
 final class GRPCClientManager: Sendable {
     static let shared = GRPCClientManager()
 
-    private let host = "localhost"
-    private let port = 8888
+    private let host = "ascend-backend-barsbold.fly.dev"
+    private let port = 50051
 
     func withClient<Result: Sendable>(
         _ operation: (GRPCClient<HTTP2ClientTransport.Posix>) async throws -> Result

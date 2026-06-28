@@ -7,168 +7,135 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0250143F646E31C01FE52515 /* program.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E571C6867CFCA6A22469489 /* program.pb.swift */; };
-		05F054B525A809B197B981FA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07A414B150D89A9AFF3AD62 /* ProfileView.swift */; };
-		1AD426675B7961DCE705C3FE /* GRPCHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */; };
-		1C678C23B1146AE038D65A27 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9DD8CEB196A9CB284EEC5 /* AuthRepository.swift */; };
-		1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1347781525DE9F91EEEEE /* program.grpc.swift */; };
+		0FBDB3444B78F3ED58D7380F /* GRPCHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A770189221395C8956805802 /* GRPCHistoryRepository.swift */; };
+		17AB86716950DE6F1D336AFF /* GRPCProgramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA4A9429265558E98672C9 /* GRPCProgramRepository.swift */; };
+		17EAAE7072DC6A683471C77D /* ActivityCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3775C992CB847C5DFCE94111 /* ActivityCalendar.swift */; };
+		1A1D5F521642B23DD04AC05C /* GRPCProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 069B7E9ED9CCB4E4B5DA2E19 /* GRPCProtobuf */; };
 		2151D514D522EFE4DF4F851C /* WorkoutCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */; };
-		2602F465A2681821B4185E6E /* auth.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = B540571340B9CD7F7184EDD6 /* auth.pb.swift */; };
 		288275241952E52314D8A9BC /* SetPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6657564E7FBA18794395664 /* SetPill.swift */; };
+		28E638E2105490AB5D5531C4 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B7E7521E8EB2D665B6482 /* AuthRepository.swift */; };
 		28EFFCF5321D38A91321F638 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39148D42FDF13D8FCD64C373 /* Button.swift */; };
-		2959B46989EC29F3ED7F8EE2 /* RestTimerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12A059B8983E266AB4AEF52 /* RestTimerLiveActivity.swift */; };
-		2A6B4F42C180D1BCC4728E89 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89295E406DF242B1410EC53B /* Keychain.swift */; };
-		2F29B90BC080572A99644781 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27641150AA5F70F22C7413D5 /* Foundation.framework */; };
-		3384B8BC93EC38661EF55313 /* RestTimerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80256AB43995573AAD2EE6C /* RestTimerWidgetBundle.swift */; };
-		386F1C12B6E7B650413A22DC /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16283E02DEE3640D8D1F7838 /* AuthState.swift */; };
+		3194909F50924DAF6290C37C /* session.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C75D4C3B256DC36EF4A83BD /* session.pb.swift */; };
 		39CAD0CCF729B1196EE818D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58068DF2A518989E96BED5FB /* HomeView.swift */; };
-		42B20E83FE9F4B2BB61F2BC8 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 7A65D34222E213B95842BE3B /* SwiftProtobuf */; };
+		3D9E2789D0F50AAB34B620F7 /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D5BDA587ED6779B91AA95 /* AuthState.swift */; };
+		409E5D9F71FA17A9F47A1FAB /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FE540CF0A4D13E4D78B943 /* SessionDetailView.swift */; };
 		42D08F43FB0C6F38BA59E850 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CE95948C1D7C91396A03D6 /* NavigationState.swift */; };
 		450A5EADF4E798DDDD77D640 /* SetLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70828E0EBCA2ECAEE91AA5B /* SetLog.swift */; };
 		4A3442095BFBE0880A1D0560 /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC1609E9DE39024BC43E72F /* InfoCard.swift */; };
 		5060AA615B8896C2C365736F /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A13D67A0AC46C916A9334F8 /* ProgressRing.swift */; };
-		5304DED5FCA934F22A92CDC2 /* ActivityCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B701CBE2D79FF49EE7EA39 /* ActivityCalendar.swift */; };
 		552948B182A0C704E837EE0A /* LastSessionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740A442FF265022EF17A719B /* LastSessionCard.swift */; };
 		582C37D2879CAAE5C9869019 /* AscendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D82E146BA08A123CB9CFDB /* AscendApp.swift */; };
 		5BB476289587F21006E672D6 /* RPESlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E0A42CC26AD4E86CC4AB1 /* RPESlider.swift */; };
-		626E98A6CE970274D429DE16 /* session.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */; };
 		6286340CA8F9C44A5589D304 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA61001900AB7E1A4D2D2A4 /* SampleData.swift */; };
-		63483C458BD1BD67B45391ED /* GRPCProgramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */; };
+		63F759A338EB1D1DB4180473 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F37ED32789A5114DBE8F355 /* LoginView.swift */; };
+		6E1A87EABE3DA54FF1D67012 /* GRPCClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08206DEC8DD46100715FBFE6 /* GRPCClientManager.swift */; };
 		72AE2AB99949A0951EDF17CB /* WorkoutSessionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */; };
 		72E6593D67CF453B844011E7 /* ProgressionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59614DE509C86599D3DCDC /* ProgressionService.swift */; };
-		74FA636993E9C0515AEBAB30 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11F5F5E5CF194C49055F96 /* LoginView.swift */; };
+		731AF220BC17B866ADEB672F /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = 0D3893B3A88F5D7B5388A8A0 /* GRPCNIOTransportHTTP2 */; };
 		781DC4CD15BAEE1F5D58AEBF /* ActiveWorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A380139EDF7F139A7E3A79E /* ActiveWorkoutSession.swift */; };
 		787936AE007066EEFF7EE549 /* DoubleFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */; };
 		7CE8F573DD51748A94FBEA7C /* ExercisePreviewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F440256EA21FC7C3A6E44C /* ExercisePreviewSection.swift */; };
-		7D697D406DB595052BA6516B /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = 71319854EF43CF76547F0346 /* GRPCCore */; };
-		8089BFEC64D97583AB155297 /* RestTimerWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0F36A4D3B5425A448B31716E /* RestTimerWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8131D5C76BA607FC81248312 /* ExerciseLoggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381074D0891A91AA887E9E95 /* ExerciseLoggingView.swift */; };
-		820E0CD73BE7F00218A3C7CE /* GRPCNIOTransportHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = A5AE7E14A7704B56A9A548ED /* GRPCNIOTransportHTTP2 */; };
-		82E2A6AEC5BD43BD49C00D3D /* GRPCProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 31ADDA90522C00C28CDB5ABB /* GRPCProtobuf */; };
-		8E11EEBC35199722ABCE298D /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D45913198DE620317BB9435 /* NotificationScheduler.swift */; };
-		938AD2FA0AFCC99EB1461C14 /* GRPCClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */; };
+		8164B933FCB6B8CD07E3547D /* program.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3600EF82F902013FC3A553DC /* program.pb.swift */; };
+		8835A6EC4F7BF5A2A2298218 /* auth.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9B26854D848EF8D12E35C /* auth.pb.swift */; };
+		8C09570754A3F4F727088076 /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = FD89828CBF47F13875786BA2 /* GRPCCore */; };
 		94934ED92379D2E9D789144D /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E49E08A0E5690FBBD4C6DD /* Spacing.swift */; };
-		9F5189EE87A351E2FD2BDB24 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F007C3B1ACB5BF1C1198 /* SessionDetailView.swift */; };
+		9857AE2F22B0103D4475212B /* session.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88A594B757B8CA2E8E5C47B /* session.grpc.swift */; };
 		A0CDEF9C954955AB5E416F88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69508BC47C1B774C74544D0F /* Assets.xcassets */; };
 		A14CC4776BCD022279DE996E /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688103D201F98DD48DB4FE9D /* ExerciseCard.swift */; };
 		A3A59F7A66FEDB8600A40478 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71B1C67D9CB899699D0F309 /* Colors.swift */; };
 		A548BE45EB842F18FDC48338 /* LocalWorkoutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A2D7767DC493CDFBA12A8C /* LocalWorkoutRepository.swift */; };
+		A6557A1173D6194B72A9E509 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 7657F4AB8200FE442AA70F1E /* SwiftProtobuf */; };
 		A8F86DD00C7160FDC3B089F1 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC2DA3A4F45CE24C65E6420 /* Typography.swift */; };
-		A95E39DA9D2A121BA7D0BAC7 /* RestTimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA2640A9DE125FC14A11FB /* RestTimerActivityAttributes.swift */; };
+		AAED9A9225583F9BBFFA3260 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C887D2990A511A5ED11CB23 /* ProfileView.swift */; };
 		AC1CDDE6152F926B5D27F18A /* GoalBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6E68BEEF7BF93ABE6A543 /* GoalBadge.swift */; };
 		B1788795D33B9506FF935295 /* ConsistencySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E32CD20B41F107A66220EA /* ConsistencySection.swift */; };
-		B5E94E4ACBA02218D82F3DA8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495F0FDC4ED0BBF9521F2CB /* HistoryView.swift */; };
 		B670014B4A6EC30CAD6A91E2 /* StepperField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE27800A41483D1A88D819D /* StepperField.swift */; };
 		B68F9374CD870260E4CA85F0 /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645A75530F6CFBAA237874A1 /* WorkoutSession.swift */; };
+		BCAC622F1BCAF6D5ACA209A8 /* RestTimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A42491634A83E9302427B64 /* RestTimerActivityAttributes.swift */; };
+		C49E6AD85667842192B2718F /* program.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC402ECE1187F148B74573C /* program.grpc.swift */; };
 		C59A2DFD97416A06E9716BFF /* WorkoutProgramRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F542A370949198CB1A2720 /* WorkoutProgramRepository.swift */; };
 		C9446254707EC013E29D3216 /* LocalHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFA259C48E070C6449256B5 /* LocalHistoryRepository.swift */; };
 		D086820C3F5CCE702CE8F0AD /* ConfirmationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */; };
 		D34D19D209D86BD6A89CC16A /* WorkoutProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0A46FAF8173053F9309F5 /* WorkoutProgram.swift */; };
-		D43A2CD158EF80AB43D1715D /* auth.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C55260B85277BB8B08FFB5 /* auth.grpc.swift */; };
-		D508D51B2091609385EEF147 /* RestTimerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA2640A9DE125FC14A11FB /* RestTimerActivityAttributes.swift */; };
-		D6435E799AB7CD865986C654 /* session.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E62156331826964804CE47 /* session.pb.swift */; };
 		DC49EBA61C512F95051B6723 /* WorkoutHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED981D08DBCC1AD5BA165D61 /* WorkoutHistoryRepository.swift */; };
 		DF58A336CE34F556DCE97FC2 /* WorkoutHeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB51E5C4FDF441C89D84E83 /* WorkoutHeaderSection.swift */; };
 		E36160C34142986B205681CA /* TodaysWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9039020443C0A5F359011ED /* TodaysWorkoutView.swift */; };
 		E55214AF7C28520A4094A9D9 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2B1434F8E962A5421BF79 /* Exercise.swift */; };
+		E55760BADBB6C4002FA9A26A /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706DA7B89E446869B557A81 /* HistoryView.swift */; };
 		E5B2DF0FFF17D9B2E5478212 /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93646C59FE572A72C670DC3 /* WorkoutManager.swift */; };
+		E69638A4F0BDF4DDFE8A7C16 /* NotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A5ED47C1366503DD4FFF31 /* NotificationScheduler.swift */; };
 		EA6033294431248A9DF4A450 /* WorkoutDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C622690C831B43813AD7328 /* WorkoutDay.swift */; };
 		EC3567E899C18D0A3216E4A1 /* SessionProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263DD99216EC4C2D619CDA97 /* SessionProgress.swift */; };
 		EFB77DEC278409AD09CE0996 /* RestTimerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D82A9D86FE1E22577FC5D /* RestTimerSheet.swift */; };
+		F18FEFE651682BF65EEA6BF8 /* auth.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F2F468A194307E4EA129D4 /* auth.grpc.swift */; };
 		F37FD9510029D5C2E89424B6 /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F5F798BB8435D1366FEDD /* WorkoutCard.swift */; };
 		F4CEED00B4E53209686E2086 /* SetLoggingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD245B6283CD278B2CB55D0 /* SetLoggingCard.swift */; };
+		F5FC4A878CBFF364499DB4ED /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3832E3D37EEDB3249DFDBC92 /* Keychain.swift */; };
 		FAF76A551ECB5BD54C54C366 /* AscendTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6208350E3E20C9223D63530E /* AscendTheme.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8A85501EF75FE7763277E917 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9BC2E0E6397AA312597C79FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60C6028B9F788BE58BDC75D2;
-			remoteInfo = RestTimerWidget;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		5E0697384BECAADB647695A2 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				8089BFEC64D97583AB155297 /* RestTimerWidget.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		08206DEC8DD46100715FBFE6 /* GRPCClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCClientManager.swift; sourceTree = "<group>"; };
 		0AB51E5C4FDF441C89D84E83 /* WorkoutHeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHeaderSection.swift; sourceTree = "<group>"; };
-		0ABA2640A9DE125FC14A11FB /* RestTimerActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestTimerActivityAttributes.swift; sourceTree = "<group>"; };
 		0DD245B6283CD278B2CB55D0 /* SetLoggingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLoggingCard.swift; sourceTree = "<group>"; };
-		0F36A4D3B5425A448B31716E /* RestTimerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RestTimerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		10F440256EA21FC7C3A6E44C /* ExercisePreviewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePreviewSection.swift; sourceTree = "<group>"; };
 		12E2B1434F8E962A5421BF79 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		16283E02DEE3640D8D1F7838 /* AuthState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
-		19E62156331826964804CE47 /* session.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = session.pb.swift; sourceTree = "<group>"; };
+		1C75D4C3B256DC36EF4A83BD /* session.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.pb.swift; sourceTree = "<group>"; };
 		1DC1609E9DE39024BC43E72F /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
-		25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCProgramRepository.swift; sourceTree = "<group>"; };
+		1F37ED32789A5114DBE8F355 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		236D5BDA587ED6779B91AA95 /* AuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		263DD99216EC4C2D619CDA97 /* SessionProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProgress.swift; sourceTree = "<group>"; };
-		27641150AA5F70F22C7413D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCHistoryRepository.swift; sourceTree = "<group>"; };
+		273B7E7521E8EB2D665B6482 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		351F5F798BB8435D1366FEDD /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationModal.swift; sourceTree = "<group>"; };
+		3600EF82F902013FC3A553DC /* program.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = program.pb.swift; sourceTree = "<group>"; };
+		3775C992CB847C5DFCE94111 /* ActivityCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCalendar.swift; sourceTree = "<group>"; };
 		381074D0891A91AA887E9E95 /* ExerciseLoggingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLoggingView.swift; sourceTree = "<group>"; };
+		3832E3D37EEDB3249DFDBC92 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		39148D42FDF13D8FCD64C373 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		39A2D7767DC493CDFBA12A8C /* LocalWorkoutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWorkoutRepository.swift; sourceTree = "<group>"; };
+		3A42491634A83E9302427B64 /* RestTimerActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerActivityAttributes.swift; sourceTree = "<group>"; };
 		3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSessionContainer.swift; sourceTree = "<group>"; };
-		3D45913198DE620317BB9435 /* NotificationScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
 		3D59614DE509C86599D3DCDC /* ProgressionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressionService.swift; sourceTree = "<group>"; };
-		3E11F5F5E5CF194C49055F96 /* LoginView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		41D6E68BEEF7BF93ABE6A543 /* GoalBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadge.swift; sourceTree = "<group>"; };
-		46C55260B85277BB8B08FFB5 /* auth.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = auth.grpc.swift; sourceTree = "<group>"; };
 		4A13D67A0AC46C916A9334F8 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		4DA61001900AB7E1A4D2D2A4 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		4E571C6867CFCA6A22469489 /* program.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = program.pb.swift; sourceTree = "<group>"; };
+		52A5ED47C1366503DD4FFF31 /* NotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationScheduler.swift; sourceTree = "<group>"; };
+		53F2F468A194307E4EA129D4 /* auth.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.grpc.swift; sourceTree = "<group>"; };
 		58068DF2A518989E96BED5FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5C0040259AEDA8B4531B131D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5CC2DA3A4F45CE24C65E6420 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		5CE27800A41483D1A88D819D /* StepperField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperField.swift; sourceTree = "<group>"; };
 		5CFA259C48E070C6449256B5 /* LocalHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHistoryRepository.swift; sourceTree = "<group>"; };
 		6208350E3E20C9223D63530E /* AscendTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendTheme.swift; sourceTree = "<group>"; };
 		645A75530F6CFBAA237874A1 /* WorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
-		65B1347781525DE9F91EEEEE /* program.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = program.grpc.swift; sourceTree = "<group>"; };
 		688103D201F98DD48DB4FE9D /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
+		68D9B26854D848EF8D12E35C /* auth.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.pb.swift; sourceTree = "<group>"; };
 		69508BC47C1B774C74544D0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69DA4A9429265558E98672C9 /* GRPCProgramRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCProgramRepository.swift; sourceTree = "<group>"; };
 		6A380139EDF7F139A7E3A79E /* ActiveWorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkoutSession.swift; sourceTree = "<group>"; };
 		740A442FF265022EF17A719B /* LastSessionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSessionCard.swift; sourceTree = "<group>"; };
+		7706DA7B89E446869B557A81 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		79F542A370949198CB1A2720 /* WorkoutProgramRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutProgramRepository.swift; sourceTree = "<group>"; };
 		7C622690C831B43813AD7328 /* WorkoutDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDay.swift; sourceTree = "<group>"; };
-		80B701CBE2D79FF49EE7EA39 /* ActivityCalendar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ActivityCalendar.swift; sourceTree = "<group>"; };
 		848E0A42CC26AD4E86CC4AB1 /* RPESlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPESlider.swift; sourceTree = "<group>"; };
-		89295E406DF242B1410EC53B /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		94FE540CF0A4D13E4D78B943 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCompleteView.swift; sourceTree = "<group>"; };
 		9A5D82A9D86FE1E22577FC5D /* RestTimerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTimerSheet.swift; sourceTree = "<group>"; };
-		9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GRPCClientManager.swift; sourceTree = "<group>"; };
+		9C887D2990A511A5ED11CB23 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A70828E0EBCA2ECAEE91AA5B /* SetLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLog.swift; sourceTree = "<group>"; };
+		A770189221395C8956805802 /* GRPCHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRPCHistoryRepository.swift; sourceTree = "<group>"; };
 		A7EAB7C846BD00B09E2A78C3 /* Ascend.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Ascend.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A80256AB43995573AAD2EE6C /* RestTimerWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestTimerWidgetBundle.swift; sourceTree = "<group>"; };
-		B540571340B9CD7F7184EDD6 /* auth.pb.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = auth.pb.swift; sourceTree = "<group>"; };
 		B5D0A46FAF8173053F9309F5 /* WorkoutProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutProgram.swift; sourceTree = "<group>"; };
-		B6E7F007C3B1ACB5BF1C1198 /* SessionDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		B8E49E08A0E5690FBBD4C6DD /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = session.grpc.swift; sourceTree = "<group>"; };
-		BFE9DD8CEB196A9CB284EEC5 /* AuthRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
-		C495F0FDC4ED0BBF9521F2CB /* HistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFormatting.swift; sourceTree = "<group>"; };
 		C93646C59FE572A72C670DC3 /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		C9E32CD20B41F107A66220EA /* ConsistencySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsistencySection.swift; sourceTree = "<group>"; };
-		D12A059B8983E266AB4AEF52 /* RestTimerLiveActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestTimerLiveActivity.swift; sourceTree = "<group>"; };
 		D4D82E146BA08A123CB9CFDB /* AscendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendApp.swift; sourceTree = "<group>"; };
-		D73EBC3C6B498EC95C230AB3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D88A594B757B8CA2E8E5C47B /* session.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.grpc.swift; sourceTree = "<group>"; };
 		D9039020443C0A5F359011ED /* TodaysWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysWorkoutView.swift; sourceTree = "<group>"; };
-		E07A414B150D89A9AFF3AD62 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DFC402ECE1187F148B74573C /* program.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = program.grpc.swift; sourceTree = "<group>"; };
 		E6657564E7FBA18794395664 /* SetPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPill.swift; sourceTree = "<group>"; };
 		E71B1C67D9CB899699D0F309 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E9CE95948C1D7C91396A03D6 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
@@ -176,22 +143,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B6B4A8BB1B2D742B41F48492 /* Frameworks */ = {
+		F8B3ACBA6CF7BEA4EFDB1725 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F29B90BC080572A99644781 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F5D7DB5523A0DCF9EF215ED2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				42B20E83FE9F4B2BB61F2BC8 /* SwiftProtobuf in Frameworks */,
-				7D697D406DB595052BA6516B /* GRPCCore in Frameworks */,
-				820E0CD73BE7F00218A3C7CE /* GRPCNIOTransportHTTP2 in Frameworks */,
-				82E2A6AEC5BD43BD49C00D3D /* GRPCProtobuf in Frameworks */,
+				A6557A1173D6194B72A9E509 /* SwiftProtobuf in Frameworks */,
+				8C09570754A3F4F727088076 /* GRPCCore in Frameworks */,
+				731AF220BC17B866ADEB672F /* GRPCNIOTransportHTTP2 in Frameworks */,
+				1A1D5F521642B23DD04AC05C /* GRPCProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +160,7 @@
 		0877CAE0573937DEEC2A8A33 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3775C992CB847C5DFCE94111 /* ActivityCalendar.swift */,
 				39148D42FDF13D8FCD64C373 /* Button.swift */,
 				3599DC3354E8E6FBAA31A5BE /* ConfirmationModal.swift */,
 				C9E32CD20B41F107A66220EA /* ConsistencySection.swift */,
@@ -217,7 +177,6 @@
 				5CE27800A41483D1A88D819D /* StepperField.swift */,
 				351F5F798BB8435D1366FEDD /* WorkoutCard.swift */,
 				0AB51E5C4FDF441C89D84E83 /* WorkoutHeaderSection.swift */,
-				80B701CBE2D79FF49EE7EA39 /* ActivityCalendar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -228,6 +187,15 @@
 				C8FDBC512F0E8D55ABD66CE8 /* DoubleFormatting.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		18CB21EEEAC6020E1D3C129B /* session */ = {
+			isa = PBXGroup;
+			children = (
+				D88A594B757B8CA2E8E5C47B /* session.grpc.swift */,
+				1C75D4C3B256DC36EF4A83BD /* session.pb.swift */,
+			);
+			path = session;
 			sourceTree = "<group>";
 		};
 		219AE15B9F7548536948786A /* Data */ = {
@@ -242,31 +210,30 @@
 			isa = PBXGroup;
 			children = (
 				6A380139EDF7F139A7E3A79E /* ActiveWorkoutSession.swift */,
+				273B7E7521E8EB2D665B6482 /* AuthRepository.swift */,
+				236D5BDA587ED6779B91AA95 /* AuthState.swift */,
+				08206DEC8DD46100715FBFE6 /* GRPCClientManager.swift */,
+				A770189221395C8956805802 /* GRPCHistoryRepository.swift */,
+				69DA4A9429265558E98672C9 /* GRPCProgramRepository.swift */,
+				3832E3D37EEDB3249DFDBC92 /* Keychain.swift */,
 				5CFA259C48E070C6449256B5 /* LocalHistoryRepository.swift */,
 				39A2D7767DC493CDFBA12A8C /* LocalWorkoutRepository.swift */,
+				52A5ED47C1366503DD4FFF31 /* NotificationScheduler.swift */,
 				3D59614DE509C86599D3DCDC /* ProgressionService.swift */,
+				3A42491634A83E9302427B64 /* RestTimerActivityAttributes.swift */,
 				ED981D08DBCC1AD5BA165D61 /* WorkoutHistoryRepository.swift */,
 				C93646C59FE572A72C670DC3 /* WorkoutManager.swift */,
 				79F542A370949198CB1A2720 /* WorkoutProgramRepository.swift */,
-				9F4D3C2D58C3700C56C91A90 /* GRPCClientManager.swift */,
-				25B78964E5099510E711CC26 /* GRPCProgramRepository.swift */,
-				2FD52E5E7E8AB26BF4E2F705 /* GRPCHistoryRepository.swift */,
-				3D45913198DE620317BB9435 /* NotificationScheduler.swift */,
-				0ABA2640A9DE125FC14A11FB /* RestTimerActivityAttributes.swift */,
-				89295E406DF242B1410EC53B /* Keychain.swift */,
-				16283E02DEE3640D8D1F7838 /* AuthState.swift */,
-				BFE9DD8CEB196A9CB284EEC5 /* AuthRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		2953E63B667B991BED3AF9BA /* auth */ = {
+		267FC598F40008F8C2006122 /* auth */ = {
 			isa = PBXGroup;
 			children = (
-				B540571340B9CD7F7184EDD6 /* auth.pb.swift */,
-				46C55260B85277BB8B08FFB5 /* auth.grpc.swift */,
+				53F2F468A194307E4EA129D4 /* auth.grpc.swift */,
+				68D9B26854D848EF8D12E35C /* auth.pb.swift */,
 			);
-			name = auth;
 			path = auth;
 			sourceTree = "<group>";
 		};
@@ -288,30 +255,31 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		3C497AED5CBACEC7EFEB4662 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				267FC598F40008F8C2006122 /* auth */,
+				AB0CDFF8AC581E28545B5503 /* program */,
+				18CB21EEEAC6020E1D3C129B /* session */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		45D980C25CA7A39BD768E88C /* Ascend */ = {
 			isa = PBXGroup;
 			children = (
 				D4D82E146BA08A123CB9CFDB /* AscendApp.swift */,
 				69508BC47C1B774C74544D0F /* Assets.xcassets */,
+				5C0040259AEDA8B4531B131D /* Info.plist */,
 				F24D0FFE52DFC27A4022731C /* Core */,
 				219AE15B9F7548536948786A /* Data */,
 				14293BABD3B21BB3243BDDFF /* Extensions */,
+				3C497AED5CBACEC7EFEB4662 /* Generated */,
 				66BF1B0FEBA0F266538826B4 /* Models */,
 				262C78DE1A53968FA4D63348 /* Services */,
 				914BACC55BE21F0BAF1F7CAA /* Views */,
-				BC2CF248FF11370A6DC0D4B7 /* Generated */,
 			);
 			path = Ascend;
-			sourceTree = "<group>";
-		};
-		5EB5377A4610B881C0A774E8 /* program */ = {
-			isa = PBXGroup;
-			children = (
-				4E571C6867CFCA6A22469489 /* program.pb.swift */,
-				65B1347781525DE9F91EEEEE /* program.grpc.swift */,
-			);
-			name = program;
-			path = program;
 			sourceTree = "<group>";
 		};
 		66B2524C87E50AF41A9BD951 = {
@@ -319,8 +287,6 @@
 			children = (
 				45D980C25CA7A39BD768E88C /* Ascend */,
 				E2343874678287BE12AA72B5 /* Products */,
-				C24B6983E003E48B31497BEF /* Frameworks */,
-				BA91A40705072261294E4D34 /* RestTimerWidget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -336,16 +302,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		6AD97DB477872F68B6EE6F59 /* session */ = {
-			isa = PBXGroup;
-			children = (
-				19E62156331826964804CE47 /* session.pb.swift */,
-				BBBB7E2106ADE67DBCFE0A3E /* session.grpc.swift */,
-			);
-			name = session;
-			path = session;
-			sourceTree = "<group>";
-		};
 		914BACC55BE21F0BAF1F7CAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,49 +311,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BA91A40705072261294E4D34 /* RestTimerWidget */ = {
+		AB0CDFF8AC581E28545B5503 /* program */ = {
 			isa = PBXGroup;
 			children = (
-				A80256AB43995573AAD2EE6C /* RestTimerWidgetBundle.swift */,
-				D12A059B8983E266AB4AEF52 /* RestTimerLiveActivity.swift */,
-				D73EBC3C6B498EC95C230AB3 /* Info.plist */,
+				DFC402ECE1187F148B74573C /* program.grpc.swift */,
+				3600EF82F902013FC3A553DC /* program.pb.swift */,
 			);
-			name = RestTimerWidget;
-			path = RestTimerWidget;
-			sourceTree = "<group>";
-		};
-		BC2CF248FF11370A6DC0D4B7 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				5EB5377A4610B881C0A774E8 /* program */,
-				6AD97DB477872F68B6EE6F59 /* session */,
-				2953E63B667B991BED3AF9BA /* auth */,
-			);
-			name = Generated;
-			path = Generated;
-			sourceTree = "<group>";
-		};
-		C24B6983E003E48B31497BEF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D13155C7B88C6765DD2997BC /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D13155C7B88C6765DD2997BC /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				27641150AA5F70F22C7413D5 /* Foundation.framework */,
-			);
-			name = iOS;
+			path = program;
 			sourceTree = "<group>";
 		};
 		E2343874678287BE12AA72B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				A7EAB7C846BD00B09E2A78C3 /* Ascend.app */,
-				0F36A4D3B5425A448B31716E /* RestTimerWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -416,15 +342,15 @@
 			isa = PBXGroup;
 			children = (
 				381074D0891A91AA887E9E95 /* ExerciseLoggingView.swift */,
+				7706DA7B89E446869B557A81 /* HistoryView.swift */,
 				58068DF2A518989E96BED5FB /* HomeView.swift */,
+				1F37ED32789A5114DBE8F355 /* LoginView.swift */,
+				9C887D2990A511A5ED11CB23 /* ProfileView.swift */,
 				9A5D82A9D86FE1E22577FC5D /* RestTimerSheet.swift */,
+				94FE540CF0A4D13E4D78B943 /* SessionDetailView.swift */,
 				D9039020443C0A5F359011ED /* TodaysWorkoutView.swift */,
 				99CFE13D90EC092FC2CB4F04 /* WorkoutCompleteView.swift */,
 				3D36E007693ADB19D89910C1 /* WorkoutSessionContainer.swift */,
-				C495F0FDC4ED0BBF9521F2CB /* HistoryView.swift */,
-				B6E7F007C3B1ACB5BF1C1198 /* SessionDetailView.swift */,
-				3E11F5F5E5CF194C49055F96 /* LoginView.swift */,
-				E07A414B150D89A9AFF3AD62 /* ProfileView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -438,41 +364,22 @@
 			buildPhases = (
 				64BAAC16EF9E2C5C513B3857 /* Sources */,
 				D20405F47BED1E64236BD440 /* Resources */,
-				F5D7DB5523A0DCF9EF215ED2 /* Frameworks */,
-				5E0697384BECAADB647695A2 /* Embed Foundation Extensions */,
+				F8B3ACBA6CF7BEA4EFDB1725 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F5F4373F5456CD8CEA668CB2 /* PBXTargetDependency */,
 			);
 			name = Ascend;
 			packageProductDependencies = (
-				7A65D34222E213B95842BE3B /* SwiftProtobuf */,
-				71319854EF43CF76547F0346 /* GRPCCore */,
-				A5AE7E14A7704B56A9A548ED /* GRPCNIOTransportHTTP2 */,
-				31ADDA90522C00C28CDB5ABB /* GRPCProtobuf */,
+				7657F4AB8200FE442AA70F1E /* SwiftProtobuf */,
+				FD89828CBF47F13875786BA2 /* GRPCCore */,
+				0D3893B3A88F5D7B5388A8A0 /* GRPCNIOTransportHTTP2 */,
+				069B7E9ED9CCB4E4B5DA2E19 /* GRPCProtobuf */,
 			);
 			productName = Ascend;
 			productReference = A7EAB7C846BD00B09E2A78C3 /* Ascend.app */;
 			productType = "com.apple.product-type.application";
-		};
-		60C6028B9F788BE58BDC75D2 /* RestTimerWidget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2B414885590AA12B18794659 /* Build configuration list for PBXNativeTarget "RestTimerWidget" */;
-			buildPhases = (
-				90BB3279465BE305837BA5F8 /* Sources */,
-				B6B4A8BB1B2D742B41F48492 /* Frameworks */,
-				D17A68FEEA636D83B83576D6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RestTimerWidget;
-			productName = RestTimerWidget;
-			productReference = 0F36A4D3B5425A448B31716E /* RestTimerWidget.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -482,9 +389,10 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = F8CC7C5EBE7E6B5872A0ECEB /* Build configuration list for PBXProject "Ascend" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -494,10 +402,10 @@
 			mainGroup = 66B2524C87E50AF41A9BD951;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				4349EC1E30D7909005E4FEBA /* XCRemoteSwiftPackageReference "swift-protobuf" */,
-				B5C2F84B55B895675CFF2075 /* XCRemoteSwiftPackageReference "grpc-swift" */,
-				E52E489FD8B9EA396C77EA4B /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */,
-				66A803106E149461932DF208 /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */,
+				C616D38E46121D2D959645E7 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				718ED1F33B710D55E3697115 /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */,
+				84B5516084EEF71C6282A81D /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */,
+				DFCA37D887FD7BD3F72B9115 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E2343874678287BE12AA72B5 /* Products */;
@@ -505,19 +413,11 @@
 			projectRoot = "";
 			targets = (
 				0F9C8F4802F951B131266DB5 /* Ascend */,
-				60C6028B9F788BE58BDC75D2 /* RestTimerWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D17A68FEEA636D83B83576D6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D20405F47BED1E64236BD440 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,8 +434,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				781DC4CD15BAEE1F5D58AEBF /* ActiveWorkoutSession.swift in Sources */,
+				17EAAE7072DC6A683471C77D /* ActivityCalendar.swift in Sources */,
 				582C37D2879CAAE5C9869019 /* AscendApp.swift in Sources */,
 				FAF76A551ECB5BD54C54C366 /* AscendTheme.swift in Sources */,
+				28E638E2105490AB5D5531C4 /* AuthRepository.swift in Sources */,
+				3D9E2789D0F50AAB34B620F7 /* AuthState.swift in Sources */,
 				28EFFCF5321D38A91321F638 /* Button.swift in Sources */,
 				A3A59F7A66FEDB8600A40478 /* Colors.swift in Sources */,
 				D086820C3F5CCE702CE8F0AD /* ConfirmationModal.swift in Sources */,
@@ -545,18 +448,28 @@
 				A14CC4776BCD022279DE996E /* ExerciseCard.swift in Sources */,
 				8131D5C76BA607FC81248312 /* ExerciseLoggingView.swift in Sources */,
 				7CE8F573DD51748A94FBEA7C /* ExercisePreviewSection.swift in Sources */,
+				6E1A87EABE3DA54FF1D67012 /* GRPCClientManager.swift in Sources */,
+				0FBDB3444B78F3ED58D7380F /* GRPCHistoryRepository.swift in Sources */,
+				17AB86716950DE6F1D336AFF /* GRPCProgramRepository.swift in Sources */,
 				AC1CDDE6152F926B5D27F18A /* GoalBadge.swift in Sources */,
+				E55760BADBB6C4002FA9A26A /* HistoryView.swift in Sources */,
 				39CAD0CCF729B1196EE818D7 /* HomeView.swift in Sources */,
 				4A3442095BFBE0880A1D0560 /* InfoCard.swift in Sources */,
+				F5FC4A878CBFF364499DB4ED /* Keychain.swift in Sources */,
 				552948B182A0C704E837EE0A /* LastSessionCard.swift in Sources */,
 				C9446254707EC013E29D3216 /* LocalHistoryRepository.swift in Sources */,
 				A548BE45EB842F18FDC48338 /* LocalWorkoutRepository.swift in Sources */,
+				63F759A338EB1D1DB4180473 /* LoginView.swift in Sources */,
 				42D08F43FB0C6F38BA59E850 /* NavigationState.swift in Sources */,
+				E69638A4F0BDF4DDFE8A7C16 /* NotificationScheduler.swift in Sources */,
+				AAED9A9225583F9BBFFA3260 /* ProfileView.swift in Sources */,
 				5060AA615B8896C2C365736F /* ProgressRing.swift in Sources */,
 				72E6593D67CF453B844011E7 /* ProgressionService.swift in Sources */,
 				5BB476289587F21006E672D6 /* RPESlider.swift in Sources */,
+				BCAC622F1BCAF6D5ACA209A8 /* RestTimerActivityAttributes.swift in Sources */,
 				EFB77DEC278409AD09CE0996 /* RestTimerSheet.swift in Sources */,
 				6286340CA8F9C44A5589D304 /* SampleData.swift in Sources */,
+				409E5D9F71FA17A9F47A1FAB /* SessionDetailView.swift in Sources */,
 				EC3567E899C18D0A3216E4A1 /* SessionProgress.swift in Sources */,
 				450A5EADF4E798DDDD77D640 /* SetLog.swift in Sources */,
 				F4CEED00B4E53209686E2086 /* SetLoggingCard.swift in Sources */,
@@ -575,48 +488,16 @@
 				C59A2DFD97416A06E9716BFF /* WorkoutProgramRepository.swift in Sources */,
 				B68F9374CD870260E4CA85F0 /* WorkoutSession.swift in Sources */,
 				72AE2AB99949A0951EDF17CB /* WorkoutSessionContainer.swift in Sources */,
-				938AD2FA0AFCC99EB1461C14 /* GRPCClientManager.swift in Sources */,
-				63483C458BD1BD67B45391ED /* GRPCProgramRepository.swift in Sources */,
-				0250143F646E31C01FE52515 /* program.pb.swift in Sources */,
-				1CC947375643487ADEECDFB6 /* program.grpc.swift in Sources */,
-				D6435E799AB7CD865986C654 /* session.pb.swift in Sources */,
-				626E98A6CE970274D429DE16 /* session.grpc.swift in Sources */,
-				1AD426675B7961DCE705C3FE /* GRPCHistoryRepository.swift in Sources */,
-				B5E94E4ACBA02218D82F3DA8 /* HistoryView.swift in Sources */,
-				9F5189EE87A351E2FD2BDB24 /* SessionDetailView.swift in Sources */,
-				5304DED5FCA934F22A92CDC2 /* ActivityCalendar.swift in Sources */,
-				8E11EEBC35199722ABCE298D /* NotificationScheduler.swift in Sources */,
-				A95E39DA9D2A121BA7D0BAC7 /* RestTimerActivityAttributes.swift in Sources */,
-				2A6B4F42C180D1BCC4728E89 /* Keychain.swift in Sources */,
-				386F1C12B6E7B650413A22DC /* AuthState.swift in Sources */,
-				1C678C23B1146AE038D65A27 /* AuthRepository.swift in Sources */,
-				74FA636993E9C0515AEBAB30 /* LoginView.swift in Sources */,
-				05F054B525A809B197B981FA /* ProfileView.swift in Sources */,
-				2602F465A2681821B4185E6E /* auth.pb.swift in Sources */,
-				D43A2CD158EF80AB43D1715D /* auth.grpc.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		90BB3279465BE305837BA5F8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3384B8BC93EC38661EF55313 /* RestTimerWidgetBundle.swift in Sources */,
-				2959B46989EC29F3ED7F8EE2 /* RestTimerLiveActivity.swift in Sources */,
-				D508D51B2091609385EEF147 /* RestTimerActivityAttributes.swift in Sources */,
+				F18FEFE651682BF65EEA6BF8 /* auth.grpc.swift in Sources */,
+				8835A6EC4F7BF5A2A2298218 /* auth.pb.swift in Sources */,
+				C49E6AD85667842192B2718F /* program.grpc.swift in Sources */,
+				8164B933FCB6B8CD07E3547D /* program.pb.swift in Sources */,
+				9857AE2F22B0103D4475212B /* session.grpc.swift in Sources */,
+				3194909F50924DAF6290C37C /* session.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F5F4373F5456CD8CEA668CB2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestTimerWidget;
-			target = 60C6028B9F788BE58BDC75D2 /* RestTimerWidget */;
-			targetProxy = 8A85501EF75FE7763277E917 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2D451A5AB3F208FF47C6F862 /* Release */ = {
@@ -624,14 +505,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscaleRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				INFOPLIST_FILE = Ascend/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -706,55 +581,6 @@
 			};
 			name = Debug;
 		};
-		7B78446D0C27D12418DD1AD8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = RestTimerWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.barsboldb.ascend.RestTimerWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CBE4B3DA34A6E20706D49818 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = RestTimerWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.barsboldb.ascend.RestTimerWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		CFB58F4B18EAD3BEF5776DCE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -815,14 +641,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscaleRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				INFOPLIST_FILE = Ascend/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -838,15 +658,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B414885590AA12B18794659 /* Build configuration list for PBXNativeTarget "RestTimerWidget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CBE4B3DA34A6E20706D49818 /* Release */,
-				7B78446D0C27D12418DD1AD8 /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		72D2F66540A048EC14E79B04 /* Build configuration list for PBXNativeTarget "Ascend" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -868,31 +679,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4349EC1E30D7909005E4FEBA /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-protobuf.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.28.0;
-			};
-		};
-		66A803106E149461932DF208 /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/grpc/grpc-swift-protobuf.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		B5C2F84B55B895675CFF2075 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/grpc/grpc-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-		E52E489FD8B9EA396C77EA4B /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */ = {
+		718ED1F33B710D55E3697115 /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/grpc/grpc-swift-nio-transport.git";
 			requirement = {
@@ -900,28 +687,52 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		84B5516084EEF71C6282A81D /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		C616D38E46121D2D959645E7 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		DFCA37D887FD7BD3F72B9115 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.28.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		31ADDA90522C00C28CDB5ABB /* GRPCProtobuf */ = {
+		069B7E9ED9CCB4E4B5DA2E19 /* GRPCProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 66A803106E149461932DF208 /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */;
+			package = 84B5516084EEF71C6282A81D /* XCRemoteSwiftPackageReference "grpc-swift-protobuf" */;
 			productName = GRPCProtobuf;
 		};
-		71319854EF43CF76547F0346 /* GRPCCore */ = {
+		0D3893B3A88F5D7B5388A8A0 /* GRPCNIOTransportHTTP2 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B5C2F84B55B895675CFF2075 /* XCRemoteSwiftPackageReference "grpc-swift" */;
-			productName = GRPCCore;
+			package = 718ED1F33B710D55E3697115 /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */;
+			productName = GRPCNIOTransportHTTP2;
 		};
-		7A65D34222E213B95842BE3B /* SwiftProtobuf */ = {
+		7657F4AB8200FE442AA70F1E /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4349EC1E30D7909005E4FEBA /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			package = DFCA37D887FD7BD3F72B9115 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = SwiftProtobuf;
 		};
-		A5AE7E14A7704B56A9A548ED /* GRPCNIOTransportHTTP2 */ = {
+		FD89828CBF47F13875786BA2 /* GRPCCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E52E489FD8B9EA396C77EA4B /* XCRemoteSwiftPackageReference "grpc-swift-nio-transport" */;
-			productName = GRPCNIOTransportHTTP2;
+			package = C616D38E46121D2D959645E7 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPCCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

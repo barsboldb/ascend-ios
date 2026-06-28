@@ -20,6 +20,18 @@ internal enum Program_ProgramService: Sendable {
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "program.ProgramService")
     /// Namespace for method metadata.
     internal enum Method: Sendable {
+        /// Namespace for "ListPrograms" metadata.
+        internal enum ListPrograms: Sendable {
+            /// Request type for "ListPrograms".
+            internal typealias Input = Program_ListProgramsRequest
+            /// Response type for "ListPrograms".
+            internal typealias Output = Program_ListProgramsResponse
+            /// Descriptor for "ListPrograms".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "program.ProgramService"),
+                method: "ListPrograms"
+            )
+        }
         /// Namespace for "GetProgram" metadata.
         internal enum GetProgram: Sendable {
             /// Request type for "GetProgram".
@@ -46,6 +58,7 @@ internal enum Program_ProgramService: Sendable {
         }
         /// Descriptors for all methods in the "program.ProgramService" service.
         internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+            ListPrograms.descriptor,
             GetProgram.descriptor,
             GetProgramDay.descriptor
         ]
@@ -73,6 +86,20 @@ extension Program_ProgramService {
     /// Where possible, prefer using the stricter, less-verbose ``ServiceProtocol``
     /// or ``SimpleServiceProtocol`` instead.
     internal protocol StreamingServiceProtocol: GRPCCore.RegistrableRPCService {
+        /// Handle the "ListPrograms" method.
+        ///
+        /// - Parameters:
+        ///   - request: A streaming request of `Program_ListProgramsRequest` messages.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A streaming response of `Program_ListProgramsResponse` messages.
+        func listPrograms(
+            request: GRPCCore.StreamingServerRequest<Program_ListProgramsRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.StreamingServerResponse<Program_ListProgramsResponse>
+
         /// Handle the "GetProgram" method.
         ///
         /// - Parameters:
@@ -110,6 +137,20 @@ extension Program_ProgramService {
     /// the ``SimpleServiceProtocol``. If you need fine grained control over your RPCs then
     /// use ``StreamingServiceProtocol``.
     internal protocol ServiceProtocol: Program_ProgramService.StreamingServiceProtocol {
+        /// Handle the "ListPrograms" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Program_ListProgramsRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A response containing a single `Program_ListProgramsResponse` message.
+        func listPrograms(
+            request: GRPCCore.ServerRequest<Program_ListProgramsRequest>,
+            context: GRPCCore.ServerContext
+        ) async throws -> GRPCCore.ServerResponse<Program_ListProgramsResponse>
+
         /// Handle the "GetProgram" method.
         ///
         /// - Parameters:
@@ -145,6 +186,20 @@ extension Program_ProgramService {
     /// doesn't provide access to request or response metadata. If you need access to these
     /// then use ``ServiceProtocol`` instead.
     internal protocol SimpleServiceProtocol: Program_ProgramService.ServiceProtocol {
+        /// Handle the "ListPrograms" method.
+        ///
+        /// - Parameters:
+        ///   - request: A `Program_ListProgramsRequest` message.
+        ///   - context: Context providing information about the RPC.
+        /// - Throws: Any error which occurred during the processing of the request. Thrown errors
+        ///     of type `RPCError` are mapped to appropriate statuses. All other errors are converted
+        ///     to an internal error.
+        /// - Returns: A `Program_ListProgramsResponse` to respond with.
+        func listPrograms(
+            request: Program_ListProgramsRequest,
+            context: GRPCCore.ServerContext
+        ) async throws -> Program_ListProgramsResponse
+
         /// Handle the "GetProgram" method.
         ///
         /// - Parameters:
@@ -180,6 +235,17 @@ extension Program_ProgramService {
 extension Program_ProgramService.StreamingServiceProtocol {
     internal func registerMethods<Transport>(with router: inout GRPCCore.RPCRouter<Transport>) where Transport: GRPCCore.ServerTransport {
         router.registerHandler(
+            forMethod: Program_ProgramService.Method.ListPrograms.descriptor,
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Program_ListProgramsRequest>(),
+            serializer: GRPCProtobuf.ProtobufSerializer<Program_ListProgramsResponse>(),
+            handler: { request, context in
+                try await self.listPrograms(
+                    request: request,
+                    context: context
+                )
+            }
+        )
+        router.registerHandler(
             forMethod: Program_ProgramService.Method.GetProgram.descriptor,
             deserializer: GRPCProtobuf.ProtobufDeserializer<Program_GetProgramRequest>(),
             serializer: GRPCProtobuf.ProtobufSerializer<Program_GetProgramResponse>(),
@@ -207,6 +273,17 @@ extension Program_ProgramService.StreamingServiceProtocol {
 // Default implementation of streaming methods from 'StreamingServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension Program_ProgramService.ServiceProtocol {
+    internal func listPrograms(
+        request: GRPCCore.StreamingServerRequest<Program_ListProgramsRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.StreamingServerResponse<Program_ListProgramsResponse> {
+        let response = try await self.listPrograms(
+            request: GRPCCore.ServerRequest(stream: request),
+            context: context
+        )
+        return GRPCCore.StreamingServerResponse(single: response)
+    }
+
     internal func getProgram(
         request: GRPCCore.StreamingServerRequest<Program_GetProgramRequest>,
         context: GRPCCore.ServerContext
@@ -233,6 +310,19 @@ extension Program_ProgramService.ServiceProtocol {
 // Default implementation of methods from 'ServiceProtocol'.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension Program_ProgramService.SimpleServiceProtocol {
+    internal func listPrograms(
+        request: GRPCCore.ServerRequest<Program_ListProgramsRequest>,
+        context: GRPCCore.ServerContext
+    ) async throws -> GRPCCore.ServerResponse<Program_ListProgramsResponse> {
+        return GRPCCore.ServerResponse<Program_ListProgramsResponse>(
+            message: try await self.listPrograms(
+                request: request.message,
+                context: context
+            ),
+            metadata: [:]
+        )
+    }
+
     internal func getProgram(
         request: GRPCCore.ServerRequest<Program_GetProgramRequest>,
         context: GRPCCore.ServerContext
@@ -269,6 +359,25 @@ extension Program_ProgramService {
     /// You don't need to implement this protocol directly, use the generated
     /// implementation, ``Client``.
     internal protocol ClientProtocol: Sendable {
+        /// Call the "ListPrograms" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Program_ListProgramsRequest` message.
+        ///   - serializer: A serializer for `Program_ListProgramsRequest` messages.
+        ///   - deserializer: A deserializer for `Program_ListProgramsResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        func listPrograms<Result>(
+            request: GRPCCore.ClientRequest<Program_ListProgramsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Program_ListProgramsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Program_ListProgramsResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Program_ListProgramsResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
         /// Call the "GetProgram" method.
         ///
         /// - Parameters:
@@ -322,6 +431,36 @@ extension Program_ProgramService {
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
         internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
+        }
+
+        /// Call the "ListPrograms" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Program_ListProgramsRequest` message.
+        ///   - serializer: A serializer for `Program_ListProgramsRequest` messages.
+        ///   - deserializer: A deserializer for `Program_ListProgramsResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response, the result of which is
+        ///       returned to the caller. Returning from the closure will cancel the RPC if it
+        ///       hasn't already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func listPrograms<Result>(
+            request: GRPCCore.ClientRequest<Program_ListProgramsRequest>,
+            serializer: some GRPCCore.MessageSerializer<Program_ListProgramsRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Program_ListProgramsResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Program_ListProgramsResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Program_ProgramService.Method.ListPrograms.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
         }
 
         /// Call the "GetProgram" method.
@@ -389,6 +528,31 @@ extension Program_ProgramService {
 // Helpers providing default arguments to 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension Program_ProgramService.ClientProtocol {
+    /// Call the "ListPrograms" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Program_ListProgramsRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func listPrograms<Result>(
+        request: GRPCCore.ClientRequest<Program_ListProgramsRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Program_ListProgramsResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.listPrograms(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Program_ListProgramsRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Program_ListProgramsResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "GetProgram" method.
     ///
     /// - Parameters:
@@ -443,6 +607,35 @@ extension Program_ProgramService.ClientProtocol {
 // Helpers providing sugared APIs for 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension Program_ProgramService.ClientProtocol {
+    /// Call the "ListPrograms" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response, the result of which is
+    ///       returned to the caller. Returning from the closure will cancel the RPC if it
+    ///       hasn't already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func listPrograms<Result>(
+        _ message: Program_ListProgramsRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Program_ListProgramsResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Program_ListProgramsRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.listPrograms(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "GetProgram" method.
     ///
     /// - Parameters:

@@ -8,11 +8,27 @@ class GRPCProgramRepository: WorkoutProgramRepository {
 
     private let clientManager = GRPCClientManager.shared
 
-    private static let defaultProgramId = "ace0293a-aee1-4b5b-bfd5-6311951b28a7"
-
     func getAllPrograms() async throws -> [WorkoutProgram] {
-        guard let program = try await fetchProgram(serverId: Self.defaultProgramId) else { return [] }
-        return [program]
+        return try await clientManager.withClient { grpcClient in
+            let programClient = Program_ProgramService.Client(wrapping: grpcClient)
+            let response = try await programClient.listPrograms(.init())
+            var result: [WorkoutProgram] = []
+            for programResponse in response.programs {
+                var days: [WorkoutDay] = []
+                for protoDay in programResponse.days {
+                    let dayResponse = try await programClient.getProgramDay(
+                        .with { $0.id = protoDay.id }
+                    )
+                    days.append(Self.mapWorkoutDay(from: dayResponse))
+                }
+                result.append(WorkoutProgram(
+                    name: programResponse.name,
+                    workouts: days,
+                    serverId: programResponse.id
+                ))
+            }
+            return result
+        }
     }
 
     func getProgram(id: UUID) async throws -> WorkoutProgram? {
